@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 
@@ -38,14 +38,25 @@
     <p class="kicker"><span>Johnny（Chuan-Wei Hsu）</span><span class="k2">中原大學 智慧運算與大數據學士班</span></p>
     <h1>嗨，我是<br><span class="name">徐專洧</span>。</h1>
     <p class="lede">我寫程式、做硬體，也跳舞、上台主持。習慣從自己卡住的問題出發，<mark>把想法做成看得見的東西。</mark></p>
-    <p class="lede small">這裡放我做過的事。做成的、還在做的，還有沒做成的，都放。</p>
+    <div class="roles" role="tablist" aria-label="選一個面向看">
+      <button role="tab" class="on" aria-selected="true" data-i="0">上台</button>
+      <button role="tab" aria-selected="false" data-i="1">跳舞</button>
+      <button role="tab" aria-selected="false" data-i="2">寫程式</button>
+      <button role="tab" aria-selected="false" data-i="3">做硬體</button>
+    </div>
+    <p class="role-line" aria-live="polite"><span class="role-text">熱舞社成發主持、丹麥訪問團英文主持、NUVA 活動分享。</span> <a class="role-link" href="#stage">看舞台 ↓</a></p>
     <div class="hero-links">
       <a class="btn" href="#works">看作品</a>
       <a class="btn ghost" href="#contact">聯絡我</a>
     </div>
   </div>
   <figure class="hero-photo">
-    <div class="frame"><img src="img/hero.jpg" alt="徐專洧在熱舞社成果發表會上拿麥克風主持" width="1350" height="1800"></div>
+    <div class="frame">
+      <img class="slide on" src="img/hero.jpg" alt="徐專洧在熱舞社成果發表會上拿麥克風主持" width="1400" height="1750">
+      <img class="slide" src="img/g-jump.jpg" alt="徐專洧在舞台上躍起" loading="lazy">
+      <img class="slide" src="img/radar.jpg?v=2" alt="中原機會雷達首頁的小雷" loading="lazy" style="object-position:92% 50%">
+      <img class="slide" src="img/esp32-car.jpg" alt="ESP32 智慧小車" loading="lazy">
+    </div>
   </figure>
 </section>
 
@@ -197,10 +208,10 @@
 
     <li data-c="build"><details><summary>
       <time>2026.10</time>
-      <div><h3>捲線器原型</h3><p>我負責機構，用 Fusion 360 從 Mk2 改到 Mk4。</p></div>
-      <b class="tag now">進行中</b></summary>
+      <div><h3>捲線器</h3><p>我負責機構，用 Fusion 360 從 Mk2 改到 Mk4，最後自己設計棘輪和齒輪。</p></div>
+      <b class="tag done">完成</b></summary>
       <div class="more">
-        <p>每一版都換過配置和零件尺寸。11 月初實測買來的絞盤，捲到定點停不下來，還在找替代做法。</p>
+        <p>每一版都換過配置和零件尺寸。買來的絞盤不會自己停，我就自己設計棘輪和齒輪換掉它，機構已經完成。</p>
         <div class="more-photos">
           <img src="img/reel-render.jpg" alt="捲線器外殼配置比較圖" loading="lazy">
           <img src="img/reel-drum.jpg" alt="馬達和黃色捲筒試組" loading="lazy">
@@ -440,7 +451,7 @@
     <article class="miss">
       <p class="miss-what">捲線器，<em>買來的絞盤不會自己停</em>。</p>
       <p>11 月初實測蝦皮買的絞盤，捲到定點停不下來，不符合我們要的用法。</p>
-      <p class="miss-learn"><b>後來：</b>還在找替代做法。</p>
+      <p class="miss-learn"><b>後來：</b>我自己設計了棘輪和齒輪，捲線器已經完成。</p>
     </article>
   </div>
 </section>
@@ -496,6 +507,6 @@
   <img alt="">
 </div>
 
-<script src="main.js?v=7"></script>
+<script src="main.js?v=9"></script>
 </body>
 </html>

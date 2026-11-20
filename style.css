@@ -52,7 +52,20 @@ mark{background:linear-gradient(transparent 58%,var(--blue-soft) 58%);color:inhe
 .btn.ghost:hover{background:var(--ink);color:#fff}
 .hero-photo{margin:0}
 .frame{position:relative;margin-right:18px}
-.frame img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 30%;border-radius:2px;position:relative;z-index:1}
+.frame{aspect-ratio:4/5}
+.frame .slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;border-radius:2px;z-index:1;opacity:0;transition:opacity .6s ease}
+.frame .slide.on{opacity:1;z-index:2}
+.frame .slide.shot{object-fit:contain;background:var(--night);padding:0}
+.roles{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.roles button{position:relative;overflow:hidden;font:inherit;font-size:15px;font-weight:500;padding:7px 18px;border-radius:99px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:background .2s,color .2s}
+.roles button:hover{background:var(--blue-soft)}
+.roles button.on{background:var(--ink);color:#EDF4FC}
+.roles button.on::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--blue-soft)}
+.roles.auto button.on::after{animation:fill 4.5s linear forwards}
+@keyframes fill{to{width:100%}}
+.role-line{margin-top:14px;min-height:3.6em;color:var(--ink-2);font-size:16px;max-width:30em;transition:opacity .3s}
+.role-line.fade{opacity:0}
+.role-link{color:var(--btn);font-weight:500;white-space:nowrap;text-underline-offset:4px}
 .frame::before{content:"";position:absolute;inset:18px -18px -18px 18px;border:1.5px solid var(--ink);border-radius:2px}
 .hero-photo figcaption{margin-top:34px;font-size:13px;color:var(--ink-2);font-family:var(--mono)}
 
@@ -172,7 +185,7 @@ mark{background:linear-gradient(transparent 58%,var(--blue-soft) 58%);color:inhe
 .lightbox img{max-height:100%;max-width:100%;object-fit:contain}
 .lb-close{position:absolute;top:14px;right:16px;font:inherit;font-size:14px;color:#EDF4FC;background:none;border:1px solid #EDF4FC;border-radius:99px;padding:4px 14px;cursor:pointer}
 
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.frame .slide{transition:none;transform:none}.roles.auto button.on::after{animation:none}}
 
 /* responsive */
 @media (max-width:900px){
@@ -207,7 +220,6 @@ mark{background:linear-gradient(transparent 58%,var(--blue-soft) 58%);color:inhe
   .hero-photo{max-width:none}
   .frame{margin-right:0}
   .frame::before{display:none}
-  .frame img{aspect-ratio:4/5}
   .hero-photo figcaption{margin-top:10px}
   .sec-title{gap:12px}
   .sec-note{margin-bottom:28px}
