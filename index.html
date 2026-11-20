@@ -12,9 +12,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
+
+<div class="intro" aria-hidden="true">
+  <div class="intro-top"></div><div class="intro-bottom"></div>
+  <div class="intro-name"><span>徐</span><span>專</span><span>洧</span></div>
+  <div class="intro-line"></div>
+  <div class="intro-sub">Johnny · Chuan-Wei Hsu</div>
+</div>
+<script>try{if(sessionStorage.getItem('introSeen')||matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('no-intro')}catch(e){}</script>
 
 <header class="bar">
   <a class="bar-name" href="#top">徐專洧</a>
@@ -34,29 +42,18 @@
 <main id="top">
 
 <section class="hero">
+  <canvas class="hero-bg" aria-hidden="true"></canvas>
   <div class="hero-text">
     <p class="kicker"><span>Johnny（Chuan-Wei Hsu）</span><span class="k2">中原大學 智慧運算與大數據學士班</span></p>
-    <h1>嗨，我是<br><span class="name">徐專洧</span>。</h1>
+    <h1>嗨，我是<br><span class="name"><span>徐</span><span>專</span><span>洧</span></span>。</h1>
     <p class="lede">我寫程式、做硬體，也跳舞、上台主持。習慣從自己卡住的問題出發，<mark>把想法做成看得見的東西。</mark></p>
-    <div class="roles" role="tablist" aria-label="選一個面向看">
-      <button role="tab" class="on" aria-selected="true" data-i="0">上台</button>
-      <button role="tab" aria-selected="false" data-i="1">跳舞</button>
-      <button role="tab" aria-selected="false" data-i="2">寫程式</button>
-      <button role="tab" aria-selected="false" data-i="3">做硬體</button>
-    </div>
-    <p class="role-line" aria-live="polite"><span class="role-text">熱舞社成發主持、丹麥訪問團英文主持、NUVA 活動分享。</span> <a class="role-link" href="#stage">看舞台 ↓</a></p>
     <div class="hero-links">
       <a class="btn" href="#works">看作品</a>
       <a class="btn ghost" href="#contact">聯絡我</a>
     </div>
   </div>
   <figure class="hero-photo">
-    <div class="frame">
-      <img class="slide on" src="img/hero.jpg" alt="徐專洧在熱舞社成果發表會上拿麥克風主持" width="1400" height="1750">
-      <img class="slide" src="img/g-jump.jpg" alt="徐專洧在舞台上躍起" loading="lazy">
-      <img class="slide" src="img/radar.jpg?v=2" alt="中原機會雷達首頁的小雷" loading="lazy" style="object-position:92% 50%">
-      <img class="slide" src="img/esp32-car.jpg" alt="ESP32 智慧小車" loading="lazy">
-    </div>
+    <div class="frame tilt"><img src="img/hero.jpg" alt="徐專洧在熱舞社成果發表會上拿麥克風主持" width="1400" height="1750"><span class="glare"></span></div>
   </figure>
 </section>
 
@@ -208,7 +205,7 @@
 
     <li data-c="build"><details><summary>
       <time>2026.10</time>
-      <div><h3>捲線器</h3><p>我負責機構，用 Fusion 360 從 Mk2 改到 Mk4，最後自己設計棘輪和齒輪。</p></div>
+      <div><h3>捲線器</h3><p>我負責機構，用 Fusion 360 改了好幾版設計，最後自己設計棘輪和齒輪。</p></div>
       <b class="tag done">完成</b></summary>
       <div class="more">
         <p>每一版都換過配置和零件尺寸。買來的絞盤不會自己停，我就自己設計棘輪和齒輪換掉它，機構已經完成。</p>
@@ -507,6 +504,6 @@
   <img alt="">
 </div>
 
-<script src="main.js?v=9"></script>
+<script src="main.js?v=12"></script>
 </body>
 </html>
