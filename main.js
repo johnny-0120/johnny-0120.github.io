@@ -68,7 +68,7 @@ document.querySelector('.theme-btn')?.addEventListener('click', () => {
 darkMQ.addEventListener?.('change', applyTheme);
 applyTheme();
 
-// ---------- 開場動畫 ----------
+// ---------- 開場：5、6、7、8，第 8 拍燈亮 ----------
 const intro = document.querySelector('.intro');
 if (intro && !document.documentElement.classList.contains('no-intro')) {
   document.body.style.overflow = 'hidden';
@@ -77,9 +77,9 @@ if (intro && !document.documentElement.classList.contains('no-intro')) {
     intro.classList.add('open');
     document.body.style.overflow = '';
     try { sessionStorage.setItem('introSeen', '1'); } catch (e) {}
-    setTimeout(() => intro.classList.add('gone'), 1000);
+    setTimeout(() => intro.remove(), 750);
   };
-  setTimeout(open, 1900);
+  setTimeout(open, 1750);
   intro.addEventListener('click', open);
 }
 
@@ -160,225 +160,114 @@ if (fine && !calm) {
   });
 }
 
-// ---------- 封面雷達：經歷資料直接從下方時間軸讀 ----------
+// ---------- 封面舞台：追光燈找經歷 ----------
 (() => {
-  const cv = document.querySelector('.radar');
-  if (!cv) return;
-  const ctx = cv.getContext('2d');
-  const stage = cv.parentElement;
-  const CAT = { build: ['做東西', '#4F7FB8'], stage: ['舞台與活動', '#8B6FD1'], contest: ['競賽與申請', '#D07A55'] };
+  const st = document.querySelector('.hero.stage');
+  if (!st) return;
+  const propsBox = st.querySelector('.props');
+  const poly = st.querySelector('.st-beam polygon');
+  const svg = st.querySelector('.st-beam');
+  const line = st.querySelector('.cue-line');
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const lis = [...document.querySelectorAll('.tl li[data-c]')];
   const n = lis.length;
-  const items = lis.map((li, i) => {
-    const cat = li.dataset.c.split(' ')[0];
-    const photo = li.querySelector('.more-photos img');
-    return {
-      li, cat,
-      ang: (i * 2.39996 + 0.4) % (Math.PI * 2),
-      rad: 0.5 + 0.44 * ((i * 0.618) % 1),
-      time: li.querySelector('time')?.textContent.trim() || '',
-      title: li.querySelector('h3')?.textContent.trim() || '',
-      desc: li.querySelector('h3 + p')?.textContent.trim() || '',
-      st: li.querySelector('.st')?.outerHTML || '',
-      photo: photo ? photo.getAttribute('src') : null,
-      seen: -1, caught: false,
-    };
-  });
   let saved = [];
-  try { saved = JSON.parse(localStorage.getItem('radarCaught') || '[]'); } catch (e) {}
-  items.forEach(it => { if (saved.includes(it.title)) it.caught = true; });
+  try { saved = JSON.parse(localStorage.getItem('cueFound') || '[]'); } catch (e) {}
 
-  const gotEl = stage.querySelector('.got'), totEl = stage.querySelector('.total');
-  const tip = stage.querySelector('.radar-tip');
-  const rps = [...stage.querySelectorAll('.rp')];
-  const photoBox = stage.querySelector('.radar-photo');
-  const card = document.querySelector('.hero .scan-card');
-  totEl.textContent = n;
-  const calmR = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W = 0, dpr = 1, sweep = -Math.PI / 2, last = performance.now(), hover = null, active = null, vis = false;
-  let mx = -1, my = -1, parts = [], lock = null, pings = [];
-  if (calmR) items.forEach(it => { it.seen = 0; });
+  const items = lis.map((li, i) => {
+    const title = li.querySelector('h3')?.textContent.trim() || '';
+    const SHORT = { '越南':'TDTU 交流', '職涯探索':'職涯探索佳作', '火星':'火星車競賽', '全國智慧運算':'量子競賽', 'TRC':'TRC 競賽', 'WordMemo':'WordMemo', '中原機會雷達':'機會雷達', 'NUVA':'NUVA 大使', '學生會':'學生會公關部', '捲線器':'捲線器', '國防':'國防 AI 競賽', '桃園之星':'創天下競賽', '班代':'班代', 'ESP32':'ESP32 小車', 'Fusion':'3D 列印', 'AI 英文單字':'單字網站', '社會組跨考':'跨考自然組', '青年百億':'青年百億', '活動影片':'影片剪輯', '熱舞社':'熱舞社幹部', '丹麥':'丹麥交流主持', '班級英文簡報':'英文簡報' };
+    const key = Object.keys(SHORT).find(k => title.includes(k));
+    const short = key ? SHORT[key] : title.replace(/^2026\s*/, '').split(/[　、（]/)[0];
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'prop';
+    b.innerHTML = `<i></i><span></span><b></b>`;
+    b.querySelector('span').textContent = li.querySelector('time')?.textContent.trim() || '';
+    b.querySelector('b').textContent = short;
+    b.setAttribute('aria-label', title);
+    propsBox.appendChild(b);
+    const it = { li, el: b, title, time: b.querySelector('span').textContent, desc: li.querySelector('h3 + p')?.textContent.trim() || '', st: li.querySelector('.st')?.outerHTML || '', got: saved.includes(title), x: 0, y: 0, lit: 0 };
+    if (it.got) b.classList.add('got');
+    b.addEventListener('click', e => { e.stopPropagation(); if (it.lit > 0.5 || it.got) call(it); else aim(it.x, it.y); });
+    return it;
+  });
+  st.querySelectorAll('.total').forEach(e => e.textContent = String(n).padStart(2, '0'));
+  const count = () => st.querySelectorAll('.got').forEach(e => { if (e.tagName === 'SPAN') e.textContent = String(items.filter(i => i.got).length).padStart(2, '0'); });
+  count();
 
-  const updCount = () => { gotEl.textContent = items.filter(i => i.caught).length; };
-  updCount();
-
-  function size() {
-    dpr = Math.min(devicePixelRatio || 1, 2);
-    W = cv.clientWidth; cv.width = W * dpr; cv.height = W * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  // 把經歷散在舞台上：桌機放右半邊，手機放在照片那一塊
+  let W = 0, H = 0, mobile = false;
+  function layout() {
+    W = st.clientWidth; H = st.clientHeight; mobile = W < 900;
+    const x0 = mobile ? 0.06 : 0.47, x1 = mobile ? 0.94 : 0.97;
+    const y0 = mobile ? 0.04 : 0.1, y1 = mobile ? Math.min(0.5, (innerHeight * 0.58) / H) : 0.92;
+    const cols = mobile ? 3 : 5, rows = Math.ceil(n / cols);
+    items.forEach((it, i) => {
+      const c = i % cols, r = Math.floor(i / cols);
+      const jx = ((i * 0.618) % 1 - 0.5) * 0.35, jy = ((i * 0.381) % 1 - 0.5) * 0.35;
+      it.x = (x0 + (x1 - x0) * ((c + 0.5 + jx) / cols)) * W;
+      it.y = (y0 + (y1 - y0) * ((r + 0.5 + jy) / rows)) * H;
+      it.x = Math.max(56, Math.min(W - 56, it.x));
+      it.el.style.left = it.x + 'px'; it.el.style.top = it.y + 'px';
+    });
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   }
-  const R = () => W * 0.48;
-  const pos = it => [W / 2 + Math.cos(it.ang) * it.rad * R(), W / 2 + Math.sin(it.ang) * it.rad * R()];
-  const norm = a => ((a % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
-  const hexA = (hex, a) => { const v = parseInt(hex.slice(1), 16); return `rgba(${v >> 16},${(v >> 8) & 255},${v & 255},${a})`; };
 
-  function draw(now) {
-    const dt = Math.min(0.2, Math.max(0, (now - last) / 1000)); last = now;
-    const prev = sweep;
-    if (!calmR) sweep += dt * 1.0;
-    const step = sweep - prev, c = W / 2, r = R();
-    ctx.clearRect(0, 0, W, W);
+  // 追光燈：滑鼠帶著走，沒動的時候自己在台上搜尋
+  let sx = 0, sy = 0, tx = 0, ty = 0, R = 170, lastMove = -1e9, t0 = performance.now(), hot = null;
+  function aim(x, y) { tx = x; ty = y; lastMove = performance.now(); }
+  st.addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse') return;
+    const b = st.getBoundingClientRect(); aim(e.clientX - b.left, e.clientY - b.top);
+  });
+  st.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'mouse') return;
+    const b = st.getBoundingClientRect(); aim(e.clientX - b.left, e.clientY - b.top);
+  });
 
-    // 外圈刻度，慢慢轉
-    ctx.save(); ctx.translate(c, c); ctx.rotate(now / 9000);
-    for (let k = 0; k < 72; k++) {
-      const a = k / 72 * Math.PI * 2, long = k % 6 === 0;
-      ctx.strokeStyle = long ? `rgba(${theme.ink},.5)` : `rgba(${theme.ink},.2)`; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(Math.cos(a) * r, Math.sin(a) * r); ctx.lineTo(Math.cos(a) * (r - (long ? 10 : 5)), Math.sin(a) * (r - (long ? 10 : 5))); ctx.stroke();
+  function frame(now) {
+    if (now - lastMove > 2600 && !calm) {                 // 閒置：追光燈在台上畫 8 字找人
+      const t = (now - t0) / 1000;
+      const cx = mobile ? W * 0.5 : W * 0.72, cy = mobile ? H * 0.25 : H * 0.5;
+      tx = cx + Math.sin(t * 0.55) * W * (mobile ? 0.32 : 0.2);
+      ty = cy + Math.sin(t * 1.1) * H * (mobile ? 0.15 : 0.28);
     }
-    ctx.restore();
-    // 同心圓
-    ctx.strokeStyle = `rgba(${theme.acc},.22)`;
-    for (let k = 1; k <= 3; k++) { ctx.beginPath(); ctx.arc(c, c, r * (0.4 + k * 0.2), 0, 7); ctx.stroke(); }
-    ctx.setLineDash([3, 6]); ctx.beginPath(); ctx.arc(c, c, r * 0.97, 0, 7); ctx.stroke(); ctx.setLineDash([]);
-    // 聲納波：每 2.6 秒從照片邊緣往外擴散
-    if (!calmR) {
-      const ph = (now / 2600) % 1;
-      ctx.strokeStyle = `rgba(${theme.acc},${0.35 * (1 - ph)})`; ctx.lineWidth = 2;
-      ctx.beginPath(); ctx.arc(c, c, r * (0.42 + ph * 0.58), 0, 7); ctx.stroke(); ctx.lineWidth = 1;
-    }
-    // 掃描扇形
-    if (!calmR) {
-      for (let k = 0; k < 40; k++) {
-        const a0 = sweep - k * 0.028;
-        ctx.fillStyle = `rgba(${theme.acc},${0.16 * (1 - k / 40)})`;
-        ctx.beginPath(); ctx.moveTo(c, c); ctx.arc(c, c, r, a0 - 0.028, a0); ctx.closePath(); ctx.fill();
-      }
-      ctx.save(); ctx.shadowColor = `rgba(${theme.acc},.9)`; ctx.shadowBlur = 12;
-      ctx.strokeStyle = `rgba(${theme.ink},.85)`; ctx.lineWidth = 2;
-      ctx.beginPath(); ctx.moveTo(c, c); ctx.lineTo(c + Math.cos(sweep) * r, c + Math.sin(sweep) * r); ctx.stroke(); ctx.restore();
-    }
-    // 滑鼠準星
-    if (mx >= 0 && !hover) {
-      ctx.strokeStyle = `rgba(${theme.ink},.25)`; ctx.setLineDash([2, 4]);
-      ctx.beginPath(); ctx.moveTo(mx, 0); ctx.lineTo(mx, W); ctx.moveTo(0, my); ctx.lineTo(W, my); ctx.stroke(); ctx.setLineDash([]);
-    }
-    // 亮點
+    const k = calm ? 1 : 0.12;
+    sx += (tx - sx) * k; sy += (ty - sy) * k;
+    R = mobile ? 120 : 170;
+    st.style.setProperty('--x', sx + 'px'); st.style.setProperty('--y', sy + 'px'); st.style.setProperty('--r', R + 'px');
+    // 光束：從舞台上方的燈打下來
+    const lx = W * (mobile ? 0.5 : 0.62), ly = -40, ang = Math.atan2(sy - ly, sx - lx), px = Math.cos(ang + Math.PI / 2) * R * 0.9, py = Math.sin(ang + Math.PI / 2) * R * 0.9;
+    poly.setAttribute('points', `${lx - 6},${ly} ${lx + 6},${ly} ${sx + px},${sy + py} ${sx - px},${sy - py}`);
+    hot = null;
     for (const it of items) {
-      if (step > 0 && norm(it.ang - prev) <= step) { it.seen = now; }
-      if (it.seen < 0 && !it.caught) continue;
-      const age = it.seen < 0 ? 99 : (now - it.seen) / 1000;
-      const glow = Math.max(0.5, 1 - age / 3);
-      const [x, y] = pos(it), col = CAT[it.cat][1];
-      const big = it === hover || it === active;
-      if (age < 1.2 && !calmR) {
-        ctx.strokeStyle = hexA(col, 1 - age / 1.2); ctx.lineWidth = 1.5;
-        ctx.beginPath(); ctx.arc(x, y, 6 + age * 18, 0, 7); ctx.stroke();
-      }
-      if (big) {
-        ctx.strokeStyle = hexA(col, .6); ctx.setLineDash([4, 4]);
-        ctx.beginPath(); ctx.moveTo(c, c); ctx.lineTo(x, y); ctx.stroke(); ctx.setLineDash([]);
-      }
-      ctx.save(); ctx.shadowColor = col; ctx.shadowBlur = big ? 18 : 10;
-      ctx.fillStyle = hexA(col, it.caught ? 1 : glow);
-      ctx.beginPath(); ctx.arc(x, y, big ? 8 : 5.5, 0, 7); ctx.fill(); ctx.restore();
-      if (it.caught) { ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(x, y, big ? 14 : 10, 0, 7); ctx.stroke(); }
+      const d = Math.hypot(it.x - sx, it.y - sy);
+      it.lit = Math.max(0, Math.min(1, (R * 0.95 - d) / (R * 0.35)));
+      it.el.style.opacity = Math.max(it.lit, it.got ? 0.55 : 0);
+      if (it.lit > 0.6 && (!hot || d < Math.hypot(hot.x - sx, hot.y - sy))) hot = it;
+      it.el.classList.toggle('hot', it === hot);
     }
-    // 鎖定動畫：四個角往內收
-    if (lock) {
-      const t = (now - lock.t) / 500;
-      if (t > 1.6) lock = null; else {
-        const [x, y] = pos(lock.it), s = 34 - Math.min(1, t) * 18, col = CAT[lock.it.cat][1];
-        ctx.strokeStyle = col; ctx.lineWidth = 2;
-        for (const [sx, sy] of [[-1, -1], [1, -1], [1, 1], [-1, 1]]) {
-          ctx.beginPath(); ctx.moveTo(x + sx * s, y + sy * (s - 7)); ctx.lineTo(x + sx * s, y + sy * s); ctx.lineTo(x + sx * (s - 7), y + sy * s); ctx.stroke();
-        }
-      }
-    }
-    // 粒子
-    parts = parts.filter(p => p.life > 0);
-    for (const p of parts) {
-      p.x += p.vx * dt; p.y += p.vy * dt; p.vx *= 0.94; p.vy *= 0.94; p.life -= dt;
-      ctx.fillStyle = hexA(p.col, Math.max(0, p.life / p.max));
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 7); ctx.fill();
-    }
-    if (vis) requestAnimationFrame(draw);
+    requestAnimationFrame(frame);
   }
 
-  function pick(x, y) {
-    let best = null, bd = 26;
-    for (const it of items) {
-      if (it.seen < 0 && !it.caught) continue;
-      const [px, py] = pos(it), d = Math.hypot(px - x, py - y);
-      if (d < bd) { bd = d; best = it; }
-    }
-    return best;
-  }
-
-  function burst(it) {
-    const [x, y] = pos(it), col = CAT[it.cat][1];
-    for (let k = 0; k < 26; k++) {
-      const a = Math.random() * 6.283, sp = 60 + Math.random() * 160;
-      parts.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, r: 1 + Math.random() * 2.2, life: .6 + Math.random() * .5, max: 1.1, col });
-    }
-    lock = { it, t: performance.now() };
-  }
-
-  // 標題逐字解碼
-  function decode(el, text) {
-    const glyph = '01#%&*+=<>/\\ABCDEFGHJKLMNPQRSTUVWXYZ';
-    let f = 0; const total = 14;
-    const tick = () => {
-      f++;
-      const keep = Math.floor(text.length * f / total);
-      el.textContent = text.slice(0, keep) + [...text.slice(keep)].map(ch => ch === ' ' ? ' ' : glyph[Math.random() * glyph.length | 0]).join('').slice(0, Math.max(0, text.length - keep));
-      if (f < total) setTimeout(tick, 35); else el.textContent = text;
-    };
-    if (calmR) el.textContent = text; else tick();
-  }
-
-  function setPhoto(src, alt, col) {
-    stage.style.setProperty('--ring', col);
-    if (!src) return;
-    const curEl = rps.find(r => r.classList.contains('on'));
-    if (curEl && curEl.getAttribute('src') === src) return;
-    const next = rps.find(r => r !== curEl);
-    next.onload = () => { curEl.classList.remove('on'); next.classList.add('on'); };
-    next.alt = alt; next.src = src;
-    if (next.complete && next.naturalWidth) next.onload();
-  }
-
-  function show(it) {
-    active = it;
-    const col = CAT[it.cat][1];
-    setPhoto(it.photo, it.title, col);
-    card.style.setProperty('--ring', col);
-    const got = items.filter(i => i.caught).length, all = got === n;
-    card.classList.remove('empty', 'pop'); void card.offsetWidth; card.classList.add('pop');
-    card.innerHTML = `<p class="k">${it.time}　${CAT[it.cat][0]}</p><h3></h3><p class="d"></p>
-      <div class="row">${it.st}<button class="go" type="button">看詳細 ↓</button></div>
-      ${all ? '<p class="k" style="margin-top:10px">全部找到了。想聊聊的話，<a href="#contact">到聯絡區找我</a>。</p>' : ''}`;
-    decode(card.querySelector('h3'), it.title);
-    card.querySelector('.d').textContent = it.desc;
-    card.querySelector('.go').addEventListener('click', () => {
+  function call(it) {
+    it.got = true; it.el.classList.add('got');
+    try { localStorage.setItem('cueFound', JSON.stringify(items.filter(i => i.got).map(i => i.title))); } catch (e) {}
+    const got = items.filter(i => i.got).length;
+    line.classList.remove('pop'); void line.offsetWidth; line.classList.add('pop');
+    line.innerHTML = `<p class="k">CUE ${String(got).padStart(2, '0')} / ${String(n).padStart(2, '0')}　${it.time}</p><h3></h3><p class="d"></p><button class="go" type="button">看這段經歷 ↓</button>
+      <p class="again">${got === n ? '全部找到了。想聊聊的話，到最下面的聯絡區找我' : '繼續移動燈光，台上還有別的'}</p>`;
+    line.querySelector('h3').textContent = it.title;
+    line.querySelector('.d').textContent = it.desc;
+    line.querySelector('.go').addEventListener('click', () => {
       const d = it.li.querySelector('details'); if (d) d.open = true;
-      it.li.scrollIntoView({ behavior: calmR ? 'auto' : 'smooth', block: 'center' });
+      it.li.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'center' });
       it.li.classList.remove('flash'); void it.li.offsetWidth; it.li.classList.add('flash');
     });
-    updCount();
   }
 
-  cv.addEventListener('pointermove', e => {
-    const b = cv.getBoundingClientRect(); mx = e.clientX - b.left; my = e.clientY - b.top;
-    hover = pick(mx, my); cv.style.cursor = hover ? 'pointer' : 'crosshair';
-    if (hover) {
-      const [x, y] = pos(hover);
-      tip.textContent = hover.title; tip.style.left = x + 'px'; tip.style.top = y + 'px'; tip.hidden = false;
-    } else tip.hidden = true;
-  });
-  cv.addEventListener('pointerleave', () => { hover = null; mx = my = -1; tip.hidden = true; });
-  cv.addEventListener('click', e => {
-    const b = cv.getBoundingClientRect(), it = pick(e.clientX - b.left, e.clientY - b.top);
-    if (!it) return;
-    it.caught = true;
-    try { localStorage.setItem('radarCaught', JSON.stringify(items.filter(i => i.caught).map(i => i.title))); } catch (e) {}
-    burst(it); show(it);
-  });
-
-  addEventListener('resize', size); size();
-  new IntersectionObserver(es => {
-    const v = es[0].isIntersecting;
-    if (v && !vis) { vis = true; last = performance.now(); requestAnimationFrame(draw); }
-    vis = v;
-  }).observe(cv);
+  st.addEventListener('click', e => { if (hot && e.target.closest('.program') == null) call(hot); });
+  addEventListener('resize', layout);
+  layout(); sx = tx = W * (mobile ? 0.55 : 0.62); sy = ty = H * (mobile ? 0.25 : 0.45);
+  requestAnimationFrame(frame);
 })();

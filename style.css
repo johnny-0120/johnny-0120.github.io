@@ -378,3 +378,77 @@ summary:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var
   .miss-what{grid-row:auto;font-size:20px}
   .scan-card h3{font-size:22px}
 }
+
+/* ================= 封面：舞台 ================= */
+.hero.stage{display:block;position:relative;isolation:isolate;overflow:hidden;min-height:min(88vh,820px);
+  padding:0 max(16px,calc((100% - var(--w))/2));background:#05070B;color:#EDF4FC;cursor:none}
+.stage .st-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%;pointer-events:none;user-select:none}
+.stage .st-dark{filter:brightness(.13) saturate(.4)}
+.stage .st-lit{position:absolute;inset:0;z-index:1;pointer-events:none;
+  -webkit-mask-image:radial-gradient(circle var(--r,170px) at var(--x,62%) var(--y,45%),#000 0,#000 52%,rgba(0,0,0,.35) 78%,transparent 100%);
+          mask-image:radial-gradient(circle var(--r,170px) at var(--x,62%) var(--y,45%),#000 0,#000 52%,rgba(0,0,0,.35) 78%,transparent 100%)}
+.stage .st-lit img{filter:brightness(1.15) contrast(1.05) saturate(1.1)}
+.stage .st-beam{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;mix-blend-mode:screen;filter:blur(18px);opacity:.55}
+.stage .st-shade{position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:linear-gradient(90deg,rgba(5,7,11,.92) 0%,rgba(5,7,11,.75) 30%,rgba(5,7,11,0) 55%)}
+.stage .props{position:absolute;inset:0;z-index:4;pointer-events:none}
+.prop{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;cursor:none;border:0;background:none;padding:6px;
+  font:inherit;color:#FFE9C7;text-align:left;opacity:0;transition:opacity .25s}
+.prop i{display:block;width:10px;height:10px;margin:0 auto 4px;border:1.5px solid currentColor;transform:rotate(45deg)}
+.prop span{display:block;max-height:0;overflow:hidden;transition:max-height .25s;font-family:var(--mono);font-size:11px;letter-spacing:.08em;opacity:.75;white-space:nowrap;text-align:center}
+.prop b{display:block;font-family:var(--serif);font-size:15px;font-weight:600;white-space:nowrap;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.prop.got{color:#F2B880}
+.prop.got i{background:currentColor}
+.prop.hot b{text-decoration:underline;text-underline-offset:4px}
+
+/* 追光燈的光圈邊 */
+.spot-ring{position:absolute;z-index:4;width:calc(var(--r,170px)*2);height:calc(var(--r,170px)*2);left:var(--x,62%);top:var(--y,45%);
+  transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;box-shadow:0 0 0 1px rgba(255,233,199,.12),0 0 60px 10px rgba(255,220,170,.06) inset}
+
+/* 節目單 */
+.program{position:relative;z-index:5;max-width:440px;padding:72px 0 64px;pointer-events:none}
+.program a,.program button{pointer-events:auto;cursor:pointer}
+.pg-label{font-family:var(--mono);font-size:12px;letter-spacing:.32em;color:#C9A979;display:flex;gap:14px;align-items:center;margin-bottom:34px}
+.pg-label span{letter-spacing:.2em;color:#8F97A6}
+.pg-label::after{content:"";flex:1;height:1px;background:#3A3226}
+.stage h1{font-family:var(--serif);line-height:1.1;margin-bottom:18px}
+.pg-hi{display:block;font-size:22px;font-weight:600;color:#B8C1CF;margin-bottom:10px;letter-spacing:.06em}
+.stage h1 .name{display:block;font-size:clamp(64px,8vw,104px);font-weight:900;letter-spacing:.08em;color:#FFF6E8}
+.pg-en{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:#8F97A6;margin-bottom:34px}
+.pg-list{list-style:none;padding:0;margin:0 0 28px;border-top:1px solid #2A2620}
+.pg-list li{border-bottom:1px solid #2A2620}
+.pg-list a{display:flex;align-items:baseline;gap:18px;padding:11px 0;text-decoration:none;color:#E6E1D8;font-size:19px;font-family:var(--serif);font-weight:600;transition:color .2s,padding .3s}
+.pg-list a i{font-style:normal;font-family:var(--mono);font-size:12px;color:#C9A979;font-weight:400}
+.pg-list a:hover{color:#FFE9C7;padding-left:8px}
+.pg-lede{font-size:15px;color:#A9AFBA;margin-bottom:30px}
+.cue-hint{font-size:13px;color:#8F97A6;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.cue-hint b{font-family:var(--mono);font-weight:500;color:#C9A979;letter-spacing:.12em}
+.cue-line .k{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:#C9A979}
+.cue-line h3{font-family:var(--serif);font-size:24px;color:#FFF6E8;margin:6px 0 6px}
+.cue-line .d{font-size:14px;color:#B8C1CF}
+.cue-line .go{margin-top:12px;font:inherit;font-size:14px;color:#FFE9C7;background:none;border:0;border-bottom:1px solid currentColor;padding:0 0 2px;pointer-events:auto;cursor:pointer}
+.cue-line .again{font-size:12px;color:#8F97A6;margin-top:14px}
+.cue-line.pop{animation:cardPop .45s cubic-bezier(.2,.8,.2,1)}
+
+/* 開場：5、6、7、8 */
+.intro{background:#05070B;display:grid;place-items:center;align-content:center;gap:18px}
+.intro .count{display:flex;gap:.5em;font-family:var(--serif);font-weight:900;font-size:clamp(64px,12vw,150px);color:#FFF6E8;line-height:1}
+.intro .count span{opacity:0;transform:translateY(.15em);animation:beat .32s cubic-bezier(.2,.8,.2,1) forwards}
+.intro .count span:nth-child(1){animation-delay:.15s}.intro .count span:nth-child(2){animation-delay:.5s}
+.intro .count span:nth-child(3){animation-delay:.85s}.intro .count span:nth-child(4){animation-delay:1.2s;color:#F2B880}
+@keyframes beat{0%{opacity:0;transform:translateY(.15em) scale(.9)}60%{opacity:1;transform:scale(1.08)}100%{opacity:.85;transform:none}}
+.intro .count-sub{font-family:var(--mono);font-size:13px;letter-spacing:.4em;color:#8F97A6;opacity:0;animation:fadeIn .4s .3s forwards}
+.intro.open{animation:lightsUp .7s ease forwards}
+@keyframes lightsUp{0%{opacity:1;clip-path:circle(150% at 50% 50%)}100%{opacity:0;clip-path:circle(0% at 62% 45%)}}
+
+@media (max-width:900px){
+  .hero.stage{min-height:auto;padding-top:0}
+  .stage .st-photo{object-position:60% 30%}
+  .stage .st-shade{background:linear-gradient(180deg,rgba(5,7,11,0) 0%,rgba(5,7,11,.2) 30%,rgba(5,7,11,.9) 62%,rgba(5,7,11,.97) 100%)}
+  .program{padding:58vh 0 48px;max-width:none}
+  .stage h1 .name{font-size:64px}
+  .hero.stage,.prop{cursor:auto}
+}
+@media (prefers-reduced-motion:reduce){.intro{display:none}}
+.prop.hot span,.prop.got span{max-height:2em}
+@media (max-width:900px){.prop b{font-size:13px}.prop{padding:4px}}
