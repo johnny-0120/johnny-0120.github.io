@@ -12,7 +12,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 
@@ -26,7 +27,6 @@
 
 <header class="bar">
   <a class="bar-name" href="#top">徐專洧</a>
-  <button class="menu-btn" aria-expanded="false" aria-controls="nav">選單</button>
   <nav class="bar-nav" id="nav" aria-label="主選單">
     <a href="#quick">簡介</a>
     <a href="#timeline">經歷</a>
@@ -37,6 +37,10 @@
     <a href="#gallery">相簿</a>
     <a href="#contact">聯絡</a>
   </nav>
+  <div class="bar-right">
+    <button class="theme-btn" type="button" aria-label="切換深色／淺色模式"><span class="ico"></span><span class="lbl">深色</span></button>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">選單</button>
+  </div>
 </header>
 
 <main id="top">
@@ -167,23 +171,23 @@
 
     <li data-c="build"><details><summary>
       <div class="meta"><time>2026.11</time><span class="st st-done">完成</span></div>
-      <img class="thumb" src="img/wordmemo.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/wordmemo.jpg?v=3" data-dark="img/wordmemo-dark.jpg?v=3" alt="" loading="lazy">
       <div><h3>WordMemo 單字記憶上線</h3><p>高中那版單字網站整個重寫，加了程度測驗和老師端。</p></div></summary>
       <div class="more">
         <p>單字庫是大考中心高中 6000 字。學生端能學習、複習、拼字、AI 造句和作文批改；老師端可以開班、出題、看結果。不登入也能先試。</p>
         <p class="work-links"><a href="https://wordmemo.johnny970120.workers.dev/about" target="_blank" rel="noopener">看介紹 ↗</a><a href="https://wordmemo.johnny970120.workers.dev" target="_blank" rel="noopener">直接試用 ↗</a></p>
-        <div class="more-photos"><img src="img/wordmemo.jpg" alt="WordMemo 首頁" loading="lazy"></div>
+        <div class="more-photos"><img src="img/wordmemo.jpg?v=3" data-dark="img/wordmemo-dark.jpg?v=3" alt="WordMemo 首頁" loading="lazy"></div>
       </div>
     </details></li>
 
     <li data-c="build"><details><summary>
       <div class="meta"><time>2026.10</time><span class="st st-now">進行中</span></div>
-      <img class="thumb" src="img/radar.jpg?v=2" alt="" loading="lazy">
+      <img class="thumb" src="img/radar.jpg?v=3" data-dark="img/radar-dark.jpg?v=3" alt="" loading="lazy">
       <div><h3>中原機會雷達</h3><p>每天自動抓學校 16 個公開來源的公告，整理成可以搜尋的網站。</p></div></summary>
       <div class="more">
         <p>競賽、實習、獎學金都收。有截止時間表、收藏和重要提醒，也能跟 AI 說自己的興趣，讓它從公告裡挑。10 月底整個搬到 Cloudflare，五千多筆資料一起搬過去。</p>
         <p class="work-links"><a href="https://cycu-radar-app.johnny970120.workers.dev" target="_blank" rel="noopener">打開網站 ↗</a></p>
-        <div class="more-photos"><img src="img/radar.jpg?v=2" alt="中原機會雷達首頁" loading="lazy"></div>
+        <div class="more-photos"><img src="img/radar.jpg?v=3" data-dark="img/radar-dark.jpg?v=3" alt="中原機會雷達首頁" loading="lazy"></div>
       </div>
     </details></li>
 
@@ -196,7 +200,7 @@
         <p class="work-links"><a href="https://johnny-0120.github.io/line-work-elf/" target="_blank" rel="noopener">公事小精靈介紹 ↗</a></p>
         <div class="more-photos">
           <img src="img/nuva-stage.jpg" alt="在 NUVA 活動上拿麥克風分享" loading="lazy">
-          <img src="img/line-elf.jpg" alt="公事小精靈介紹頁" loading="lazy">
+          <img src="img/line-elf.jpg?v=3" data-dark="img/line-elf-dark.jpg?v=3" alt="公事小精靈介紹頁" loading="lazy">
         </div>
       </div>
     </details></li>
@@ -279,11 +283,11 @@
 
     <li data-c="build"><details><summary>
       <div class="meta"><time>2026.03</time><span class="st st-done">完成</span></div>
-      <img class="thumb" src="img/chess.jpg" alt="" loading="lazy">
+      <img class="thumb" src="img/chess.jpg?v=3" data-dark="img/chess-dark.jpg?v=3" alt="" loading="lazy">
       <div><h3>AI 英文單字網站、西洋棋復盤工具</h3><p>單字網站是 WordMemo 的第一版。</p></div></summary>
       <div class="more">
         <p>復盤工具吃棋譜檔，把每一步分級，下錯的地方給最佳走法。</p>
-        <div class="more-photos"><img src="img/chess.jpg" alt="西洋棋復盤工具" loading="lazy"></div>
+        <div class="more-photos"><img src="img/chess.jpg?v=3" data-dark="img/chess-dark.jpg?v=3" alt="西洋棋復盤工具" loading="lazy"></div>
       </div>
     </details></li>
 
@@ -346,7 +350,7 @@
 
   <div class="work-list">
     <article class="work">
-      <a href="https://wordmemo.johnny970120.workers.dev/about" target="_blank" rel="noopener"><img src="img/wordmemo.jpg" alt="WordMemo 單字記憶網站首頁" loading="lazy"></a>
+      <a href="https://wordmemo.johnny970120.workers.dev/about" target="_blank" rel="noopener"><img src="img/wordmemo.jpg?v=3" data-dark="img/wordmemo-dark.jpg?v=3" alt="WordMemo 單字記憶網站首頁" loading="lazy"></a>
       <div>
         <h3>WordMemo 單字記憶</h3>
         <p><b>為什麼：</b>我自己背單字一直忘。</p>
@@ -356,7 +360,7 @@
       </div>
     </article>
     <article class="work">
-      <a href="https://cycu-radar-app.johnny970120.workers.dev" target="_blank" rel="noopener"><img src="img/radar.jpg?v=2" alt="中原機會雷達首頁" loading="lazy"></a>
+      <a href="https://cycu-radar-app.johnny970120.workers.dev" target="_blank" rel="noopener"><img src="img/radar.jpg?v=3" data-dark="img/radar-dark.jpg?v=3" alt="中原機會雷達首頁" loading="lazy"></a>
       <div>
         <h3>中原機會雷達</h3>
         <p><b>為什麼：</b>競賽、實習、獎學金的公告分散在學校十幾個網站。</p>
@@ -366,7 +370,7 @@
       </div>
     </article>
     <article class="work">
-      <a href="https://johnny-0120.github.io/line-work-elf/" target="_blank" rel="noopener"><img src="img/line-elf.jpg" alt="LINE 公事小精靈介紹頁" loading="lazy"></a>
+      <a href="https://johnny-0120.github.io/line-work-elf/" target="_blank" rel="noopener"><img src="img/line-elf.jpg?v=3" data-dark="img/line-elf-dark.jpg?v=3" alt="LINE 公事小精靈介紹頁" loading="lazy"></a>
       <div>
         <h3>LINE 公事小精靈</h3>
         <p><b>為什麼：</b>群組一聊就是幾百則，真正要做的事很容易被洗掉。</p>
@@ -376,7 +380,7 @@
       </div>
     </article>
     <article class="work">
-      <img src="img/chess.jpg" alt="西洋棋復盤工具，左邊棋盤、右邊每步評分" loading="lazy">
+      <img src="img/chess.jpg?v=3" data-dark="img/chess-dark.jpg?v=3" alt="西洋棋復盤工具，左邊棋盤、右邊每步評分" loading="lazy">
       <div>
         <h3>西洋棋復盤工具</h3>
         <p><b>為什麼：</b>下完棋想知道是輸在哪一步。</p>
@@ -512,6 +516,6 @@
   <img alt="">
 </div>
 
-<script src="main.js?v=15"></script>
+<script src="main.js?v=16"></script>
 </body>
 </html>

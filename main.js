@@ -41,6 +41,33 @@ mb.addEventListener('click', () => {
 });
 links.forEach(a => a.addEventListener('click', () => { bar.classList.remove('open'); mb.setAttribute('aria-expanded', false); mb.textContent = '選單'; }));
 
+// ---------- 深色／淺色 ----------
+const theme = { ink: '23,36,58', acc: '81,109,152', dot: '145,174,210' };
+const darkMQ = matchMedia('(prefers-color-scheme: dark)');
+const isDark = () => (document.documentElement.getAttribute('data-theme') || (darkMQ.matches ? 'dark' : 'light')) === 'dark';
+function applyTheme() {
+  const cs = getComputedStyle(document.documentElement);
+  theme.ink = cs.getPropertyValue('--radar-ink').trim();
+  theme.acc = cs.getPropertyValue('--radar-acc').trim();
+  theme.dot = cs.getPropertyValue('--dot').trim();
+  const d = isDark();
+  document.querySelectorAll('img[data-dark]').forEach(img => {
+    if (!img.dataset.light) img.dataset.light = img.getAttribute('src');
+    const want = d ? img.dataset.dark : img.dataset.light;
+    if (img.getAttribute('src') !== want) img.setAttribute('src', want);
+  });
+  const lbl = document.querySelector('.theme-btn .lbl');
+  if (lbl) lbl.textContent = d ? '淺色' : '深色';
+}
+document.querySelector('.theme-btn')?.addEventListener('click', () => {
+  const next = isDark() ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  try { localStorage.setItem('theme', next); } catch (e) {}
+  applyTheme();
+});
+darkMQ.addEventListener?.('change', applyTheme);
+applyTheme();
+
 // ---------- 開場動畫 ----------
 const intro = document.querySelector('.intro');
 if (intro && !document.documentElement.classList.contains('no-intro')) {
@@ -87,11 +114,11 @@ const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
           px += (dx / (d || 1)) * e * 20; py += (dy / (d || 1)) * e * 20;
           r += e * 3.2; a = Math.min(1, a + e * 0.9);
           if (d < R * 0.75) {
-            ctx.strokeStyle = `rgba(81,109,152,${k * 0.35})`; ctx.lineWidth = 1;
+            ctx.strokeStyle = `rgba(${theme.acc},${k * 0.35})`; ctx.lineWidth = 1;
             ctx.beginPath(); ctx.moveTo(mx, my); ctx.lineTo(px, py); ctx.stroke();
           }
-          ctx.fillStyle = `rgba(81,109,152,${a})`;
-        } else ctx.fillStyle = `rgba(145,174,210,${a})`;
+          ctx.fillStyle = `rgba(${theme.acc},${a})`;
+        } else ctx.fillStyle = `rgba(${theme.dot},${a})`;
         ctx.beginPath(); ctx.arc(px, py, r, 0, 6.283); ctx.fill();
       }
     }
@@ -196,34 +223,34 @@ if (fine && !calm) {
     ctx.save(); ctx.translate(c, c); ctx.rotate(now / 9000);
     for (let k = 0; k < 72; k++) {
       const a = k / 72 * Math.PI * 2, long = k % 6 === 0;
-      ctx.strokeStyle = long ? 'rgba(23,36,58,.5)' : 'rgba(23,36,58,.2)'; ctx.lineWidth = 1;
+      ctx.strokeStyle = long ? `rgba(${theme.ink},.5)` : `rgba(${theme.ink},.2)`; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(Math.cos(a) * r, Math.sin(a) * r); ctx.lineTo(Math.cos(a) * (r - (long ? 10 : 5)), Math.sin(a) * (r - (long ? 10 : 5))); ctx.stroke();
     }
     ctx.restore();
     // 同心圓
-    ctx.strokeStyle = 'rgba(81,109,152,.22)';
+    ctx.strokeStyle = `rgba(${theme.acc},.22)`;
     for (let k = 1; k <= 3; k++) { ctx.beginPath(); ctx.arc(c, c, r * (0.4 + k * 0.2), 0, 7); ctx.stroke(); }
     ctx.setLineDash([3, 6]); ctx.beginPath(); ctx.arc(c, c, r * 0.97, 0, 7); ctx.stroke(); ctx.setLineDash([]);
     // 聲納波：每 2.6 秒從照片邊緣往外擴散
     if (!calmR) {
       const ph = (now / 2600) % 1;
-      ctx.strokeStyle = `rgba(81,109,152,${0.35 * (1 - ph)})`; ctx.lineWidth = 2;
+      ctx.strokeStyle = `rgba(${theme.acc},${0.35 * (1 - ph)})`; ctx.lineWidth = 2;
       ctx.beginPath(); ctx.arc(c, c, r * (0.42 + ph * 0.58), 0, 7); ctx.stroke(); ctx.lineWidth = 1;
     }
     // 掃描扇形
     if (!calmR) {
       for (let k = 0; k < 40; k++) {
         const a0 = sweep - k * 0.028;
-        ctx.fillStyle = `rgba(81,109,152,${0.16 * (1 - k / 40)})`;
+        ctx.fillStyle = `rgba(${theme.acc},${0.16 * (1 - k / 40)})`;
         ctx.beginPath(); ctx.moveTo(c, c); ctx.arc(c, c, r, a0 - 0.028, a0); ctx.closePath(); ctx.fill();
       }
-      ctx.save(); ctx.shadowColor = 'rgba(81,109,152,.9)'; ctx.shadowBlur = 12;
-      ctx.strokeStyle = 'rgba(23,36,58,.85)'; ctx.lineWidth = 2;
+      ctx.save(); ctx.shadowColor = `rgba(${theme.acc},.9)`; ctx.shadowBlur = 12;
+      ctx.strokeStyle = `rgba(${theme.ink},.85)`; ctx.lineWidth = 2;
       ctx.beginPath(); ctx.moveTo(c, c); ctx.lineTo(c + Math.cos(sweep) * r, c + Math.sin(sweep) * r); ctx.stroke(); ctx.restore();
     }
     // 滑鼠準星
     if (mx >= 0 && !hover) {
-      ctx.strokeStyle = 'rgba(23,36,58,.25)'; ctx.setLineDash([2, 4]);
+      ctx.strokeStyle = `rgba(${theme.ink},.25)`; ctx.setLineDash([2, 4]);
       ctx.beginPath(); ctx.moveTo(mx, 0); ctx.lineTo(mx, W); ctx.moveTo(0, my); ctx.lineTo(W, my); ctx.stroke(); ctx.setLineDash([]);
     }
     // 亮點
