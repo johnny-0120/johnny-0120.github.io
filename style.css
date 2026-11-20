@@ -473,3 +473,10 @@ summary:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var
 }
 .stage.showing .st-dark{filter:brightness(.32) saturate(.6)}
 .stage.showing .props{opacity:0;transition:opacity .3s}
+
+/* 影片清單 */
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px;margin:14px 0 6px}
+.vid{display:block;text-decoration:none;color:var(--ink)}
+.vid img{width:100%;aspect-ratio:9/14;object-fit:cover;border-radius:4px;display:block;transition:transform .3s}
+.vid span{display:block;font-size:13px;margin-top:6px;line-height:1.4}
+.vid:hover img{transform:translateY(-3px)}
