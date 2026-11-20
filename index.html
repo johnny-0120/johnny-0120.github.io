@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=12">
+<link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
 
@@ -28,7 +28,6 @@
   <a class="bar-name" href="#top">徐專洧</a>
   <button class="menu-btn" aria-expanded="false" aria-controls="nav">選單</button>
   <nav class="bar-nav" id="nav" aria-label="主選單">
-    <a href="#scan">雷達</a>
     <a href="#quick">簡介</a>
     <a href="#timeline">經歷</a>
     <a href="#works">作品</a>
@@ -52,33 +51,15 @@
       <a class="btn" href="#works">看作品</a>
       <a class="btn ghost" href="#contact">聯絡我</a>
     </div>
+    <div class="scan-card empty" aria-live="polite">
+      <p class="scan-hint">雷達上的每個亮點都是我的一項經歷，點點看。</p>
+    </div>
   </div>
-  <figure class="hero-photo">
-    <div class="frame tilt"><img src="img/hero.jpg" alt="徐專洧在熱舞社成果發表會上拿麥克風主持" width="1400" height="1750"><span class="glare"></span></div>
-  </figure>
-</section>
-
-<!-- RADAR GAME -->
-<section class="scan" id="scan">
-  <h2 class="sec-title light"><span>00</span>雷達掃描</h2>
-  <p class="scan-note">點雷達上的亮點，把我的經歷一個一個找出來。</p>
-  <div class="scan-wrap">
-    <div class="scan-radar">
-      <canvas class="radar" aria-label="經歷雷達，點亮點查看經歷"></canvas>
-      <ul class="scan-legend">
-        <li><i class="c-build"></i>做東西</li>
-        <li><i class="c-stage"></i>舞台與活動</li>
-        <li><i class="c-contest"></i>競賽與申請</li>
-      </ul>
-    </div>
-    <div class="scan-panel" aria-live="polite">
-      <p class="scan-count"><b>0</b> / <span>0</span> 已找到</p>
-      <div class="scan-bar"><i></i></div>
-      <div class="scan-card empty">
-        <p class="scan-hint">雷達掃過的地方會出現亮點，點它看看。</p>
-      </div>
-      <div class="scan-chips"></div>
-    </div>
+  <div class="hero-radar">
+    <canvas class="radar" aria-label="經歷雷達：點亮點查看我的經歷"></canvas>
+    <div class="radar-photo"><img class="rp on" src="img/hero.jpg" alt="徐專洧在熱舞社成果發表會上拿麥克風主持"><img class="rp" alt=""></div>
+    <p class="radar-hud"><span>SCAN</span> <b class="got">0</b>/<i class="total">0</i></p>
+    <div class="radar-tip" hidden></div>
   </div>
 </section>
 
@@ -114,7 +95,7 @@
 <!-- TIMELINE -->
 <section class="timeline" id="timeline">
   <h2 class="sec-title"><span>02</span>經歷</h2>
-  <p class="sec-note">新的在上面，點一下就能展開看細節和照片。右邊的標籤是結果：<b class="tag done">完成</b> <b class="tag now">進行中</b> <b class="tag fail">沒成功</b></p>
+  <p class="sec-note">新的在上面，點一下就能展開。<span class="st st-done">完成</span><span class="st st-now">進行中</span><span class="st st-fail">沒成功</span></p>
 
   <div class="filters" role="group" aria-label="篩選經歷">
     <button class="on" data-f="all">全部</button>
@@ -127,9 +108,9 @@
     <li class="tl-year">2026 秋　中原大學</li>
 
     <li data-c="stage"><details><summary>
-      <time>2026.11</time>
-      <div><h3>越南孫德勝大學（TDTU）國際交流</h3><p>錄取電資學士班的海外參訪，11 月 23 到 27 日在胡志明市。</p></div>
-      <b class="tag now">出發前</b></summary>
+      <div class="meta"><time>2026.11</time><span class="st st-now">進行中</span></div>
+      <span class="thumb none"></span>
+      <div><h3>越南孫德勝大學（TDTU）國際交流</h3><p>錄取電資學士班的海外參訪，11 月 23 到 27 日在胡志明市。</p></div></summary>
       <div class="more">
         <p>申請時寫了交流動機、我做過的影像辨識專案和剪片經驗。錄取之後補完行前資料，也跟學校請好公假和考試假。</p>
         <p>申請書裡答應過回國後要交影音成果，到時候會放在 YouTube 作品集。</p>
@@ -137,18 +118,18 @@
     </details></li>
 
     <li data-c="contest"><details><summary>
-      <time>2026.11</time>
-      <div><h3>2026 職涯探索競賽　佳作</h3><p>中原大學職涯發展處主辦。</p></div>
-      <b class="tag done">佳作</b></summary>
+      <div class="meta"><time>2026.11</time><span class="st st-done">完成</span></div>
+      <img class="thumb" src="img/cert-career.jpg" alt="" loading="lazy">
+      <div><h3>2026 職涯探索競賽　佳作</h3><p>中原大學職涯發展處主辦。</p></div></summary>
       <div class="more">
         <div class="more-photos"><img src="img/cert-career.jpg" alt="2026 年職涯探索競賽佳作獎狀" loading="lazy"></div>
       </div>
     </details></li>
 
     <li data-c="contest build"><details><summary>
-      <time>2026.11</time>
-      <div><h3>2026 火星任務　火星車降落競賽</h3><p>東海大學和科博館主辦。從零做出一台能降落的機體，最後完賽。</p></div>
-      <b class="tag done">完賽</b></summary>
+      <div class="meta"><time>2026.11</time><span class="st st-done">完成</span></div>
+      <img class="thumb" src="img/mars-team.jpg" alt="" loading="lazy">
+      <div><h3>2026 火星任務　火星車降落競賽</h3><p>東海大學和科博館主辦。從零做出一台能降落的機體，最後完賽。</p></div></summary>
       <div class="more">
         <p>機體是 3D 列印的藍色框架，上面裝飛控、電調和馬達。降落的設計是在機器人社課後和隊友一起討論的。</p>
         <p>比賽在體育館。完賽了，沒有得獎。</p>
@@ -164,9 +145,9 @@
     </details></li>
 
     <li data-c="contest build"><details><summary>
-      <time>2026.11</time>
-      <div><h3>全國智慧運算與量子資訊創新應用競賽</h3><p>想知道量子演算法 RQAOA 能不能在排程問題上贏過一般電腦。跑了 116 個題目，還沒贏。</p></div>
-      <b class="tag now">研究中</b></summary>
+      <div class="meta"><time>2026.11</time><span class="st st-now">進行中</span></div>
+      <span class="thumb none"></span>
+      <div><h3>全國智慧運算與量子資訊創新應用競賽</h3><p>想知道量子演算法 RQAOA 能不能在排程問題上贏過一般電腦。跑了 116 個題目，還沒贏。</p></div></summary>
       <div class="more">
         <p>汽車噴漆換色排程上，RQAOA 比一個專用的傳統方法好大約 12–14%。換成一般電腦上更強的禁忌搜尋，它就輸了。三色問題、Wi-Fi 頻道規劃也試過，沒找到優勢。</p>
         <p>現在的方向是做一個網站，讓人先檢查自己的問題適不適合用 RQAOA。最終題目還沒定。</p>
@@ -174,19 +155,20 @@
     </details></li>
 
     <li data-c="contest build"><details><summary>
-      <time>2026.11</time>
-      <div><h3>TRC 競賽　穩定模組</h3><p>8 頁技術企劃，含三視圖、受力估算和預算。</p></div>
-      <b class="tag now">企劃完成</b></summary>
+      <div class="meta"><time>2026.11</time><span class="st st-now">進行中</span></div>
+      <img class="thumb" src="img/trc-iso.jpg" alt="" loading="lazy">
+      <div><h3>TRC 競賽　穩定模組</h3><p>8 頁技術企劃，含三視圖、受力估算和預算。</p></div></summary>
       <div class="more">
         <p>模組靠配重在撞擊前移到定位，讓車身更穩。企劃裡放了三視圖、空載情況的受力估算、8 顆 775 馬達的預算，還有之後要做的配重、同步反應和載貨測試。</p>
         <p>目前還是理論估算，實測要等做出來。</p>
+        <div class="more-photos"><img src="img/trc-iso.jpg" alt="穩定模組 v0.2 等角圖" loading="lazy"></div>
       </div>
     </details></li>
 
     <li data-c="build"><details><summary>
-      <time>2026.11</time>
-      <div><h3>WordMemo 單字記憶上線</h3><p>高中那版單字網站整個重寫，加了程度測驗和老師端。</p></div>
-      <b class="tag done">已上線</b></summary>
+      <div class="meta"><time>2026.11</time><span class="st st-done">完成</span></div>
+      <img class="thumb" src="img/wordmemo.jpg" alt="" loading="lazy">
+      <div><h3>WordMemo 單字記憶上線</h3><p>高中那版單字網站整個重寫，加了程度測驗和老師端。</p></div></summary>
       <div class="more">
         <p>單字庫是大考中心高中 6000 字。學生端能學習、複習、拼字、AI 造句和作文批改；老師端可以開班、出題、看結果。不登入也能先試。</p>
         <p class="work-links"><a href="https://wordmemo.johnny970120.workers.dev/about" target="_blank" rel="noopener">看介紹 ↗</a><a href="https://wordmemo.johnny970120.workers.dev" target="_blank" rel="noopener">直接試用 ↗</a></p>
@@ -195,9 +177,9 @@
     </details></li>
 
     <li data-c="build"><details><summary>
-      <time>2026.10</time>
-      <div><h3>中原機會雷達</h3><p>每天自動抓學校 16 個公開來源的公告，整理成可以搜尋的網站。</p></div>
-      <b class="tag now">持續更新</b></summary>
+      <div class="meta"><time>2026.10</time><span class="st st-now">進行中</span></div>
+      <img class="thumb" src="img/radar.jpg?v=2" alt="" loading="lazy">
+      <div><h3>中原機會雷達</h3><p>每天自動抓學校 16 個公開來源的公告，整理成可以搜尋的網站。</p></div></summary>
       <div class="more">
         <p>競賽、實習、獎學金都收。有截止時間表、收藏和重要提醒，也能跟 AI 說自己的興趣，讓它從公告裡挑。10 月底整個搬到 Cloudflare，五千多筆資料一起搬過去。</p>
         <p class="work-links"><a href="https://cycu-radar-app.johnny970120.workers.dev" target="_blank" rel="noopener">打開網站 ↗</a></p>
@@ -206,9 +188,9 @@
     </details></li>
 
     <li data-c="build stage"><details><summary>
-      <time>2026.10</time>
-      <div><h3>NUVA 校園大使</h3><p>第一個任務做了 LINE 公事小精靈，用 n8n 把 LINE 和 AI 接起來。</p></div>
-      <b class="tag now">進行中</b></summary>
+      <div class="meta"><time>2026.10</time><span class="st st-now">進行中</span></div>
+      <img class="thumb" src="img/nuva-stage.jpg" alt="" loading="lazy">
+      <div><h3>NUVA 校園大使</h3><p>第一個任務做了 LINE 公事小精靈，用 n8n 把 LINE 和 AI 接起來。</p></div></summary>
       <div class="more">
         <p>群組裡的工作對話丟給小精靈，它會整理成重點、待回覆和下一步，每個人在自己的摘要頁上看。也接了 Google 日曆。</p>
         <p class="work-links"><a href="https://johnny-0120.github.io/line-work-elf/" target="_blank" rel="noopener">公事小精靈介紹 ↗</a></p>
@@ -220,18 +202,18 @@
     </details></li>
 
     <li data-c="stage"><details><summary>
-      <time>2026.10</time>
-      <div><h3>中原學生會　公關部</h3><p>公關部部員，正在擔任校外交流活動的副協。</p></div>
-      <b class="tag now">進行中</b></summary>
+      <div class="meta"><time>2026.10</time><span class="st st-now">進行中</span></div>
+      <span class="thumb none"></span>
+      <div><h3>中原學生會　公關部</h3><p>公關部部員，正在擔任校外交流活動的副協。</p></div></summary>
       <div class="more">
         <p>校外交流是好幾所學校一起辦的活動。我參與企劃書和場地座位安排，也整理了 48 家特約商店的優惠標籤。</p>
       </div>
     </details></li>
 
     <li data-c="build"><details><summary>
-      <time>2026.10</time>
-      <div><h3>捲線器</h3><p>我負責機構，用 Fusion 360 改了好幾版設計，最後自己設計棘輪和齒輪。</p></div>
-      <b class="tag done">完成</b></summary>
+      <div class="meta"><time>2026.10</time><span class="st st-done">完成</span></div>
+      <img class="thumb" src="img/reel-render.jpg" alt="" loading="lazy">
+      <div><h3>捲線器</h3><p>我負責機構，用 Fusion 360 改了好幾版設計，最後自己設計棘輪和齒輪。</p></div></summary>
       <div class="more">
         <p>每一版都換過配置和零件尺寸。買來的絞盤不會自己停，我就自己設計棘輪和齒輪換掉它，機構已經完成。</p>
         <div class="more-photos">
@@ -242,18 +224,19 @@
     </details></li>
 
     <li data-c="contest"><details><summary>
-      <time>2026.10</time>
-      <div><h3>國防 AI 影像辨識競賽</h3><p>擔任隊長，和學長的團隊一起送件。</p></div>
-      <b class="tag now">等結果</b></summary>
+      <div class="meta"><time>2026.10</time><span class="st st-now">進行中</span></div>
+      <img class="thumb" src="img/defense-ai.jpg" alt="" loading="lazy">
+      <div><h3>國防 AI 影像辨識競賽</h3><p>擔任隊長，和學長的團隊一起送件。</p></div></summary>
       <div class="more">
         <p>指導老師是陳永祥老師。題目是用影像辨識找出地面彈坑，再估算修補需要多少材料。10 月 13 日正式送件，現在還是構想階段，等主辦通知。</p>
+        <div class="more-photos"><img src="img/defense-ai.jpg" alt="AI 彈坑快修簡報封面" loading="lazy"></div>
       </div>
     </details></li>
 
     <li data-c="contest"><details><summary>
-      <time>2026.10</time>
-      <div><h3>桃園之星 × 創天下競賽「破土重圓」</h3><p>隊名「泥好」，永續淨零與綠色創新組。</p></div>
-      <b class="tag done">已參賽</b></summary>
+      <div class="meta"><time>2026.10</time><span class="st st-done">完成</span></div>
+      <img class="thumb" src="img/cert-chuangtianxia.jpg" alt="" loading="lazy">
+      <div><h3>桃園之星 × 創天下競賽「破土重圓」</h3><p>隊名「泥好」，永續淨零與綠色創新組。</p></div></summary>
       <div class="more">
         <p>指導老師是陳永祥老師，題目是道路修復分析。送件當天才發現已經有類似的平台，細節寫在下面「沒成功的事」。</p>
         <div class="more-photos"><img src="img/cert-chuangtianxia.jpg" alt="2026 桃園之星 x 創天下競賽參賽證明" loading="lazy"></div>
@@ -262,18 +245,18 @@
 
     <li data-c="stage" class="plain">
       <div class="row">
-        <time>2026.09</time>
+        <div class="meta"><time>2026.09</time><span class="st st-now">進行中</span></div>
+      <span class="thumb none"></span>
         <div><h3>班代</h3></div>
-        <b class="tag now">進行中</b>
       </div>
     </li>
 
     <li class="tl-year">2026 以前　內壢高中</li>
 
     <li data-c="build"><details><summary>
-      <time>2026.03</time>
-      <div><h3>ESP32 智慧陪伴小車</h3><p>可以無線遙控，也會自己閃開障礙物。</p></div>
-      <b class="tag done">成功</b></summary>
+      <div class="meta"><time>2026.03</time><span class="st st-done">完成</span></div>
+      <img class="thumb" src="img/esp32-car.jpg" alt="" loading="lazy">
+      <div><h3>ESP32 智慧陪伴小車</h3><p>可以無線遙控，也會自己閃開障礙物。</p></div></summary>
       <div class="more">
         <p>從麵包板接線開始，接上馬達和超音波感測器，裝到車架上。遙控用 ESP-NOW。</p>
         <div class="more-photos"><img src="img/esp32-car.jpg" alt="ESP32 小車" loading="lazy"></div>
@@ -281,9 +264,9 @@
     </details></li>
 
     <li data-c="build"><details><summary>
-      <time>2026.03</time>
-      <div><h3>Fusion 360 建模和 3D 列印</h3><p>卡片收納盒、文具收納盒。</p></div>
-      <b class="tag done">完成</b></summary>
+      <div class="meta"><time>2026.03</time><span class="st st-done">完成</span></div>
+      <img class="thumb" src="img/fusion.jpg" alt="" loading="lazy">
+      <div><h3>Fusion 360 建模和 3D 列印</h3><p>卡片收納盒、文具收納盒。</p></div></summary>
       <div class="more">
         <p>先在 Fusion 360 畫，印出來量，尺寸不合就改圖重印。</p>
         <div class="more-photos">
@@ -295,9 +278,9 @@
     </details></li>
 
     <li data-c="build"><details><summary>
-      <time>2026.03</time>
-      <div><h3>AI 英文單字網站、西洋棋復盤工具</h3><p>單字網站是 WordMemo 的第一版。</p></div>
-      <b class="tag done">完成</b></summary>
+      <div class="meta"><time>2026.03</time><span class="st st-done">完成</span></div>
+      <img class="thumb" src="img/chess.jpg" alt="" loading="lazy">
+      <div><h3>AI 英文單字網站、西洋棋復盤工具</h3><p>單字網站是 WordMemo 的第一版。</p></div></summary>
       <div class="more">
         <p>復盤工具吃棋譜檔，把每一步分級，下錯的地方給最佳走法。</p>
         <div class="more-photos"><img src="img/chess.jpg" alt="西洋棋復盤工具" loading="lazy"></div>
@@ -305,27 +288,27 @@
     </details></li>
 
     <li data-c="contest"><details><summary>
-      <time>2026</time>
-      <div><h3>青年百億海外圓夢計畫</h3><p>海外科技交流企劃，進了面試，備取第 2。</p></div>
-      <b class="tag fail">差一步</b></summary>
+      <div class="meta"><time>2026</time><span class="st st-fail">沒成功</span></div>
+      <span class="thumb none"></span>
+      <div><h3>青年百億海外圓夢計畫</h3><p>海外科技交流企劃，進了面試，備取第 2。</p></div></summary>
       <div class="more">
         <p>報的是海外翱翔組。</p>
       </div>
     </details></li>
 
     <li data-c="build"><details><summary>
-      <time>高中</time>
-      <div><h3>活動影片剪輯</h3><p>畢業典禮、社團博覽會。</p></div>
-      <b class="tag done">完成</b></summary>
+      <div class="meta"><time>高中</time><span class="st st-done">完成</span></div>
+      <span class="thumb none"></span>
+      <div><h3>活動影片剪輯</h3><p>畢業典禮、社團博覽會。</p></div></summary>
       <div class="more">
         <p class="work-links"><a href="https://www.youtube.com/playlist?list=PLNdr0lbFCzFA" target="_blank" rel="noopener">YouTube 作品集 ↗</a></p>
       </div>
     </details></li>
 
     <li data-c="stage"><details><summary>
-      <time>高中</time>
-      <div><h3>熱舞社　活動兼教學幹部</h3><p>教舞、辦成果發表會、借場地。</p></div>
-      <b class="tag done">完成</b></summary>
+      <div class="meta"><time>高中</time><span class="st st-done">完成</span></div>
+      <img class="thumb" src="img/dance-solo.jpg" alt="" loading="lazy">
+      <div><h3>熱舞社　活動兼教學幹部</h3><p>教舞、辦成果發表會、借場地。</p></div></summary>
       <div class="more">
         <p>原定的成發場地臨時不能用，我另外找了一個，演出照常辦完。</p>
         <div class="more-photos">
@@ -337,18 +320,18 @@
     </details></li>
 
     <li data-c="stage"><details><summary>
-      <time>高中</time>
-      <div><h3>丹麥訪問團交流活動　英文主持</h3><p>破冰遊戲和整場流程都由我用英文帶。</p></div>
-      <b class="tag done">完成</b></summary>
+      <div class="meta"><time>高中</time><span class="st st-done">完成</span></div>
+      <img class="thumb" src="img/host-denmark.jpg" alt="" loading="lazy">
+      <div><h3>丹麥訪問團交流活動　英文主持</h3><p>破冰遊戲和整場流程都由我用英文帶。</p></div></summary>
       <div class="more">
         <div class="more-photos"><img src="img/host-denmark.jpg" alt="拿麥克風主持破冰遊戲" loading="lazy"></div>
       </div>
     </details></li>
 
     <li data-c="stage"><details><summary>
-      <time>高中</time>
-      <div><h3>班級英文簡報代表</h3><p>代表班上參加英文簡報成果發表。</p></div>
-      <b class="tag done">完成</b></summary>
+      <div class="meta"><time>高中</time><span class="st st-done">完成</span></div>
+      <img class="thumb" src="img/cert-english.jpg" alt="" loading="lazy">
+      <div><h3>班級英文簡報代表</h3><p>代表班上參加英文簡報成果發表。</p></div></summary>
       <div class="more">
         <div class="more-photos"><img src="img/cert-english.jpg" alt="英文簡報活動參與證明" loading="lazy"></div>
       </div>
@@ -529,6 +512,6 @@
   <img alt="">
 </div>
 
-<script src="main.js?v=14"></script>
+<script src="main.js?v=15"></script>
 </body>
 </html>
