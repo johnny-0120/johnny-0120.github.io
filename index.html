@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>徐專洧 Johnny</title>
+<meta name="description" content="徐專洧（Johnny）的個人網站：寫程式、做硬體、跳舞、上台。成功的、還在做的、沒成功的經歷都在這裡。">
+<meta property="og:title" content="徐專洧 Johnny">
+<meta property="og:description" content="寫程式、做硬體、跳舞、上台。把想法做成看得見的東西。">
+<meta property="og:image" content="img/hero.webp">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2317243A'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23EDF4FC' font-family='serif'>洧</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar-name" href="#top">徐專洧</a>
+  <nav class="bar-nav" aria-label="主選單">
+    <a href="#quick">簡介</a>
+    <a href="#timeline">經歷</a>
+    <a href="#works">作品</a>
+    <a href="#stage">舞台</a>
+    <a href="#misses">沒成功的事</a>
+    <a href="#contact">聯絡</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="kicker">Johnny · 中原大學 智慧運算與大數據學士班</p>
+    <h1>嗨，我是<br><span class="name">徐專洧</span>。</h1>
+    <p class="lede">我寫程式、做硬體、跳舞，也會拿起麥克風主持。
+      最在意的一件事是：<mark>把模糊的想法，做成別人看得見的東西。</mark></p>
+    <p class="lede small">這個網站放了我做過的事，包含還在進行的，和沒成功的。</p>
+    <div class="hero-links">
+      <a class="btn" href="#timeline">看我的經歷</a>
+      <a class="btn ghost" href="#contact">聯絡我</a>
+    </div>
+  </div>
+  <figure class="hero-photo">
+    <img src="img/hero.webp" alt="徐專洧在海邊回頭笑" width="1350" height="1800">
+    <figcaption>在海邊拍的一組照片。</figcaption>
+  </figure>
+</section>
+
+<!-- QUICK -->
+<section class="quick" id="quick">
+  <h2 class="sec-title"><span>01</span>三十秒認識我</h2>
+  <div class="quick-grid">
+    <article>
+      <h3>做東西</h3>
+      <p>因為自己背單字很痛苦，就做了一個 AI 英文單字網站。也做過西洋棋復盤工具、LINE 小幫手、ESP32 小車和 3D 列印的收納盒。</p>
+    </article>
+    <article>
+      <h3>跳舞</h3>
+      <p>熱舞社的活動與教學幹部。上台跳，也在台下排練、企劃成果發表會、處理現場出包。</p>
+    </article>
+    <article>
+      <h3>上台說話</h3>
+      <p>擔任過丹麥交流活動的英文主持，代表班級做英文簡報。現在是班代，也是 NUVA 校園大使。</p>
+    </article>
+  </div>
+  <dl class="facts">
+    <div><dt>現在</dt><dd>大一，中原大學電資學院</dd></div>
+    <div><dt>常用工具</dt><dd>Python、JavaScript、n8n、Fusion 360、ESP32、Premiere、CapCut</dd></div>
+    <div><dt>語言</dt><dd>中文、英文</dd></div>
+    <div><dt>正在學</dt><dd>電腦視覺、短影音剪輯</dd></div>
+  </dl>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline" id="timeline">
+  <h2 class="sec-title"><span>02</span>經歷</h2>
+  <p class="sec-note">按時間排，新的在上面。右邊的標籤告訴你結果：<b class="tag done">完成</b> <b class="tag now">進行中</b> <b class="tag fail">沒成功</b></p>
+
+  <div class="filters" role="group" aria-label="篩選經歷">
+    <button class="on" data-f="all">全部</button>
+    <button data-f="build">做東西</button>
+    <button data-f="stage">舞台與活動</button>
+    <button data-f="contest">競賽與申請</button>
+  </div>
+
+  <ol class="tl">
+    <li class="tl-year">2026 秋　大學</li>
+
+    <li data-c="contest">
+      <time>2026.11</time>
+      <div><h3>火星競賽・火星車降落組</h3><p>和夥伴一起設計降落機構，從報名做到正式參賽。沒有得獎，但完整跑完一次比賽流程。</p></div>
+      <b class="tag done">完賽</b>
+    </li>
+    <li data-c="build stage">
+      <time>2026.10</time>
+      <div><h3>NUVA 校園大使</h3><p>把 AI 和創業的主題帶進校園。第一個任務做了「LINE 公事小精靈」：用 n8n 串 LINE 和 AI，自動整理工作訊息、提醒待辦。</p></div>
+      <b class="tag now">進行中</b>
+    </li>
+    <li data-c="contest">
+      <time>2026.10</time>
+      <div><h3>國防 AI 影像辨識競賽</h3><p>擔任隊長，和學長的團隊一起送件，方向是用影像辨識偵測地面彈坑、估算修復需求。</p></div>
+      <b class="tag now">等結果</b>
+    </li>
+    <li data-c="contest">
+      <time>2026.10</time>
+      <div><h3>創天下競賽「破土重圓」</h3><p>截止當天才發現題目已經有人做過，臨時決定要不要換題。這件事放在下面「沒成功的事」裡細講。</p></div>
+      <b class="tag now">已送件</b>
+    </li>
+    <li data-c="build">
+      <time>2026.10</time>
+      <div><h3>WordMemo 單字記憶</h3><p>把高中做的單字網站重寫成學生端加老師端，讓老師可以出題、看全班進度。</p></div>
+      <b class="tag now">試用中</b>
+    </li>
+    <li data-c="stage">
+      <time>2026.09</time>
+      <div><h3>班代</h3><p>剛進大學就接下班代，處理全班的大小事。</p></div>
+      <b class="tag now">進行中</b>
+    </li>
+
+    <li class="tl-year">2026 春夏　高中最後一年</li>
+
+    <li data-c="build">
+      <time>2026.03</time>
+      <div><h3>ESP32 智慧陪伴小車</h3><p>自己接電路、寫控制程式，加上感測器，做出會動的雛形。過程裡馬達、接線、供電都出過問題。</p></div>
+      <b class="tag done">雛形完成</b>
+    </li>
+    <li data-c="build">
+      <time>2026.03</time>
+      <div><h3>Fusion 360 建模＋3D 列印</h3><p>自己畫、自己印：卡片收納盒、文具收納盒。尺寸印錯就改圖再印。</p></div>
+      <b class="tag done">完成</b>
+    </li>
+    <li data-c="build">
+      <time>2026.03</time>
+      <div><h3>AI 英文單字網站、西洋棋復盤工具</h3><p>單字網站結合記憶法和間隔重複，還能用 AI 批改造句。復盤工具幫我回頭看自己下過的棋。</p></div>
+      <b class="tag done">完成</b>
+    </li>
+    <li data-c="contest">
+      <time>2026</time>
+      <div><h3>青年百億海外圓夢計畫</h3><p>寫完整份海外科技交流企劃、進到面試，最後備取第 2 名。</p></div>
+      <b class="tag fail">差一步</b>
+    </li>
+    <li data-c="stage">
+      <time>高中</time>
+      <div><h3>熱舞社 活動與教學幹部</h3><p>負責成果發表會企劃、教學、場地和突發狀況。也上台跳了好幾支舞。</p></div>
+      <b class="tag done">完成</b>
+    </li>
+    <li data-c="stage">
+      <time>高中</time>
+      <div><h3>丹麥交流活動 英文主持</h3><p>用英文主持破冰遊戲和流程，讓兩邊的學生聊得起來。</p></div>
+      <b class="tag done">完成</b>
+    </li>
+    <li data-c="stage">
+      <time>高中</time>
+      <div><h3>代表班級英文簡報</h3><p>代表班級參加英文簡報成果發表，上台報告。</p></div>
+      <b class="tag done">完成</b>
+    </li>
+  </ol>
+</section>
+
+<!-- WORKS -->
+<section class="works" id="works">
+  <h2 class="sec-title"><span>03</span>作品</h2>
+  <p class="sec-note">每個作品都寫了三件事：為什麼做、做了什麼、現在怎樣。</p>
+
+  <div class="work-list">
+    <article class="work">
+      <img src="img/wordapp.webp" alt="AI 單字網站的單字清單畫面" loading="lazy">
+      <div>
+        <h3>AI 英文單字網站</h3>
+        <p><b>為什麼：</b>我自己背單字一直忘。</p>
+        <p><b>做了什麼：</b>記憶法＋間隔重複排程，加上 AI 批改造句，告訴我哪裡寫錯。</p>
+        <p><b>現在：</b>升級成 WordMemo，有老師端，正在找班級試用。</p>
+      </div>
+    </article>
+    <article class="work">
+      <img src="img/ai-report.webp" alt="AI 造句批改報告畫面" loading="lazy">
+      <div>
+        <h3>造句批改報告</h3>
+        <p><b>為什麼：</b>只背字義不會用，考作文還是寫不出來。</p>
+        <p><b>做了什麼：</b>輸入句子，AI 會指出文法問題並給改寫建議。</p>
+        <p><b>現在：</b>併進單字網站裡。</p>
+      </div>
+    </article>
+    <article class="work">
+      <img src="img/chess.webp" alt="西洋棋復盤工具介面" loading="lazy">
+      <div>
+        <h3>西洋棋復盤工具</h3>
+        <p><b>為什麼：</b>下完棋總想知道是哪一步輸掉的。</p>
+        <p><b>做了什麼：</b>載入下過的棋局，一步一步回放。</p>
+        <p><b>現在：</b>自己下完棋會拿來用。</p>
+      </div>
+    </article>
+    <article class="work tall">
+      <img src="img/esp32-car.webp" alt="ESP32 智慧小車雛形" loading="lazy">
+      <div>
+        <h3>ESP32 智慧陪伴小車</h3>
+        <p><b>為什麼：</b>想知道軟體之外，讓東西真的動起來是什麼感覺。</p>
+        <p><b>做了什麼：</b>ESP32、馬達、超音波感測器，從麵包板接到能跑。</p>
+        <p><b>現在：</b>雛形完成，教學影片沒告訴你的坑我大概都踩過了。</p>
+      </div>
+    </article>
+    <article class="work tall">
+      <img src="img/print-cardbox.webp" alt="3D 列印的紅白卡片收納盒" loading="lazy">
+      <div>
+        <h3>3D 列印收納盒</h3>
+        <p><b>為什麼：</b>桌上的卡片和文具沒地方放。</p>
+        <p><b>做了什麼：</b>用 Fusion 360 畫圖，算公差，印出來試蓋子能不能扣上。</p>
+        <p><b>現在：</b>放在桌上用。</p>
+      </div>
+    </article>
+    <article class="work tall">
+      <img src="img/ship-model.webp" alt="手工組裝的帆船模型" loading="lazy">
+      <div>
+        <h3>帆船模型</h3>
+        <p><b>為什麼：</b>純粹喜歡慢慢組東西。</p>
+        <p><b>做了什麼：</b>零件一片一片拼起來。</p>
+        <p><b>現在：</b>擺在書桌上。</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- STAGE -->
+<section class="stage" id="stage">
+  <div class="stage-inner">
+    <h2 class="sec-title light"><span>04</span>舞台</h2>
+    <p class="stage-lede">寫程式的時候我很安靜，<br>上了台就不是了。</p>
+
+    <div class="stage-grid">
+      <figure class="s-main">
+        <img src="img/dance-solo.webp" alt="徐專洧在舞台上張開雙臂表演" loading="lazy">
+        <figcaption>熱舞社成果發表會，solo 段落。</figcaption>
+      </figure>
+      <figure class="s-a">
+        <img src="img/dance-group.webp" alt="熱舞社團體舞台演出" loading="lazy">
+        <figcaption>熱舞社團體舞。</figcaption>
+      </figure>
+      <figure class="s-b">
+        <img src="img/dance-duo.webp" alt="兩人拿麥克風在舞台上主持" loading="lazy">
+        <figcaption>成發也要自己主持串場。</figcaption>
+      </figure>
+      <figure class="s-c">
+        <img src="img/host-denmark.webp" alt="穿橘色外套拿麥克風主持破冰遊戲" loading="lazy">
+        <figcaption>丹麥交流活動，用英文主持破冰。</figcaption>
+      </figure>
+    </div>
+
+    <p class="stage-note">當熱舞社幹部學到的事：表演那幾分鐘之外，還有企劃、借場地、排練和各種臨時狀況。<br>現在遇到專案出包，我比較不會慌。</p>
+  </div>
+</section>
+
+<!-- MISSES -->
+<section class="misses" id="misses">
+  <h2 class="sec-title"><span>05</span>沒成功的事</h2>
+  <p class="sec-note">不是每件事都有好結果。這些是我覺得最值得記下來的。</p>
+
+  <div class="miss-list">
+    <article class="miss">
+      <p class="miss-what">青年百億海外圓夢計畫，<em>備取第 2</em>。</p>
+      <p>我花了很久寫海外科技交流的企劃，也練了面試，最後差一步沒上。原本計畫出國拍的短影音也就沒了。</p>
+      <p class="miss-learn"><b>後來：</b>我沒等出國，直接開始做短影音，練選題、拍攝和剪輯。企劃不一定要等到被選上才開始。</p>
+    </article>
+    <article class="miss">
+      <p class="miss-what">創天下競賽，<em>截止當天發現撞題</em>。</p>
+      <p>送件那天才搜到，我們想做的道路檢測平台，市面上已經有人做出來而且在用了。</p>
+      <p class="miss-learn"><b>後來：</b>現在開始一個題目之前，我會先花一小時查有沒有人做過。這一小時比最後一天慌張改題划算很多。</p>
+    </article>
+    <article class="miss">
+      <p class="miss-what">ESP32 小車，<em>照著教學做還是動不了</em>。</p>
+      <p>接線、供電、馬達驅動都出過錯，有一段時間車子就是不動，也找不到原因。</p>
+      <p class="miss-learn"><b>後來：</b>學會一次只改一個地方、一個一個排除。這個習慣後來寫程式除錯也一直在用。</p>
+    </article>
+    <article class="miss">
+      <p class="miss-what">火星競賽，<em>沒有得獎</em>。</p>
+      <p>降落的設計討論了很多版，真的做出來還是有很多沒想到的地方。</p>
+      <p class="miss-learn"><b>後來：</b>知道「設計好」跟「做出來能用」中間差了很多次測試，下次會更早開始實測。</p>
+    </article>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <h2 class="sec-title"><span>06</span>相簿</h2>
+  <p class="sec-note">點照片可以放大。</p>
+  <div class="masonry">
+    <button class="ph"><img src="img/beach-front.webp" alt="海邊正面照" loading="lazy"></button>
+    <button class="ph"><img src="img/beach-walk.webp" alt="走在海水裡" loading="lazy"></button>
+    <button class="ph"><img src="img/beach-crouch.webp" alt="蹲在海邊笑" loading="lazy"></button>
+    <button class="ph"><img src="img/beach-side.webp" alt="海邊側臉" loading="lazy"></button>
+    <button class="ph"><img src="img/beach-sunset.webp" alt="夕陽下的海邊剪影" loading="lazy"></button>
+    <button class="ph"><img src="img/beach-up.webp" alt="海邊抬頭" loading="lazy"></button>
+    <button class="ph"><img src="img/beach-friend.webp" alt="和朋友在黃昏的海邊" loading="lazy"></button>
+    <button class="ph"><img src="img/print-box.webp" alt="3D 列印的文具收納盒" loading="lazy"></button>
+    <button class="ph"><img src="img/fusion.webp" alt="Fusion 360 收納盒建模畫面" loading="lazy"></button>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2 class="sec-title"><span>07</span>聯絡</h2>
+  <p class="contact-big">想一起做點什麼，<br>或只是想聊聊，都可以找我。</p>
+  <ul class="contact-list">
+    <li><span>GitHub</span><a href="https://github.com/johnny-0120" target="_blank" rel="noopener">github.com/johnny-0120</a></li>
+    <li><span>學校</span>中原大學 電機資訊學院 智慧運算與大數據學士班</li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p>© 2026 徐專洧。照片都是我本人，請別拿去別的地方用。</p>
+  <a href="#top">回到最上面 ↑</a>
+</footer>
+
+<div class="lightbox" hidden>
+  <button class="lb-close" aria-label="關閉">關閉 ✕</button>
+  <img alt="">
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
