@@ -268,3 +268,35 @@ mark{background:linear-gradient(transparent 58%,var(--blue-soft) 58%);color:inhe
 .intro.open .intro-line,.intro.open .intro-sub{opacity:0}
 .intro.gone{display:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.intro{display:none}.frame.tilt{transform:none!important}}
+
+/* ---------- radar game ---------- */
+.scan{background:var(--night);color:#D9E4F2}
+.scan-note{color:#A9BBD3;margin-bottom:36px}
+.scan-wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center}
+.scan-radar{position:relative}
+.radar{display:block;width:100%;max-width:520px;aspect-ratio:1/1;margin:0 auto;touch-action:manipulation}
+.scan-legend{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;padding:0;margin:16px 0 0;font-size:13px;color:#A9BBD3}
+.scan-legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle}
+.c-build{background:#A8C0DF}.c-stage{background:#C9B8F0}.c-contest{background:#E8A385}
+.scan-count{font-family:var(--mono);font-size:14px;color:#A9BBD3;margin-bottom:8px}
+.scan-count b{font-size:34px;color:#EDF4FC;font-weight:500;margin-right:4px}
+.scan-bar{height:4px;background:var(--panel);border-radius:9px;overflow:hidden;margin-bottom:24px}
+.scan-bar i{display:block;height:100%;width:0;background:var(--blue-soft);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.scan-card{background:var(--panel);border:1px solid #2A3F5E;border-radius:4px;padding:24px 24px 22px;min-height:190px;position:relative;overflow:hidden}
+.scan-card.pop{animation:cardPop .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes cardPop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+.scan-card .k{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:#A9BBD3}
+.scan-card h3{font-family:var(--serif);font-size:24px;color:#EDF4FC;margin:8px 0 10px}
+.scan-card p{font-size:15px;color:#C7D4E6}
+.scan-card .row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px}
+.scan-card .go{font:inherit;font-size:14px;font-weight:500;color:var(--night);background:var(--blue-soft);border:0;border-radius:99px;padding:7px 16px;cursor:pointer}
+.scan-card .go:hover{background:#EDF4FC}
+.scan-card .tag{background:transparent;color:#EDF4FC;box-shadow:inset 0 0 0 1.5px #5D769C}
+.scan-hint{color:#A9BBD3}
+.scan-card.done{border-color:var(--blue-soft)}
+.scan-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.scan-chips button{font:inherit;font-size:12px;color:#C7D4E6;background:transparent;border:1px solid #33496A;border-radius:99px;padding:3px 10px;cursor:pointer}
+.scan-chips button:hover,.scan-chips button.on{border-color:var(--blue-soft);color:#EDF4FC}
+.tl li.flash summary{animation:flash 1.6s ease}
+@keyframes flash{0%,40%{background:rgba(168,192,223,.35)}100%{background:transparent}}
+@media (max-width:900px){.scan-wrap{grid-template-columns:1fr;gap:32px}}

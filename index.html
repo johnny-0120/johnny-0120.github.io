@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
 
@@ -20,7 +20,7 @@
   <div class="intro-top"></div><div class="intro-bottom"></div>
   <div class="intro-name"><span>徐</span><span>專</span><span>洧</span></div>
   <div class="intro-line"></div>
-  <div class="intro-sub">Johnny · Chuan-Wei Hsu</div>
+  <div class="intro-sub">Johnny · HSU JUAN WEI</div>
 </div>
 <script>try{if(sessionStorage.getItem('introSeen')||matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('no-intro')}catch(e){}</script>
 
@@ -28,6 +28,7 @@
   <a class="bar-name" href="#top">徐專洧</a>
   <button class="menu-btn" aria-expanded="false" aria-controls="nav">選單</button>
   <nav class="bar-nav" id="nav" aria-label="主選單">
+    <a href="#scan">雷達</a>
     <a href="#quick">簡介</a>
     <a href="#timeline">經歷</a>
     <a href="#works">作品</a>
@@ -44,7 +45,7 @@
 <section class="hero">
   <canvas class="hero-bg" aria-hidden="true"></canvas>
   <div class="hero-text">
-    <p class="kicker"><span>Johnny（Chuan-Wei Hsu）</span><span class="k2">中原大學 智慧運算與大數據學士班</span></p>
+    <p class="kicker"><span>Johnny（HSU JUAN WEI）</span><span class="k2">中原大學 智慧運算與大數據學士班</span></p>
     <h1>嗨，我是<br><span class="name"><span>徐</span><span>專</span><span>洧</span></span>。</h1>
     <p class="lede">我寫程式、做硬體，也跳舞、上台主持。習慣從自己卡住的問題出發，<mark>把想法做成看得見的東西。</mark></p>
     <div class="hero-links">
@@ -55,6 +56,30 @@
   <figure class="hero-photo">
     <div class="frame tilt"><img src="img/hero.jpg" alt="徐專洧在熱舞社成果發表會上拿麥克風主持" width="1400" height="1750"><span class="glare"></span></div>
   </figure>
+</section>
+
+<!-- RADAR GAME -->
+<section class="scan" id="scan">
+  <h2 class="sec-title light"><span>00</span>雷達掃描</h2>
+  <p class="scan-note">點雷達上的亮點，把我的經歷一個一個找出來。</p>
+  <div class="scan-wrap">
+    <div class="scan-radar">
+      <canvas class="radar" aria-label="經歷雷達，點亮點查看經歷"></canvas>
+      <ul class="scan-legend">
+        <li><i class="c-build"></i>做東西</li>
+        <li><i class="c-stage"></i>舞台與活動</li>
+        <li><i class="c-contest"></i>競賽與申請</li>
+      </ul>
+    </div>
+    <div class="scan-panel" aria-live="polite">
+      <p class="scan-count"><b>0</b> / <span>0</span> 已找到</p>
+      <div class="scan-bar"><i></i></div>
+      <div class="scan-card empty">
+        <p class="scan-hint">雷達掃過的地方會出現亮點，點它看看。</p>
+      </div>
+      <div class="scan-chips"></div>
+    </div>
+  </div>
 </section>
 
 <!-- QUICK -->
@@ -504,6 +529,6 @@
   <img alt="">
 </div>
 
-<script src="main.js?v=12"></script>
+<script src="main.js?v=14"></script>
 </body>
 </html>
