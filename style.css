@@ -340,3 +340,41 @@ section{padding:96px max(16px,calc((100% - var(--w))/2))}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-btn .ico{box-shadow:inset 0 0 0 7px var(--ink)}}
 .bar-right{display:flex;align-items:center}
 @media (max-width:640px){.theme-btn{margin-left:0;margin-right:8px}.bar-right{order:2}.bar-nav{order:3}}
+
+/* ---------- 去樣板化 ---------- */
+/* 滑鼠點擊不要出現黑框，只在用鍵盤時顯示 */
+summary:focus,button:focus,a:focus{outline:none}
+summary:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* 區塊編號：不用膠囊，改成小字加斜線 */
+.sec-title span{border:0;padding:0;border-radius:0;font-size:13px;letter-spacing:.1em;transform:translateY(-10px)}
+.sec-title span::after{content:" /";opacity:.5}
+
+/* 封面雷達的說明：不用卡片框，直接是文字 */
+.scan-card,.scan-card.empty{background:none;border:0;border-radius:0;padding:0;min-height:120px;margin-top:34px;max-width:28em}
+.scan-hint{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--ink-2)}
+.scan-card .k{color:var(--ring,var(--accent))}
+.scan-card h3{font-size:26px;margin:6px 0 8px;line-height:1.35}
+.scan-card .row{justify-content:flex-start;gap:18px}
+.scan-card .go{background:none;color:var(--ink);border-radius:0;padding:0 0 2px;border-bottom:1.5px solid currentColor}
+.scan-card .go:hover{background:none;color:var(--accent)}
+
+/* 沒成功的事：不用卡片，改成一條一條的紀錄 */
+.miss-list{grid-template-columns:1fr;gap:0;border-top:2px solid var(--ink)}
+.miss{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:28px 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:8px 48px;box-shadow:none!important;transform:none!important}
+.miss::before{display:none}
+.miss-what{grid-row:span 3;font-size:32px;line-height:1.4;font-weight:900}
+.miss-what em{display:block;font-size:.72em;font-weight:600;margin-top:6px}
+.miss-learn{border-top:0;padding-top:0;margin-top:6px}
+
+/* 篩選：不用膠囊按鈕，改成文字分頁 */
+.filters{gap:22px;border-bottom:1px solid var(--line)}
+.filters button{border:0;border-radius:0;padding:6px 0;margin-bottom:-1px;border-bottom:2px solid transparent;background:none}
+.filters button:hover{border-color:var(--line)}
+.filters button.on{background:none;color:var(--ink);border-color:var(--ink)}
+
+@media (max-width:640px){
+  .miss{grid-template-columns:1fr;gap:6px}
+  .miss-what{grid-row:auto;font-size:20px}
+  .scan-card h3{font-size:22px}
+}

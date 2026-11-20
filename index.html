@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="style.css?v=15">
+<link rel="stylesheet" href="style.css?v=18">
 </head>
 <body>
 
@@ -56,7 +56,7 @@
       <a class="btn ghost" href="#contact">聯絡我</a>
     </div>
     <div class="scan-card empty" aria-live="polite">
-      <p class="scan-hint">雷達上的每個亮點都是我的一項經歷，點點看。</p>
+      <p class="scan-hint">雷達上每個亮點是一段經歷，點一個看看 →</p>
     </div>
   </div>
   <div class="hero-radar">
@@ -135,8 +135,8 @@
       <img class="thumb" src="img/mars-team.jpg" alt="" loading="lazy">
       <div><h3>2026 火星任務　火星車降落競賽</h3><p>東海大學和科博館主辦。從零做出一台能降落的機體，最後完賽。</p></div></summary>
       <div class="more">
-        <p>機體是 3D 列印的藍色框架，上面裝飛控、電調和馬達。降落的設計是在機器人社課後和隊友一起討論的。</p>
-        <p>比賽在體育館。完賽了，沒有得獎。</p>
+        <p>機體是 3D 列印的藍色框架。飛控是我們用 ESP32 自己寫的四軸飛控，再加一顆 ESP32 相機辨識地上的 AprilTag，讓機體自己找降落點。</p>
+        <p>降落要怎麼設計，是在機器人社課後和隊友一起討論出來的。比賽當天在體育館，最後完賽，沒有得獎。</p>
         <div class="more-photos">
           <img src="img/mars-team.jpg" alt="隊友圍著筆電接線" loading="lazy">
           <img src="img/mars-build.jpg" alt="組裝藍色機體" loading="lazy">
@@ -153,8 +153,10 @@
       <span class="thumb none"></span>
       <div><h3>全國智慧運算與量子資訊創新應用競賽</h3><p>想知道量子演算法 RQAOA 能不能在排程問題上贏過一般電腦。跑了 116 個題目，還沒贏。</p></div></summary>
       <div class="more">
-        <p>汽車噴漆換色排程上，RQAOA 比一個專用的傳統方法好大約 12–14%。換成一般電腦上更強的禁忌搜尋，它就輸了。三色問題、Wi-Fi 頻道規劃也試過，沒找到優勢。</p>
-        <p>現在的方向是做一個網站，讓人先檢查自己的問題適不適合用 RQAOA。最終題目還沒定。</p>
+        <p>我想知道量子演算法 RQAOA 在真實的排程問題上，到底能不能贏過一般電腦的方法。試了汽車噴漆換色、MAX-k-CUT、三色問題、Wi-Fi 頻道規劃，總共 116 個題目。</p>
+        <p>噴漆換色上，RQAOA 比一個專用的傳統方法好大約 12–14%；換成更強的禁忌搜尋，它就輸了。輸的原因我也整理成失敗分析。</p>
+        <p>另外做了「量子適用性健檢」，讓量子和古典方法在企業的小樣本資料上正面比較。兩個研究都公開在 GitHub。</p>
+        <p class="work-links"><a href="https://github.com/johnny-0120/rqaoa-applications" target="_blank" rel="noopener">RQAOA 研究 ↗</a><a href="https://github.com/johnny-0120/quantum-fit-check" target="_blank" rel="noopener">量子適用性健檢 ↗</a></p>
       </div>
     </details></li>
 
@@ -163,7 +165,7 @@
       <img class="thumb" src="img/trc-iso.jpg" alt="" loading="lazy">
       <div><h3>TRC 競賽　穩定模組</h3><p>8 頁技術企劃，含三視圖、受力估算和預算。</p></div></summary>
       <div class="more">
-        <p>模組靠配重在撞擊前移到定位，讓車身更穩。企劃裡放了三視圖、空載情況的受力估算、8 顆 775 馬達的預算，還有之後要做的配重、同步反應和載貨測試。</p>
+        <p>設計的是「模組化穩定器 v0.2」：靠配重在撞擊前移到定位，讓車身更穩。企劃裡放了三視圖、空載情況的受力估算、8 顆 775 馬達的預算，還有之後要做的配重、同步反應和載貨測試。</p>
         <p>目前還是理論估算，實測要等做出來。</p>
         <div class="more-photos"><img src="img/trc-iso.jpg" alt="穩定模組 v0.2 等角圖" loading="lazy"></div>
       </div>
@@ -185,7 +187,8 @@
       <img class="thumb" src="img/radar.jpg?v=3" data-dark="img/radar-dark.jpg?v=3" alt="" loading="lazy">
       <div><h3>中原機會雷達</h3><p>每天自動抓學校 16 個公開來源的公告，整理成可以搜尋的網站。</p></div></summary>
       <div class="more">
-        <p>競賽、實習、獎學金都收。有截止時間表、收藏和重要提醒，也能跟 AI 說自己的興趣，讓它從公告裡挑。10 月底整個搬到 Cloudflare，五千多筆資料一起搬過去。</p>
+        <p>競賽、實習、獎學金、出國、講座都收。有截止時間表、收藏和重要提醒，也能跟 AI 說自己的興趣，讓它從公告裡挑。</p>
+        <p>技術上用 TypeScript、React、Cloudflare D1、Google 登入，可以裝成手機 App（PWA）收推播。10 月底整個搬到 Cloudflare，五千多筆資料一起搬過去。</p>
         <p class="work-links"><a href="https://cycu-radar-app.johnny970120.workers.dev" target="_blank" rel="noopener">打開網站 ↗</a></p>
         <div class="more-photos"><img src="img/radar.jpg?v=3" data-dark="img/radar-dark.jpg?v=3" alt="中原機會雷達首頁" loading="lazy"></div>
       </div>
@@ -219,7 +222,7 @@
       <img class="thumb" src="img/reel-render.jpg" alt="" loading="lazy">
       <div><h3>捲線器</h3><p>我負責機構，用 Fusion 360 改了好幾版設計，最後自己設計棘輪和齒輪。</p></div></summary>
       <div class="more">
-        <p>每一版都換過配置和零件尺寸。買來的絞盤不會自己停，我就自己設計棘輪和齒輪換掉它，機構已經完成。</p>
+        <p>每一版都換過配置和零件尺寸，也用 ESP32-C3 做了手機控制。買來的絞盤不會自己停，我就自己設計棘輪和齒輪換掉它，機構已經完成。</p>
         <div class="more-photos">
           <img src="img/reel-render.jpg" alt="捲線器外殼配置比較圖" loading="lazy">
           <img src="img/reel-drum.jpg" alt="馬達和黃色捲筒試組" loading="lazy">
@@ -262,7 +265,8 @@
       <img class="thumb" src="img/esp32-car.jpg" alt="" loading="lazy">
       <div><h3>ESP32 智慧陪伴小車</h3><p>可以無線遙控，也會自己閃開障礙物。</p></div></summary>
       <div class="more">
-        <p>從麵包板接線開始，接上馬達和超音波感測器，裝到車架上。遙控用 ESP-NOW。</p>
+        <p>從選零件、接電路、調馬達方向、安排車架空間到配電源，全部自己來。遙控用 ESP-NOW，前面的超音波感測器讓它自己避開障礙物。</p>
+        <p>做的過程出過不少錯：馬達正負極接反，車子一邊前進、一邊後退；也低估了走線空間，只好重新調整開關座和車架。</p>
         <div class="more-photos"><img src="img/esp32-car.jpg" alt="ESP32 小車" loading="lazy"></div>
       </div>
     </details></li>
@@ -272,7 +276,7 @@
       <img class="thumb" src="img/fusion.jpg" alt="" loading="lazy">
       <div><h3>Fusion 360 建模和 3D 列印</h3><p>卡片收納盒、文具收納盒。</p></div></summary>
       <div class="more">
-        <p>先在 Fusion 360 畫，印出來量，尺寸不合就改圖重印。</p>
+        <p>用自己的印表機印卡片收納盒和文具收納盒。不是按下列印就好：要會構圖、控制室內溫度避免翹曲，印出來尺寸有誤差就量了再重印。</p>
         <div class="more-photos">
           <img src="img/fusion.jpg" alt="Fusion 360 建模畫面" loading="lazy">
           <img src="img/print-cardbox.jpg" alt="紅白卡片收納盒" loading="lazy">
@@ -286,8 +290,20 @@
       <img class="thumb" src="img/chess.jpg?v=3" data-dark="img/chess-dark.jpg?v=3" alt="" loading="lazy">
       <div><h3>AI 英文單字網站、西洋棋復盤工具</h3><p>單字網站是 WordMemo 的第一版。</p></div></summary>
       <div class="more">
-        <p>復盤工具吃棋譜檔，把每一步分級，下錯的地方給最佳走法。</p>
+        <p>單字網站結合記憶法、間隔重複和 AI 造句批改，是為了解決我自己準備英文時的痛點，後來重寫成 WordMemo。</p>
+        <p>復盤工具吃棋譜檔，把每一步分級，下錯的地方給最佳走法。同一段時間也做過網頁點餐系統。</p>
         <div class="more-photos"><img src="img/chess.jpg?v=3" data-dark="img/chess-dark.jpg?v=3" alt="西洋棋復盤工具" loading="lazy"></div>
+      </div>
+    </details></li>
+
+    <li data-c="contest"><details><summary>
+      <div class="meta"><time>2026.01</time><span class="st st-done">完成</span></div>
+      <img class="thumb" src="img/essay.jpg" alt="" loading="lazy">
+      <div><h3>社會組跨考自然組、學測英文 13 級分</h3><p>高二選了社會組，後來決定跨考自然科，自學物理和化學。</p></div></summary>
+      <div class="more">
+        <p>社會組讓我習慣從市場和需求的角度看科技，但我更想親手解決問題，所以決定跨考。物理、化學靠線上教學影片加大量題目自學追進度。</p>
+        <p>英文方面，學測前我要求自己連續 30 天每天寫一篇英文作文，最後學測英文 13 級分（頂標）。平常也讀英文文章、自己練 SAT，模擬考 1200 分。</p>
+        <div class="more-photos"><img src="img/essay.jpg" alt="30 天英文作文訓練手稿" loading="lazy"></div>
       </div>
     </details></li>
 
@@ -296,7 +312,8 @@
       <span class="thumb none"></span>
       <div><h3>青年百億海外圓夢計畫</h3><p>海外科技交流企劃，進了面試，備取第 2。</p></div></summary>
       <div class="more">
-        <p>報的是海外翱翔組。</p>
+        <p>報的是海外翱翔組，計畫叫「矽谷引路：Google 圓夢領航員」，想去參訪 Google、UCLA 和自然史博物館，回來把看到的做成短影音分享。</p>
+        <p>企劃寫完、也進了面試，最後備取第 2。沒去成，但短影音我還是先自己開始做了。</p>
       </div>
     </details></li>
 
@@ -305,6 +322,7 @@
       <span class="thumb none"></span>
       <div><h3>活動影片剪輯</h3><p>畢業典禮、社團博覽會。</p></div></summary>
       <div class="more">
+        <p>剪過畢業典禮、社團博覽會的活動影片。自己的短影音已經發布第一支，還在練選題、拍攝、剪輯和下標題。</p>
         <p class="work-links"><a href="https://www.youtube.com/playlist?list=PLNdr0lbFCzFA" target="_blank" rel="noopener">YouTube 作品集 ↗</a></p>
       </div>
     </details></li>
@@ -314,7 +332,8 @@
       <img class="thumb" src="img/dance-solo.jpg" alt="" loading="lazy">
       <div><h3>熱舞社　活動兼教學幹部</h3><p>教舞、辦成果發表會、借場地。</p></div></summary>
       <div class="more">
-        <p>原定的成發場地臨時不能用，我另外找了一個，演出照常辦完。</p>
+        <p>高二那年每週練舞六天，只有週日休息，同時還要負責教舞。</p>
+        <p>辦成果發表會時，企劃書、燈光音響、場地動線都由我統籌。原本談好的場地臨時被借給別的單位，演出差點開天窗；我到處找單位協調，最後在很短時間內借到新場地，成發照常辦完。</p>
         <div class="more-photos">
           <img src="img/dance-solo.jpg" alt="舞台上的 solo" loading="lazy">
           <img src="img/dance-group.jpg" alt="團體舞" loading="lazy">
@@ -328,6 +347,8 @@
       <img class="thumb" src="img/host-denmark.jpg" alt="" loading="lazy">
       <div><h3>丹麥訪問團交流活動　英文主持</h3><p>破冰遊戲和整場流程都由我用英文帶。</p></div></summary>
       <div class="more">
+        <p>2024 年 3 月，和同學 William 一起用英文主持。開場之後帶大家玩「Treasure Hunt」：把照片切成 9 片藏在一樓，各組去找，最後還有交換碎片的協商時間。</p>
+        <p>事前要熟悉流程、介紹雙方背景，現場用英文把每個段落接起來。</p>
         <div class="more-photos"><img src="img/host-denmark.jpg" alt="拿麥克風主持破冰遊戲" loading="lazy"></div>
       </div>
     </details></li>
@@ -337,6 +358,7 @@
       <img class="thumb" src="img/cert-english.jpg" alt="" loading="lazy">
       <div><h3>班級英文簡報代表</h3><p>代表班上參加英文簡報成果發表。</p></div></summary>
       <div class="more">
+        <p>英文簡報課上，我把簡報和舞蹈表演結合在一起，老師推薦我代表班級去參加英文簡報成果發表會。</p>
         <div class="more-photos"><img src="img/cert-english.jpg" alt="英文簡報活動參與證明" loading="lazy"></div>
       </div>
     </details></li>
@@ -443,22 +465,22 @@
 
   <div class="miss-list">
     <article class="miss">
-      <p class="miss-what">青年百億海外圓夢計畫，<em>備取第 2</em>。</p>
+      <p class="miss-what">青年百億海外圓夢計畫<em>備取第 2</em></p>
       <p>海外科技交流的企劃寫了很久，也進了面試，最後還是差一名。原本打算出國拍的短影音也就沒了。</p>
       <p class="miss-learn"><b>後來：</b>沒等出國，我直接開始做短影音，從選題、拍攝、剪輯到發布一路練。</p>
     </article>
     <article class="miss">
-      <p class="miss-what">創天下競賽，<em>截止當天才發現撞題</em>。</p>
+      <p class="miss-what">創天下競賽<em>截止當天才發現撞題</em></p>
       <p>送件那天我才查到，我們想做的道路修復分析，桃園已經有在用的平台，也有營造公司做 AI 鋪面檢測。</p>
       <p class="miss-learn"><b>後來：</b>當天找組員討論要不要換題，最後用原本的題目送出。</p>
     </article>
     <article class="miss">
-      <p class="miss-what">量子競賽，<em>到現在還沒找到量子贏的地方</em>。</p>
+      <p class="miss-what">量子競賽<em>到現在還沒找到量子贏的地方</em></p>
       <p>噴漆換色排程上，RQAOA 比一個專用的傳統方法好了大約 12–14%。換成一般電腦上更強的禁忌搜尋，它就輸了。三色問題、Wi-Fi 頻道規劃也試過，都沒有。</p>
       <p class="miss-learn"><b>後來：</b>轉去設計一個網站，幫人先檢查自己的問題適不適合用 RQAOA。最終題目還沒定。</p>
     </article>
     <article class="miss">
-      <p class="miss-what">捲線器，<em>買來的絞盤不會自己停</em>。</p>
+      <p class="miss-what">捲線器<em>買來的絞盤不會自己停</em></p>
       <p>11 月初實測蝦皮買的絞盤，捲到定點停不下來，不符合我們要的用法。</p>
       <p class="miss-learn"><b>後來：</b>我自己設計了棘輪和齒輪，捲線器已經完成。</p>
     </article>
@@ -516,6 +538,6 @@
   <img alt="">
 </div>
 
-<script src="main.js?v=16"></script>
+<script src="main.js?v=17"></script>
 </body>
 </html>

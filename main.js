@@ -144,7 +144,7 @@ const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ---------- 卡片微傾斜、按鈕被滑鼠吸過去 ----------
 if (fine && !calm) {
-  document.querySelectorAll('.work, .miss, .cert-grid figure').forEach(el => {
+  document.querySelectorAll('.work, .cert-grid figure').forEach(el => {
     el.addEventListener('pointermove', e => {
       const b = el.getBoundingClientRect(), x = (e.clientX - b.left) / b.width - .5, y = (e.clientY - b.top) / b.height - .5;
       el.style.transform = `perspective(1000px) translateY(-6px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg)`;
