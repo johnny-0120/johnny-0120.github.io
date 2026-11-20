@@ -32,10 +32,11 @@ const spy = new IntersectionObserver(es => es.forEach(e => {
 }), { rootMargin: '-40% 0px -55% 0px' });
 secs.forEach(s => s && spy.observe(s));
 
-// 淡入
-const rv = document.querySelectorAll('.sec-title, .quick-grid article, .tl li, .work, .stage-grid figure, .miss, .contact-big');
-rv.forEach(el => el.classList.add('rv'));
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-}), { threshold: .12 });
-rv.forEach(el => io.observe(el));
+// 手機選單
+const bar = document.querySelector('.bar');
+const mb = document.querySelector('.menu-btn');
+mb.addEventListener('click', () => {
+  const o = bar.classList.toggle('open');
+  mb.setAttribute('aria-expanded', o); mb.textContent = o ? '關閉' : '選單';
+});
+links.forEach(a => a.addEventListener('click', () => { bar.classList.remove('open'); mb.setAttribute('aria-expanded', false); mb.textContent = '選單'; }));

@@ -7,18 +7,19 @@
 <meta name="description" content="徐專洧（Johnny），中原大學智慧運算與大數據學士班。做過 WordMemo、中原機會雷達、ESP32 小車，也跳舞、主持。成功的、還在做的、沒成功的都在這裡。">
 <meta property="og:title" content="徐專洧 Johnny">
 <meta property="og:description" content="寫程式、做硬體、跳舞、上台主持。">
-<meta property="og:image" content="https://johnny-0120.github.io/img/hero.webp">
+<meta property="og:image" content="https://johnny-0120.github.io/img/hero.jpg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2317243A'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23EDF4FC' font-family='serif'>洧</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
 <header class="bar">
   <a class="bar-name" href="#top">徐專洧</a>
-  <nav class="bar-nav" aria-label="主選單">
+  <button class="menu-btn" aria-expanded="false" aria-controls="nav">選單</button>
+  <nav class="bar-nav" id="nav" aria-label="主選單">
     <a href="#quick">簡介</a>
     <a href="#timeline">經歷</a>
     <a href="#works">作品</a>
@@ -33,7 +34,7 @@
 
 <section class="hero">
   <div class="hero-text">
-    <p class="kicker">Johnny（Chuan-Wei Hsu）· 中原大學 智慧運算與大數據學士班</p>
+    <p class="kicker"><span>Johnny（Chuan-Wei Hsu）</span><span class="k2">中原大學 智慧運算與大數據學士班</span></p>
     <h1>嗨，我是<br><span class="name">徐專洧</span>。</h1>
     <p class="lede">我寫程式、做硬體，也跳舞、上台主持。習慣從自己卡住的問題出發，<mark>把想法做成看得見的東西。</mark></p>
     <p class="lede small">這裡放我做過的事。做成的、還在做的，還有沒做成的，都放。</p>
@@ -43,7 +44,7 @@
     </div>
   </div>
   <figure class="hero-photo">
-    <div class="frame"><img src="img/hero.webp" alt="徐專洧穿著白襯衫站在海邊" width="1350" height="1800"></div>
+    <div class="frame"><img src="img/hero.jpg" alt="徐專洧穿著白襯衫站在海邊" width="1350" height="1800"></div>
     <figcaption>高中畢業前，在海邊。</figcaption>
   </figure>
 </section>
@@ -107,7 +108,7 @@
       <div><h3>2026 職涯探索競賽　佳作</h3><p>中原大學職涯發展處主辦。</p></div>
       <b class="tag done">佳作</b></summary>
       <div class="more">
-        <div class="more-photos"><img src="img/cert-career.webp" alt="2026 年職涯探索競賽佳作獎狀" loading="lazy"></div>
+        <div class="more-photos"><img src="img/cert-career.jpg" alt="2026 年職涯探索競賽佳作獎狀" loading="lazy"></div>
       </div>
     </details></li>
 
@@ -119,13 +120,13 @@
         <p>機體是 3D 列印的藍色框架，上面裝飛控、電調和馬達。降落要怎麼設計，我們是在機器人社課後一起討論出來的，接線、燒程式、組裝也都自己來。</p>
         <p>比賽在體育館。完賽了，沒有得獎。</p>
         <div class="more-photos">
-          <img src="img/mars-team.webp" alt="隊友圍著筆電接線" loading="lazy">
-          <img src="img/mars-build.webp" alt="組裝藍色機體" loading="lazy">
-          <img src="img/mars-frame.webp" alt="3D 列印中的機體框架" loading="lazy">
-          <img src="img/mars-rover.webp" alt="完成的火星車機體" loading="lazy">
-          <img src="img/mars-day.webp" alt="比賽當天在場邊修機體" loading="lazy">
-          <img src="img/mars-field.webp" alt="機體在體育館比賽場地上" loading="lazy">
-          <img src="img/cert-mars.webp" alt="2026 火星任務參賽證明" loading="lazy">
+          <img src="img/mars-team.jpg" alt="隊友圍著筆電接線" loading="lazy">
+          <img src="img/mars-build.jpg" alt="組裝藍色機體" loading="lazy">
+          <img src="img/mars-frame.jpg" alt="3D 列印中的機體框架" loading="lazy">
+          <img src="img/mars-rover.jpg" alt="完成的火星車機體" loading="lazy">
+          <img src="img/mars-day.jpg" alt="比賽當天在場邊修機體" loading="lazy">
+          <img src="img/mars-field.jpg" alt="機體在體育館比賽場地上" loading="lazy">
+          <img src="img/cert-mars.jpg" alt="2026 火星任務參賽證明" loading="lazy">
         </div>
       </div>
     </details></li>
@@ -157,7 +158,7 @@
       <div class="more">
         <p>單字庫是大考中心高中 6000 字。學生端能學習、複習、拼字、AI 造句和作文批改；老師端可以開班、出題、看結果。不登入也能先試。</p>
         <p class="work-links"><a href="https://wordmemo.johnny970120.workers.dev/about" target="_blank" rel="noopener">看介紹 ↗</a><a href="https://wordmemo.johnny970120.workers.dev" target="_blank" rel="noopener">直接試用 ↗</a></p>
-        <div class="more-photos"><img src="img/wordmemo.webp" alt="WordMemo 首頁" loading="lazy"></div>
+        <div class="more-photos"><img src="img/wordmemo.jpg" alt="WordMemo 首頁" loading="lazy"></div>
       </div>
     </details></li>
 
@@ -168,7 +169,7 @@
       <div class="more">
         <p>競賽、實習、獎學金都收。有截止時間表、收藏和重要提醒，也能跟 AI 說自己的興趣，讓它從公告裡挑。10 月底整個搬到 Cloudflare，五千多筆資料一起搬過去。</p>
         <p class="work-links"><a href="https://cycu-radar-app.johnny970120.workers.dev" target="_blank" rel="noopener">打開網站 ↗</a></p>
-        <div class="more-photos"><img src="img/radar.webp" alt="中原機會雷達首頁" loading="lazy"></div>
+        <div class="more-photos"><img src="img/radar.jpg" alt="中原機會雷達首頁" loading="lazy"></div>
       </div>
     </details></li>
 
@@ -180,8 +181,8 @@
         <p>群組裡的工作對話丟給小精靈，它會整理成重點、待回覆和下一步，每個人在自己的摘要頁上看。也接了 Google 日曆。</p>
         <p class="work-links"><a href="https://johnny-0120.github.io/line-work-elf/" target="_blank" rel="noopener">公事小精靈介紹 ↗</a></p>
         <div class="more-photos">
-          <img src="img/nuva-stage.webp" alt="在 NUVA 活動上拿麥克風分享" loading="lazy">
-          <img src="img/line-elf.webp" alt="公事小精靈介紹頁" loading="lazy">
+          <img src="img/nuva-stage.jpg" alt="在 NUVA 活動上拿麥克風分享" loading="lazy">
+          <img src="img/line-elf.jpg" alt="公事小精靈介紹頁" loading="lazy">
         </div>
       </div>
     </details></li>
@@ -192,7 +193,7 @@
       <b class="tag now">進行中</b></summary>
       <div class="more">
         <p>校外交流是好幾所學校一起辦的活動。我在寫企劃書、排場地座位，議題發表每組最多七分鐘。另外把 48 家特約商店的優惠整理成白、藍兩套標籤。</p>
-        <div class="more-photos"><img src="img/council-seats.webp" alt="校外交流活動的會場座位配置圖" loading="lazy"></div>
+        <div class="more-photos"><img src="img/council-seats.jpg" alt="校外交流活動的會場座位配置圖" loading="lazy"></div>
       </div>
     </details></li>
 
@@ -203,8 +204,8 @@
       <div class="more">
         <p>每一版都換過配置和零件尺寸。11 月初實測買來的絞盤，捲到定點停不下來，還在找替代做法。</p>
         <div class="more-photos">
-          <img src="img/reel-render.webp" alt="捲線器外殼配置比較圖" loading="lazy">
-          <img src="img/reel-drum.webp" alt="馬達和黃色捲筒試組" loading="lazy">
+          <img src="img/reel-render.jpg" alt="捲線器外殼配置比較圖" loading="lazy">
+          <img src="img/reel-drum.jpg" alt="馬達和黃色捲筒試組" loading="lazy">
         </div>
       </div>
     </details></li>
@@ -224,7 +225,7 @@
       <b class="tag done">已參賽</b></summary>
       <div class="more">
         <p>指導老師是陳永祥老師，題目是道路修復分析。送件當天才發現已經有類似的平台，細節寫在下面「沒成功的事」。</p>
-        <div class="more-photos"><img src="img/cert-chuangtianxia.webp" alt="2026 桃園之星 x 創天下競賽參賽證明" loading="lazy"></div>
+        <div class="more-photos"><img src="img/cert-chuangtianxia.jpg" alt="2026 桃園之星 x 創天下競賽參賽證明" loading="lazy"></div>
       </div>
     </details></li>
 
@@ -244,7 +245,7 @@
       <b class="tag done">成功</b></summary>
       <div class="more">
         <p>從麵包板接線開始，接上馬達和超音波感測器，裝到車架上。遙控用 ESP-NOW，兩塊 ESP32 直接互傳，不用經過 Wi-Fi 基地台。</p>
-        <div class="more-photos"><img src="img/esp32-car.webp" alt="ESP32 小車" loading="lazy"></div>
+        <div class="more-photos"><img src="img/esp32-car.jpg" alt="ESP32 小車" loading="lazy"></div>
       </div>
     </details></li>
 
@@ -255,9 +256,9 @@
       <div class="more">
         <p>先在 Fusion 360 畫，印出來量，尺寸不合就改圖重印。</p>
         <div class="more-photos">
-          <img src="img/fusion.webp" alt="Fusion 360 建模畫面" loading="lazy">
-          <img src="img/print-cardbox.webp" alt="紅白卡片收納盒" loading="lazy">
-          <img src="img/print-box.webp" alt="文具收納盒" loading="lazy">
+          <img src="img/fusion.jpg" alt="Fusion 360 建模畫面" loading="lazy">
+          <img src="img/print-cardbox.jpg" alt="紅白卡片收納盒" loading="lazy">
+          <img src="img/print-box.jpg" alt="文具收納盒" loading="lazy">
         </div>
       </div>
     </details></li>
@@ -268,7 +269,7 @@
       <b class="tag done">完成</b></summary>
       <div class="more">
         <p>復盤工具吃棋譜檔，把每一步分級，下錯的地方給最佳走法。</p>
-        <div class="more-photos"><img src="img/chess.webp" alt="西洋棋復盤工具" loading="lazy"></div>
+        <div class="more-photos"><img src="img/chess.jpg" alt="西洋棋復盤工具" loading="lazy"></div>
       </div>
     </details></li>
 
@@ -297,9 +298,9 @@
       <div class="more">
         <p>原定的成發場地臨時不能用，我另外找了一個，演出照常辦完。</p>
         <div class="more-photos">
-          <img src="img/dance-solo.webp" alt="舞台上的 solo" loading="lazy">
-          <img src="img/dance-group.webp" alt="團體舞" loading="lazy">
-          <img src="img/dance-duo.webp" alt="成發串場" loading="lazy">
+          <img src="img/dance-solo.jpg" alt="舞台上的 solo" loading="lazy">
+          <img src="img/dance-group.jpg" alt="團體舞" loading="lazy">
+          <img src="img/dance-duo.jpg" alt="成發串場" loading="lazy">
         </div>
       </div>
     </details></li>
@@ -309,7 +310,7 @@
       <div><h3>丹麥訪問團交流活動　英文主持</h3><p>破冰遊戲和整場流程都由我用英文帶。</p></div>
       <b class="tag done">完成</b></summary>
       <div class="more">
-        <div class="more-photos"><img src="img/host-denmark.webp" alt="拿麥克風主持破冰遊戲" loading="lazy"></div>
+        <div class="more-photos"><img src="img/host-denmark.jpg" alt="拿麥克風主持破冰遊戲" loading="lazy"></div>
       </div>
     </details></li>
 
@@ -318,7 +319,7 @@
       <div><h3>班級英文簡報代表</h3><p>代表班上參加英文簡報成果發表。</p></div>
       <b class="tag done">完成</b></summary>
       <div class="more">
-        <div class="more-photos"><img src="img/cert-english.webp" alt="英文簡報活動參與證明" loading="lazy"></div>
+        <div class="more-photos"><img src="img/cert-english.jpg" alt="英文簡報活動參與證明" loading="lazy"></div>
       </div>
     </details></li>
   </ol>
@@ -331,7 +332,7 @@
 
   <div class="work-list">
     <article class="work">
-      <a href="https://wordmemo.johnny970120.workers.dev/about" target="_blank" rel="noopener"><img src="img/wordmemo.webp" alt="WordMemo 單字記憶網站首頁" loading="lazy"></a>
+      <a href="https://wordmemo.johnny970120.workers.dev/about" target="_blank" rel="noopener"><img src="img/wordmemo.jpg" alt="WordMemo 單字記憶網站首頁" loading="lazy"></a>
       <div>
         <h3>WordMemo 單字記憶</h3>
         <p><b>為什麼：</b>我自己背單字一直忘。</p>
@@ -341,7 +342,7 @@
       </div>
     </article>
     <article class="work">
-      <a href="https://cycu-radar-app.johnny970120.workers.dev" target="_blank" rel="noopener"><img src="img/radar.webp" alt="中原機會雷達首頁" loading="lazy"></a>
+      <a href="https://cycu-radar-app.johnny970120.workers.dev" target="_blank" rel="noopener"><img src="img/radar.jpg" alt="中原機會雷達首頁" loading="lazy"></a>
       <div>
         <h3>中原機會雷達</h3>
         <p><b>為什麼：</b>競賽、實習、獎學金的公告分散在學校十幾個網站。</p>
@@ -351,7 +352,7 @@
       </div>
     </article>
     <article class="work">
-      <a href="https://johnny-0120.github.io/line-work-elf/" target="_blank" rel="noopener"><img src="img/line-elf.webp" alt="LINE 公事小精靈介紹頁" loading="lazy"></a>
+      <a href="https://johnny-0120.github.io/line-work-elf/" target="_blank" rel="noopener"><img src="img/line-elf.jpg" alt="LINE 公事小精靈介紹頁" loading="lazy"></a>
       <div>
         <h3>LINE 公事小精靈</h3>
         <p><b>為什麼：</b>群組一聊就是幾百則，真正要做的事很容易被洗掉。</p>
@@ -361,7 +362,7 @@
       </div>
     </article>
     <article class="work">
-      <img src="img/chess.webp" alt="西洋棋復盤工具，左邊棋盤、右邊每步評分" loading="lazy">
+      <img src="img/chess.jpg" alt="西洋棋復盤工具，左邊棋盤、右邊每步評分" loading="lazy">
       <div>
         <h3>西洋棋復盤工具</h3>
         <p><b>為什麼：</b>下完棋想知道是輸在哪一步。</p>
@@ -370,7 +371,7 @@
       </div>
     </article>
     <article class="work">
-      <img src="img/esp32-car.webp" alt="ESP32 智慧小車" loading="lazy">
+      <img src="img/esp32-car.jpg" alt="ESP32 智慧小車" loading="lazy">
       <div>
         <h3>ESP32 智慧陪伴小車</h3>
         <p><b>為什麼：</b>想試試看讓東西真的動起來。</p>
@@ -400,23 +401,23 @@
 
     <div class="stage-grid">
       <figure class="s-main">
-        <img src="img/dance-solo.webp" alt="徐專洧在舞台上張開雙臂表演" loading="lazy">
+        <img src="img/dance-solo.jpg" alt="徐專洧在舞台上張開雙臂表演" loading="lazy">
         <figcaption>熱舞社成果發表會。</figcaption>
       </figure>
       <figure>
-        <img src="img/dance-group.webp" alt="熱舞社團體舞台演出" loading="lazy">
+        <img src="img/dance-group.jpg" alt="熱舞社團體舞台演出" loading="lazy">
         <figcaption>團體舞。</figcaption>
       </figure>
       <figure>
-        <img src="img/dance-duo.webp" alt="兩人拿麥克風在舞台上串場" loading="lazy">
+        <img src="img/dance-duo.jpg" alt="兩人拿麥克風在舞台上串場" loading="lazy">
         <figcaption>成發的串場也是我們自己來。</figcaption>
       </figure>
       <figure>
-        <img src="img/host-denmark.webp" alt="穿橘色外套拿麥克風主持破冰遊戲" loading="lazy">
+        <img src="img/host-denmark.jpg" alt="穿橘色外套拿麥克風主持破冰遊戲" loading="lazy">
         <figcaption>丹麥訪問團交流，英文主持。</figcaption>
       </figure>
       <figure>
-        <img src="img/nuva-stage.webp" alt="在講台後拿麥克風分享" loading="lazy">
+        <img src="img/nuva-stage.jpg" alt="在講台後拿麥克風分享" loading="lazy">
         <figcaption>NUVA 活動上分享。</figcaption>
       </figure>
     </div>
@@ -457,10 +458,10 @@
   <h2 class="sec-title"><span>06</span>獎狀與證明</h2>
   <p class="sec-note">點開可以看大圖。</p>
   <div class="cert-grid">
-    <figure><button class="ph"><img src="img/cert-career.webp" alt="2026 年職涯探索競賽佳作獎狀" loading="lazy"></button><figcaption><b>2026 職涯探索競賽　佳作</b>中原大學職涯發展處・2026.11</figcaption></figure>
-    <figure><button class="ph"><img src="img/cert-mars.webp" alt="2026 火星任務參賽證明" loading="lazy"></button><figcaption><b>2026 火星任務　火星車降落競賽</b>參賽證明・東海大學、科博館</figcaption></figure>
-    <figure><button class="ph"><img src="img/cert-chuangtianxia.webp" alt="2026 桃園之星 x 創天下競賽參賽證明" loading="lazy"></button><figcaption><b>2026 桃園之星 × 創天下競賽</b>參賽證明・中原大學產學營運處・2026.10</figcaption></figure>
-    <figure><button class="ph"><img src="img/cert-english.webp" alt="英文簡報活動參與證明" loading="lazy"></button><figcaption><b>英文簡報成果發表</b>參與證明・高中</figcaption></figure>
+    <figure><button class="ph"><img src="img/cert-career.jpg" alt="2026 年職涯探索競賽佳作獎狀" loading="lazy"></button><figcaption><b>2026 職涯探索競賽　佳作</b>中原大學職涯發展處・2026.11</figcaption></figure>
+    <figure><button class="ph"><img src="img/cert-mars.jpg" alt="2026 火星任務參賽證明" loading="lazy"></button><figcaption><b>2026 火星任務　火星車降落競賽</b>參賽證明・東海大學、科博館</figcaption></figure>
+    <figure><button class="ph"><img src="img/cert-chuangtianxia.jpg" alt="2026 桃園之星 x 創天下競賽參賽證明" loading="lazy"></button><figcaption><b>2026 桃園之星 × 創天下競賽</b>參賽證明・中原大學產學營運處・2026.10</figcaption></figure>
+    <figure><button class="ph"><img src="img/cert-english.jpg" alt="英文簡報活動參與證明" loading="lazy"></button><figcaption><b>英文簡報成果發表</b>參與證明・高中</figcaption></figure>
   </div>
 </section>
 
@@ -469,21 +470,22 @@
   <h2 class="sec-title"><span>07</span>相簿</h2>
   <p class="sec-note">海邊、衝浪、做東西的時候。點照片可以放大。</p>
   <div class="masonry">
-    <button class="ph"><img src="img/surf-1504.webp" alt="站上衝浪板" loading="lazy"></button>
-    <button class="ph"><img src="img/surf-1556.webp" alt="追浪" loading="lazy"></button>
-    <button class="ph"><img src="img/surf-1561.webp" alt="在浪裡站穩" loading="lazy"></button>
-    <button class="ph"><img src="img/surf-1566.webp" alt="衝浪板上壓低重心" loading="lazy"></button>
-    <button class="ph"><img src="img/surf-1582.webp" alt="和家人一起衝浪" loading="lazy"></button>
-    <button class="ph"><img src="img/beach-walk.webp" alt="走在海水裡" loading="lazy"></button>
-    <button class="ph"><img src="img/print-cardbox.webp" alt="3D 列印的紅白卡片收納盒" loading="lazy"></button>
-    <button class="ph"><img src="img/beach-side.webp" alt="海邊側臉" loading="lazy"></button>
-    <button class="ph"><img src="img/fusion.webp" alt="Fusion 360 收納盒建模畫面" loading="lazy"></button>
-    <button class="ph"><img src="img/beach-sunset.webp" alt="夕陽下的海邊剪影" loading="lazy"></button>
-    <button class="ph"><img src="img/print-box.webp" alt="3D 列印的文具收納盒" loading="lazy"></button>
-    <button class="ph"><img src="img/beach-friend.webp" alt="和朋友在黃昏的海邊" loading="lazy"></button>
-    <button class="ph"><img src="img/mars-rover.webp" alt="火星車機體" loading="lazy"></button>
-    <button class="ph"><img src="img/mars-team.webp" alt="和隊友一起接線" loading="lazy"></button>
-    <button class="ph"><img src="img/ship-model.webp" alt="手工組裝的帆船模型" loading="lazy"></button>
+    <button class="ph"><img src="img/surf-1504.jpg" alt="站上衝浪板" loading="lazy"></button>
+    <button class="ph"><img src="img/surf-1556.jpg" alt="追浪" loading="lazy"></button>
+    <button class="ph"><img src="img/surf-1561.jpg" alt="在浪裡站穩" loading="lazy"></button>
+    <button class="ph"><img src="img/surf-1566.jpg" alt="衝浪板上壓低重心" loading="lazy"></button>
+    <button class="ph"><img src="img/surf-1582.jpg" alt="和家人一起衝浪" loading="lazy"></button>
+    <button class="ph"><img src="img/beach-walk.jpg" alt="走在海水裡" loading="lazy"></button>
+    <button class="ph"><img src="img/print-cardbox.jpg" alt="3D 列印的紅白卡片收納盒" loading="lazy"></button>
+    <button class="ph"><img src="img/beach-side.jpg" alt="海邊側臉" loading="lazy"></button>
+    <button class="ph"><img src="img/fusion.jpg" alt="Fusion 360 收納盒建模畫面" loading="lazy"></button>
+    <button class="ph"><img src="img/beach-sunset.jpg" alt="夕陽下的海邊剪影" loading="lazy"></button>
+    <button class="ph"><img src="img/print-box.jpg" alt="3D 列印的文具收納盒" loading="lazy"></button>
+    <button class="ph"><img src="img/beach-friend.jpg" alt="和朋友在黃昏的海邊" loading="lazy"></button>
+    <button class="ph"><img src="img/mars-rover.jpg" alt="火星車機體" loading="lazy"></button>
+    <button class="ph"><img src="img/mars-team.jpg" alt="和隊友一起接線" loading="lazy"></button>
+    <button class="ph"><img src="img/mars-field.jpg" alt="火星車在比賽場地上" loading="lazy"></button>
+    <button class="ph"><img src="img/ship-model.jpg" alt="手工組裝的帆船模型" loading="lazy"></button>
   </div>
 </section>
 
@@ -511,6 +513,6 @@
   <img alt="">
 </div>
 
-<script src="main.js"></script>
+<script src="main.js?v=5"></script>
 </body>
 </html>
