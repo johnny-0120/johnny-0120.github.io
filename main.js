@@ -17,10 +17,9 @@ btns.forEach(b => b.addEventListener('click', () => {
 // 相簿放大
 const lb = document.querySelector('.lightbox');
 const lbImg = lb.querySelector('img');
-document.querySelectorAll('.ph').forEach(p => p.addEventListener('click', () => {
-  const i = p.querySelector('img');
-  lbImg.src = i.src; lbImg.alt = i.alt; lb.hidden = false;
-}));
+const openLb = i => { lbImg.src = i.src; lbImg.alt = i.alt; lb.hidden = false; };
+document.querySelectorAll('.ph').forEach(p => p.addEventListener('click', () => openLb(p.querySelector('img'))));
+document.querySelectorAll('.more-photos img').forEach(i => i.addEventListener('click', () => openLb(i)));
 const close = () => { lb.hidden = true; lbImg.src = ''; };
 lb.addEventListener('click', e => { if (e.target !== lbImg) close(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) close(); });
