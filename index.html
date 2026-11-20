@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="style.css?v=20">
+<link rel="stylesheet" href="style.css?v=23">
 </head>
 <body>
 
@@ -54,11 +54,14 @@
     <p class="pg-label">PROGRAM<span>節目單</span></p>
     <h1><span class="pg-hi">嗨，我是</span><span class="name">徐專洧</span></h1>
     <p class="pg-en">HSU JUAN WEI　·　中原大學 智慧運算與大數據學士班</p>
+    <p class="pg-sub">今晚的節目　滑過去看看，點了看細節</p>
     <ol class="pg-list">
-      <li><a href="#works"><i>01</i>寫程式</a></li>
-      <li><a href="#timeline"><i>02</i>做硬體</a></li>
-      <li><a href="#stage"><i>03</i>跳舞</a></li>
-      <li><a href="#stage"><i>04</i>上台主持</a></li>
+      <li><button type="button" class="pg-item" data-img="img/mars-rover.jpg" data-find="火星任務"><img class="pg-thumb" src="img/mars-rover.jpg" alt="" loading="lazy"><i>01</i><span class="pg-t">火星車降落機<small>ESP32 自寫飛控＋相機找降落點</small></span><em>硬體</em></button></li>
+      <li><button type="button" class="pg-item" data-img="img/wordmemo-dark.jpg?v=3" data-find="WordMemo"><img class="pg-thumb" src="img/wordmemo-dark.jpg?v=3" alt="" loading="lazy"><i>02</i><span class="pg-t">WordMemo 單字記憶<small>上線中，老師可以開班出題</small></span><em>軟體</em></button></li>
+      <li><button type="button" class="pg-item" data-img="img/radar-dark.jpg?v=3" data-find="中原機會雷達"><img class="pg-thumb" src="img/radar-dark.jpg?v=3" alt="" loading="lazy"><i>03</i><span class="pg-t">中原機會雷達<small>每天整理 16 個公告來源</small></span><em>軟體</em></button></li>
+      <li><button type="button" class="pg-item" data-img="img/reel-drum.jpg" data-find="捲線器"><img class="pg-thumb" src="img/reel-drum.jpg" alt="" loading="lazy"><i>04</i><span class="pg-t">捲線器<small>自己設計棘輪和齒輪</small></span><em>硬體</em></button></li>
+      <li><button type="button" class="pg-item" data-img="img/esp32-car.jpg" data-find="ESP32 智慧陪伴小車"><img class="pg-thumb" src="img/esp32-car.jpg" alt="" loading="lazy"><i>05</i><span class="pg-t">ESP32 避障小車<small>無線遙控、超音波避障</small></span><em>硬體</em></button></li>
+      <li><button type="button" class="pg-item" data-img="img/dance-group.jpg" data-find="熱舞社"><img class="pg-thumb" src="img/dance-group.jpg" alt="" loading="lazy"><i>06</i><span class="pg-t">熱舞社成果發表會<small>場地跳票後另找場地辦完</small></span><em>舞台</em></button></li>
     </ol>
     <p class="pg-lede">習慣從自己卡住的問題出發，把想法做成看得見的東西</p>
     <div class="cue-line" aria-live="polite">
@@ -538,6 +541,6 @@
   <img alt="">
 </div>
 
-<script src="main.js?v=20"></script>
+<script src="main.js?v=22"></script>
 </body>
 </html>

@@ -226,7 +226,9 @@ if (fine && !calm) {
   });
 
   function frame(now) {
-    if (now - lastMove > 2600 && !calm) {                 // 閒置：追光燈在台上畫 8 字找人
+    if (st.classList.contains('showing')) {           // 正在介紹某件作品：燈打在舞台中央
+      tx = mobile ? W * 0.5 : W * 0.7; ty = mobile ? H * 0.22 : H * 0.48;
+    } else if (now - lastMove > 2600 && !calm) {                 // 閒置：追光燈在台上畫 8 字找人
       const t = (now - t0) / 1000;
       const cx = mobile ? W * 0.5 : W * 0.72, cy = mobile ? H * 0.25 : H * 0.5;
       tx = cx + Math.sin(t * 0.55) * W * (mobile ? 0.32 : 0.2);
@@ -234,7 +236,8 @@ if (fine && !calm) {
     }
     const k = calm ? 1 : 0.12;
     sx += (tx - sx) * k; sy += (ty - sy) * k;
-    R = mobile ? 120 : 170;
+    const showing = st.classList.contains('showing');
+    R += ((showing ? (mobile ? 170 : 300) : (mobile ? 120 : 170)) - R) * 0.12;
     st.style.setProperty('--x', sx + 'px'); st.style.setProperty('--y', sy + 'px'); st.style.setProperty('--r', R + 'px');
     // 光束：從舞台上方的燈打下來
     const lx = W * (mobile ? 0.5 : 0.62), ly = -40, ang = Math.atan2(sy - ly, sx - lx), px = Math.cos(ang + Math.PI / 2) * R * 0.9, py = Math.sin(ang + Math.PI / 2) * R * 0.9;
@@ -267,6 +270,41 @@ if (fine && !calm) {
   }
 
   st.addEventListener('click', e => { if (hot && e.target.closest('.program') == null) call(hot); });
+
+  // 節目單：滑過去，舞台換成那件作品；點了跳到詳細經歷
+  const photos = [...st.querySelectorAll('.st-photo')];
+  const base = photos[0].getAttribute('src');
+  let swapT = null, curSrc = base;
+  function showPhoto(src, pos) {
+    if (src === curSrc) return;
+    curSrc = src; clearTimeout(swapT);
+    st.classList.toggle('showing', src !== base);
+    st.classList.add('swapping');
+    swapT = setTimeout(() => {
+      photos.forEach(p => { p.src = src; p.style.objectPosition = pos; });
+      st.classList.remove('swapping');
+    }, 180);
+  }
+  const pgItems = [...st.querySelectorAll('.pg-item')];
+  pgItems.forEach(btn => {
+    const img = new Image(); img.src = btn.dataset.img;           // 先載好，換的時候不會閃
+    btn.addEventListener('mouseenter', () => {
+      pgItems.forEach(b => b.classList.toggle('on', b === btn));
+      showPhoto(btn.dataset.img, '50% 45%');
+    });
+    btn.addEventListener('focus', () => showPhoto(btn.dataset.img, '50% 45%'));
+    btn.addEventListener('click', () => {
+      const li = lis.find(l => (l.querySelector('h3')?.textContent || '').includes(btn.dataset.find));
+      if (!li) return;
+      const d = li.querySelector('details'); if (d) d.open = true;
+      li.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'center' });
+      li.classList.remove('flash'); void li.offsetWidth; li.classList.add('flash');
+    });
+  });
+  st.querySelector('.pg-list').addEventListener('mouseleave', () => {
+    pgItems.forEach(b => b.classList.remove('on'));
+    showPhoto(base, '');
+  });
   addEventListener('resize', layout);
   layout(); sx = tx = W * (mobile ? 0.55 : 0.62); sy = ty = H * (mobile ? 0.25 : 0.45);
   requestAnimationFrame(frame);
