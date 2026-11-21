@@ -480,3 +480,9 @@ summary:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var
 .vid img{width:100%;aspect-ratio:9/14;object-fit:cover;border-radius:4px;display:block;transition:transform .3s}
 .vid span{display:block;font-size:13px;margin-top:6px;line-height:1.4}
 .vid:hover img{transform:translateY(-3px)}
+/* 直式照片的主體在下方，裁切時往下對齊 */
+img[src*="esp32-car"]{object-position:50% 80%!important}
+img[src*="mars-rover"],img[src*="mars-field"]{object-position:50% 55%!important}
+/* 簡報、網站截圖是 16:9，不要裁；工程圖整張顯示 */
+.more-photos img[src*="defense-"],.more-photos img[src*="yb-"],.more-photos img[src*="wordmemo"],.more-photos img[src*="radar"],.more-photos img[src*="line-elf"],.more-photos img[src*="chess"]{aspect-ratio:16/9;object-position:50% 0}
+.more-photos img[src*="trc-xy"]{object-fit:contain;background:#fff;padding:6px}
