@@ -13,15 +13,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="style.css?v=32">
+<link rel="stylesheet" href="style.css?v=34">
 </head>
 <body>
-
-<div class="intro" aria-hidden="true">
-  <div class="count"><span>5</span><span>6</span><span>7</span><span>8</span></div>
-  <p class="count-sub">five, six, seven, eight</p>
-</div>
-<script>try{if(sessionStorage.getItem('introSeen')||matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('no-intro')}catch(e){}</script>
 
 <header class="bar">
   <a class="bar-name" href="#top">徐專洧</a>
@@ -43,7 +37,7 @@
 
 <main id="top">
 
-<section class="hero stage" aria-label="封面：舞台">
+<section class="hero stage lamp-off" aria-label="封面：舞台">
   <img class="st-photo st-dark" src="img/stage-solo.jpg" alt="">
   <div class="st-lit" aria-hidden="true"><img class="st-photo" src="img/stage-solo.jpg" alt=""></div>
   <svg class="st-beam" aria-hidden="true"><defs><linearGradient id="beamG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".0"/><stop offset="1" stop-color="#fff" stop-opacity=".16"/></linearGradient></defs><polygon fill="url(#beamG)"/></svg>
@@ -117,10 +111,10 @@
     <li data-c="stage"><details><summary>
       <div class="meta"><time>2026.11</time><span class="st st-now">進行中</span></div>
       <span class="thumb none"></span>
-      <div><h3>越南孫德勝大學（TDTU）國際交流</h3><p>錄取電資學士班的海外參訪，11 月 23 到 27 日在胡志明市。</p></div></summary>
+      <div><h3>越南孫德勝大學（TDTU）國際交流</h3><p>錄取電資學士班的海外參訪，到胡志明市交流。</p></div></summary>
       <div class="more">
-        <p>申請時寫了交流動機、我做過的影像辨識專案和剪片經驗。錄取之後補完行前資料，也跟學校請好公假和考試假。</p>
-        <p>申請書裡答應過回國後要交影音成果，到時候會放在 YouTube 作品集。</p>
+        <p>用我做過的影像辨識專案和剪片經驗申請，錄取電資學士班的海外參訪。</p>
+        <p>回國後會把交流過程剪成影片，放在 YouTube 作品集。</p>
       </div>
     </details></li>
 
@@ -139,7 +133,7 @@
       <div><h3>2026 火星任務　火星車降落競賽</h3><p>東海大學和科博館主辦。從零做出一台能降落的機體，最後完賽。</p></div></summary>
       <div class="more">
         <p>機體是 3D 列印的藍色框架。飛控是我們用 ESP32 自己寫的四軸飛控，再加一顆 ESP32 相機辨識地上的 AprilTag，讓機體自己找降落點。</p>
-        <p>降落要怎麼設計，是在機器人社課後和隊友一起討論出來的。比賽當天在體育館，最後完賽，沒有得獎。</p>
+        <p>降落方式是和隊友一起設計的，從零做到在比賽場上完賽。</p>
         <div class="more-photos">
           <img src="img/mars-rover.jpg" alt="完成的火星車機體" loading="lazy">
           <img src="img/mars-field.jpg" alt="機體在體育館比賽場地上" loading="lazy">
@@ -154,7 +148,7 @@
     <li data-c="contest build"><details><summary>
       <div class="meta"><time>2026.11</time><span class="st st-now">進行中</span></div>
       <span class="thumb none"></span>
-      <div><h3>全國智慧運算與量子資訊創新應用競賽</h3><p>想知道量子演算法 RQAOA 能不能在排程問題上贏過一般電腦。跑了 116 個題目，還沒贏。</p></div></summary>
+      <div><h3>全國智慧運算與量子資訊創新應用競賽</h3><p>比較量子演算法 RQAOA 和傳統方法，跑了 116 個題目，研究公開在 GitHub。</p></div></summary>
       <div class="more">
         <p>我想知道量子演算法 RQAOA 在真實的排程問題上，到底能不能贏過一般電腦的方法。試了汽車噴漆換色、MAX-k-CUT、三色問題、Wi-Fi 頻道規劃，總共 116 個題目。</p>
         <p>噴漆換色上，RQAOA 比一個專用的傳統方法好大約 12–14%；換成更強的禁忌搜尋，它就輸了。輸的原因我也整理成失敗分析。</p>
@@ -230,7 +224,7 @@
       <img class="thumb" src="img/reel-mk4.jpg" alt="" loading="lazy">
       <div><h3>捲線器</h3><p>我負責機構，用 Fusion 360 改了好幾版，最後自己設計棘輪和齒輪。</p></div></summary>
       <div class="more">
-        <p>每一版都換過配置和零件尺寸，也用 ESP32-C3 做了手機控制。買來的絞盤不會自己停，我就自己設計棘輪和齒輪換掉它：捲筒旁邊加一片棘輪，棘爪卡住就能停在定點。現在的 Mk4 機構已經完成。</p>
+        <p>每一版都換過配置和零件尺寸，也用 ESP32-C3 做了手機控制。買來的絞盤不會自己停，我就自己設計棘輪和齒輪換掉它：捲筒旁邊加一片棘輪，棘爪卡住就能停在定點。現在的機構已經完成。</p>
         <div class="more-photos">
           <img src="img/reel-mk4.jpg" alt="捲線器 Mk4 整體機構" loading="lazy">
           <img src="img/reel-ratchet.jpg" alt="自己設計的棘輪和捲筒" loading="lazy">
@@ -245,7 +239,7 @@
       <div><h3>國防 AI 影像辨識競賽</h3><p>「破土重圓：從影像辨識到快速評估」，擔任隊長，和學長的團隊一起送件。</p></div></summary>
       <div class="more">
         <p>戰時機場跑道常是第一個被攻擊的目標，越快修好越能恢復起降。我們的想法分四步：無人機拍跑道、YOLO 找出彈坑（也拿路面坑洞當反例訓練，避免誤判）、用 3DGS 快速重建 3D 模型估算彈坑體積，最後由 AI 估算材料、人力並排修復順序。</p>
-        <p>驗證方式是用 Blender 模擬機場跑道受損。指導老師是陳永祥老師，10 月 13 日送件，現在等主辦通知。</p>
+        <p>驗證方式是用 Blender 模擬機場跑道受損。指導老師是陳永祥老師，10 月送件。</p>
         <div class="more-photos">
           <img src="img/defense-ai.jpg?v=2" alt="彈坑快修簡報封面" loading="lazy">
           <img src="img/defense-yolo.jpg?v=2" alt="讓 YOLO 學會區分彈坑" loading="lazy">
@@ -259,7 +253,7 @@
       <img class="thumb" src="img/cert-chuangtianxia.jpg" alt="" loading="lazy">
       <div><h3>桃園之星 × 創天下競賽「破土重圓」</h3><p>隊名「泥好」，永續淨零與綠色創新組。</p></div></summary>
       <div class="more">
-        <p>指導老師是陳永祥老師，題目是道路修復分析。送件當天才發現已經有類似的平台，細節寫在下面「沒成功的事」。</p>
+        <p>用影像辨識做道路修復分析，指導老師是陳永祥老師。</p>
         <div class="more-photos"><img src="img/cert-chuangtianxia.jpg" alt="2026 桃園之星 x 創天下競賽參賽證明" loading="lazy"></div>
       </div>
     </details></li>
@@ -327,7 +321,7 @@
       <div><h3>青年百億海外圓夢計畫</h3><p>海外翱翔組，進了面試，備取第 2。</p></div></summary>
       <div class="more">
         <p>計畫叫「矽谷引路：Google 圓夢領航員」：想去 Google 看 AGV 系統，去 UCLA 的 RoMeLa 和 URIL 實驗室看機器人和電腦視覺。</p>
-        <p>面試簡報用英文做，介紹我從社會組跨到電機、做過的單字網站和 ESP32 小車，也說好回來要把小車升級成有視覺和機械手臂的小型 AGV。最後備取第 2，沒去成。</p>
+        <p>面試簡報用英文做，介紹我從社會組跨到電機、做過的單字網站和 ESP32 小車，也說好回來要把小車升級成有視覺和機械手臂的小型 AGV。最後備取第 2。</p>
         <div class="more-photos">
           <img src="img/yb-who.jpg" alt="面試簡報：Who I Am" loading="lazy">
           <img src="img/yb-built.jpg" alt="面試簡報：What I've Built" loading="lazy">
@@ -414,7 +408,7 @@
         <h3>中原機會雷達</h3>
         <p><b>為什麼：</b>競賽、實習、獎學金的公告分散在學校十幾個網站。</p>
         <p><b>做了什麼：</b>每天自動抓這些公開來源，整理成能搜尋的列表和截止時間表，可以收藏。跟 AI 講自己的興趣和經驗，它會從公告裡挑適合的推薦。架在 Cloudflare。</p>
-        <p><b>現在：</b>上線中，來源和功能還在修。</p>
+        <p><b>現在：</b>上線中，持續更新。</p>
         <p class="work-links"><a href="https://cycu-radar-app.johnny970120.workers.dev" target="_blank" rel="noopener">打開網站 ↗</a></p>
       </div>
     </article>
@@ -494,14 +488,9 @@
       <p class="miss-learn"><b>後來：</b>沒等出國，我直接開始做短影音，從選題、拍攝、剪輯到發布一路練。</p>
     </article>
     <article class="miss">
-      <p class="miss-what">創天下競賽<em>截止當天才發現撞題</em></p>
-      <p>送件那天我才查到，我們想做的道路修復分析，桃園已經有在用的平台，也有營造公司做 AI 鋪面檢測。</p>
-      <p class="miss-learn"><b>後來：</b>當天找組員討論要不要換題，最後用原本的題目送出。</p>
-    </article>
-    <article class="miss">
       <p class="miss-what">量子競賽<em>到現在還沒找到量子贏的地方</em></p>
       <p>噴漆換色排程上，RQAOA 比一個專用的傳統方法好了大約 12–14%。換成一般電腦上更強的禁忌搜尋，它就輸了。三色問題、Wi-Fi 頻道規劃也試過，都沒有。</p>
-      <p class="miss-learn"><b>後來：</b>轉去設計一個網站，幫人先檢查自己的問題適不適合用 RQAOA。最終題目還沒定。</p>
+      <p class="miss-learn"><b>後來：</b>把比較結果和失敗原因整理成報告，另外做了「量子適用性健檢」，幫人先檢查自己的問題適不適合用量子方法。</p>
     </article>
     <article class="miss">
       <p class="miss-what">捲線器<em>買來的絞盤不會自己停</em></p>
@@ -562,6 +551,6 @@
   <img alt="">
 </div>
 
-<script src="main.js?v=25"></script>
+<script src="main.js?v=28"></script>
 </body>
 </html>

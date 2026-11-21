@@ -68,20 +68,13 @@ document.querySelector('.theme-btn')?.addEventListener('click', () => {
 darkMQ.addEventListener?.('change', applyTheme);
 applyTheme();
 
-// ---------- 開場：5、6、7、8，第 8 拍燈亮 ----------
-const intro = document.querySelector('.intro');
-if (intro && !document.documentElement.classList.contains('no-intro')) {
-  document.body.style.overflow = 'hidden';
-  const open = () => {
-    if (intro.classList.contains('open')) return;
-    intro.classList.add('open');
-    document.body.style.overflow = '';
-    try { sessionStorage.setItem('introSeen', '1'); } catch (e) {}
-    setTimeout(() => intro.remove(), 750);
-  };
-  setTimeout(open, 1750);
-  intro.addEventListener('click', open);
-}
+// ---------- 開場：舞台燈閃兩下後亮起 ----------
+(() => {
+  const st = document.querySelector('.hero.stage');
+  if (!st) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { st.classList.remove('lamp-off'); return; }
+  setTimeout(() => { st.classList.remove('lamp-off'); st.classList.add('lamp-on'); }, 350);
+})();
 
 const fine = matchMedia('(pointer: fine)').matches;
 const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -174,17 +167,29 @@ if (fine && !calm) {
   let saved = [];
   try { saved = JSON.parse(localStorage.getItem('cueFound') || '[]'); } catch (e) {}
 
-  // 手繪小圖形：每段經歷一個，線條故意不太規則
-  const DOODLES = [
-    'M12 2.6 L14.4 9.3 L21.4 9.1 L15.9 13.6 L18.3 20.6 L12.2 16.4 L6.1 20.8 L8.1 13.8 L2.6 9.7 L9.6 9.1 Z',
-    'M12 2.2 C12.6 8.1 13.2 10.9 21.2 12 C13.3 12.9 12.7 15.1 12.1 21.8 C11.4 15.3 10.7 12.8 2.8 12.2 C10.8 11.1 11.4 8.4 12 2.2 Z',
-    'M12.6 3.4 C6.2 3.1 2.9 8.6 4.3 13.7 C5.7 19 12.5 21.5 17.2 18.2 C21.2 15.3 20.9 8.3 16.3 5.1 C13.5 3.3 9.9 3.8 7.4 5.4',
-    'M8.6 18.6 C8.4 20.6 4.6 21.2 4.5 19 C4.4 17.1 7.8 16.2 8.6 17.4 L9 5.2 L18.8 3.4 L18.6 16.1 C18.4 18.1 14.7 18.7 14.5 16.6 C14.4 14.7 17.8 13.8 18.6 15 M9 8.6 L18.7 6.9',
-    'M12 12.2 C13.6 11.1 13.7 13.7 12 14.1 C9.8 14.6 9.2 11.2 11.4 10 C14.3 8.4 17 11.6 15.7 14.7 C14.1 18.2 8.6 18.1 7 14.4 C5.2 10.3 8.6 5.8 13.1 6.3 C17.7 6.8 20.4 11.5 19.1 15.7',
-    'M13.6 2.4 L6.4 13.3 L11.7 12.9 L9.7 21.6 L17.7 10.2 L12.3 10.7 L13.6 2.4 Z',
-    'M12 9.1 C10 4.1 14.6 3.4 13 8.9 C17.1 5.4 19.6 9.7 14.3 11.1 C19.1 13.1 16.4 17.3 13 13.7 C13.4 19.1 8.9 18.6 10.8 13.5 C6 15.7 4.8 11 9.8 10.7 C5.5 8 8.7 4.5 12 9.1 Z',
-    'M12 20.2 C5.1 15.1 2.7 11.3 4.5 7.6 C6.2 4.3 10.2 4.9 12 8.4 C13.9 4.7 18.1 4.2 19.7 7.7 C21.3 11.4 18.7 15.3 12 20.2 Z',
-  ];
+  // 手繪小圖形：依經歷內容配，線條故意不太規則
+  const D = {
+    star:   'M12 2.6 L14.4 9.3 L21.4 9.1 L15.9 13.6 L18.3 20.6 L12.2 16.4 L6.1 20.8 L8.1 13.8 L2.6 9.7 L9.6 9.1 Z',
+    note:   'M8.6 18.6 C8.4 20.6 4.6 21.2 4.5 19 C4.4 17.1 7.8 16.2 8.6 17.4 L9 5.2 L18.8 3.4 L18.6 16.1 C18.4 18.1 14.7 18.7 14.5 16.6 C14.4 14.7 17.8 13.8 18.6 15 M9 8.6 L18.7 6.9',
+    plane:  'M2.6 11.4 L21.3 3.2 L15.6 20.6 L11.3 13.2 Z M11.3 13.2 L21.3 3.2 M11.3 13.2 L10.6 18.9 L13.4 16.1',
+    planet: 'M12.2 6.4 C16 6.3 18.1 9.4 17.8 12.4 C17.4 15.8 14.6 17.9 11.6 17.6 C8.3 17.3 6.1 14.6 6.4 11.5 C6.7 8.6 9.1 6.5 12.2 6.4 Z M6.9 9.6 C2.1 10.6 1.4 13.4 4.6 14.1 C8 14.9 15.4 12.9 19.2 10.8 C22.4 9 21.9 7.3 17.6 7.9',
+    atom:   'M12 3.1 C15.1 3.3 16.1 8 15.6 12.4 C15 17.3 13.4 21 11.8 20.9 C9.2 20.8 8.2 15.9 8.6 11.4 C9 6.6 10.4 3 12 3.1 Z M3.6 8.1 C5.1 5.5 10.1 6.9 13.9 9.2 C18.2 11.8 21.4 15 20.5 16.4 C19.2 18.6 14.1 17.4 10 15 C5.7 12.5 2.6 9.6 3.6 8.1 Z M12 11.4 L12.2 12.6',
+    gear:   'M12 8.6 C14 8.5 15.5 10.1 15.4 12.1 C15.3 14 13.8 15.4 11.9 15.4 C10 15.3 8.6 13.8 8.6 11.9 C8.7 10 10.1 8.6 12 8.6 Z M11.1 2.9 L12.9 3 L13.3 5.6 L15.7 6.6 L17.8 5 L19.1 6.3 L17.6 8.5 L18.5 10.8 L21.1 11.2 L21 13 L18.4 13.5 L17.4 15.8 L18.9 17.9 L17.6 19.2 L15.5 17.7 L13.2 18.6 L12.8 21.2 L11 21.1 L10.6 18.5 L8.3 17.5 L6.2 19 L4.9 17.6 L6.4 15.6 L5.5 13.3 L2.9 12.8 L3 11 L5.6 10.6 L6.5 8.3 L5.1 6.2 L6.4 4.9 L8.5 6.4 L10.7 5.5 Z',
+    book:   'M12 6.2 C9.5 4.6 6.1 4.4 3.2 5 L3.4 18.8 C6.3 18.2 9.6 18.5 12 20 C14.4 18.4 17.8 18.1 20.7 18.7 L20.6 4.9 C17.8 4.3 14.4 4.6 12 6.2 Z M12 6.2 L12 20',
+    radar:  'M4.3 19.6 C3.1 12 7.9 5.1 15.2 4 M7.6 19.4 C7 14.2 10.4 9.2 15.4 8.4 M11 19.3 C10.9 16.2 12.9 13.5 15.6 12.9 M3.4 20.1 L20.6 19.8 M15.6 12.9 L18.4 10.1',
+    bulb:   'M12 2.8 C15.9 2.9 18.3 5.7 18.1 8.9 C17.9 11.6 16 12.9 15.3 14.9 L8.9 15 C8.1 13 6.1 11.8 5.9 9 C5.7 5.6 8.3 2.7 12 2.8 Z M9.2 17.6 L14.9 17.5 M10 20.4 L14.1 20.3 M12 15 L11.9 10.6 L10.2 8.8 M11.9 10.6 L13.8 8.9',
+    flag:   'M5.2 21.4 L5.6 3 M5.6 4.1 C9.1 2 12.2 6.5 15.6 4.6 C17.2 3.8 18.6 3.6 19.6 4.1 L19.3 12.4 C16.4 11.2 13.6 14.6 10.1 13.1 C8.1 12.2 6.8 12.3 5.5 13',
+    eye:    'M2.4 12.1 C5.6 6.6 10.4 5.1 14.2 5.7 C17.4 6.2 20 8.4 21.6 11.8 C18.6 17.2 13.6 18.9 9.6 18.2 C6.4 17.6 4 15.4 2.4 12.1 Z M12 9.1 C13.8 9 15 10.4 14.9 12.1 C14.8 13.7 13.5 14.9 11.9 14.8 C10.3 14.7 9.1 13.4 9.2 11.9 C9.3 10.3 10.5 9.1 12 9.1 Z',
+    pencil: 'M15.6 3.6 L20.4 8.3 L8.6 20.2 L3.2 21 L3.9 15.5 Z M13.4 5.9 L18.1 10.5 M3.9 15.5 L8.6 20.2',
+    play:   'M4.1 5.3 L19.8 5.1 L20 18.8 L4 19 Z M10 8.9 L15.6 12 L10.1 15.3 Z M4.1 8.4 L6.4 8.4 M4 15.6 L6.3 15.6 M17.7 8.3 L19.9 8.3 M17.8 15.5 L20 15.5',
+    bubble: 'M4.2 5.1 C9.4 3.6 15.2 3.6 19.8 5.3 C21.2 8.6 21 12.2 19.7 15.1 C16.4 16.3 13.2 16.5 10.1 16.2 L5.6 20.4 L6.3 15.6 C4.8 15.1 3.6 14.6 3.4 13.8 C2.6 11 2.9 7.8 4.2 5.1 Z',
+    heart:  'M12 20.2 C5.1 15.1 2.7 11.3 4.5 7.6 C6.2 4.3 10.2 4.9 12 8.4 C13.9 4.7 18.1 4.2 19.7 7.7 C21.3 11.4 18.7 15.3 12 20.2 Z',
+    sparkle:'M12 2.2 C12.6 8.1 13.2 10.9 21.2 12 C13.3 12.9 12.7 15.1 12.1 21.8 C11.4 15.3 10.7 12.8 2.8 12.2 C10.8 11.1 11.4 8.4 12 2.2 Z',
+  };
+  const PICK = [['越南','plane'],['職涯','star'],['火星','planet'],['量子','atom'],['TRC','gear'],['WordMemo','book'],['機會雷達','radar'],['NUVA','bulb'],
+    ['學生會','flag'],['捲線器','gear'],['國防','eye'],['創天下','bulb'],['班代','flag'],['ESP32','gear'],['Fusion','gear'],['單字網站','book'],
+    ['跨考','pencil'],['青年百億','plane'],['影片','play'],['熱舞社','note'],['丹麥','bubble'],['英文簡報','bubble']];
+  const shapeFor = t => D[(PICK.find(([k]) => t.includes(k)) || [0, 'sparkle'])[1]];
   const items = lis.map((li, i) => {
     const title = li.querySelector('h3')?.textContent.trim() || '';
     const SHORT = { '越南':'TDTU 交流', '職涯探索':'職涯探索佳作', '火星':'火星車競賽', '全國智慧運算':'量子競賽', 'TRC':'TRC 競賽', 'WordMemo':'WordMemo', '中原機會雷達':'機會雷達', 'NUVA':'NUVA 大使', '學生會':'學生會公關部', '捲線器':'捲線器', '國防':'國防 AI 競賽', '桃園之星':'創天下競賽', '班代':'班代', 'ESP32':'ESP32 小車', 'Fusion':'3D 列印', 'AI 英文單字':'單字網站', '社會組跨考':'跨考自然組', '青年百億':'青年百億', '活動影片':'影片剪輯', '熱舞社':'熱舞社幹部', '丹麥':'丹麥交流主持', '班級英文簡報':'英文簡報' };
@@ -192,7 +197,7 @@ if (fine && !calm) {
     const short = key ? SHORT[key] : title.replace(/^2026\s*/, '').split(/[　、（]/)[0];
     const b = document.createElement('button');
     b.type = 'button'; b.className = 'prop';
-    b.innerHTML = `<svg class="doodle" viewBox="0 0 24 24" aria-hidden="true"><path d="${DOODLES[i % DOODLES.length]}"/></svg><span></span><b></b>`;
+    b.innerHTML = `<svg class="doodle" viewBox="0 0 24 24" aria-hidden="true"><path d="${shapeFor(li.querySelector('h3')?.textContent || '')}"/></svg><span></span><b></b>`;
     b.querySelector('span').textContent = li.querySelector('time')?.textContent.trim() || '';
     b.querySelector('b').textContent = short;
     b.setAttribute('aria-label', title);
@@ -208,29 +213,48 @@ if (fine && !calm) {
 
   // 把經歷散在舞台上：桌機放右半邊，手機放在照片那一塊
   let W = 0, H = 0, mobile = false;
+  // 散開擺放：位置隨機但固定（同一個種子），放之前先檢查不會碰到別人和節目單
+  function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
   function layout() {
     W = st.clientWidth; mobile = W < 900;
     const program = st.querySelector('.program');
-    const cols = mobile ? 3 : 5, rows = Math.ceil(n / cols);
-    let x0, colW, y0, rowH;
-    if (mobile) {
-      // 手機：每格固定高度，照片區撐到放得下全部，絕對不重疊
-      rowH = 92; y0 = 28; x0 = 12; colW = (W - 24) / cols;
-      program.style.paddingTop = (y0 + rowH * (rows + 0.5) + 24) + 'px';
-    } else {
-      program.style.paddingTop = '';
-      H = st.clientHeight;
-      x0 = W * 0.47; colW = (W * 0.97 - x0) / cols;
-      y0 = H * 0.08; rowH = (H * 0.86) / (rows + 0.5);
+    program.style.paddingTop = ''; st.style.minHeight = '';
+    // 先量每個標籤的大小（用最大的狀態量，日期也算進去）
+    items.forEach(it => { it.el.style.width = 'auto'; it.el.classList.add('measure'); });
+    const sizes = items.map(it => { const r = it.el.getBoundingClientRect(); return [Math.ceil(r.width) + 14, Math.ceil(r.height) + 12]; });
+    items.forEach(it => it.el.classList.remove('measure'));
+    const sb = st.getBoundingClientRect();
+    const blocks = mobile ? [] : [...program.children].map(e => { const r = e.getBoundingClientRect(); return [r.left - sb.left - 20, r.top - sb.top - 10, r.right - sb.left + 20, r.bottom - sb.top + 10]; });
+    let x0, x1, y0, y1;
+    if (mobile) { x0 = 8; x1 = W - 8; y0 = 20; y1 = Math.max(innerHeight * 0.62, 460); }
+    else { H = st.clientHeight; x0 = W * 0.46; x1 = W - 16; y0 = H * 0.06; y1 = H * 0.95; }
+    let placedOk = false;
+    for (let attempt = 0; attempt < 24; attempt++) {
+      const rand = rng(20261121 + attempt), placed = []; let ok = true;
+      for (let i = 0; i < n && ok; i++) {
+        const [w, h] = sizes[i]; let done = false;
+        for (let k = 0; k < 600 && !done; k++) {
+          const x = x0 + w / 2 + rand() * Math.max(1, x1 - x0 - w), y = y0 + h / 2 + rand() * Math.max(1, y1 - y0 - h);
+          const box = [x - w / 2, y - h / 2, x + w / 2, y + h / 2];
+          const hit = a => box[0] < a[2] && a[0] < box[2] && box[1] < a[3] && a[1] < box[3];
+          if (placed.some(p => hit(p.box)) || blocks.some(hit)) continue;
+          placed.push({ i, x, y, box }); done = true;
+        }
+        if (!done) ok = false;
+      }
+      if (ok) { placed.forEach(p => { const it = items[p.i]; it.x = p.x; it.y = p.y; }); placedOk = true; break; }
+      y1 += 80;                                   // 放不下就把舞台拉長一點再試
+      if (!mobile) st.style.minHeight = (y1 + 30) + 'px';
     }
+    if (!placedOk) {                               // 保險：真的放不下就排成不重疊的格子
+      const cols = mobile ? 3 : 4, cw = (x1 - x0) / cols, rh = Math.max(...sizes.map(s => s[1]));
+      items.forEach((it, i) => { it.x = x0 + cw * (i % cols + 0.5); it.y = y0 + rh * (Math.floor(i / cols) + 0.5); });
+      y1 = y0 + rh * Math.ceil(n / cols);
+      if (!mobile) st.style.minHeight = (y1 + 30) + 'px';
+    }
+    if (mobile) program.style.paddingTop = (y1 + 28) + 'px';
     H = st.clientHeight;
-    items.forEach((it, i) => {
-      const c = i % cols, r = Math.floor(i / cols);
-      it.x = x0 + colW * (c + 0.5);
-      it.y = y0 + rowH * (r + 0.5) + (c % 2 ? rowH / 2 : 0);   // 單數欄往下錯半格，看起來不呆板
-      it.el.style.left = it.x + 'px'; it.el.style.top = it.y + 'px';
-      it.el.style.width = (colW - 6) + 'px';
-    });
+    items.forEach(it => { it.el.style.left = it.x + 'px'; it.el.style.top = it.y + 'px'; it.el.style.width = ''; });
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   }
 

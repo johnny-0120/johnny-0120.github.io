@@ -510,3 +510,22 @@ time,.pg-label,.pg-en,.prop span,.sec-title span,.facts dt,.contact-list span,.c
 .prop .doodle{display:block;width:28px;height:28px;margin:0 auto 4px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transform:rotate(var(--rot,0deg))}
 .prop.got .doodle{fill:currentColor;fill-opacity:.35;filter:drop-shadow(0 0 6px currentColor)}
 .prop b{white-space:normal;line-height:1.3}
+
+/* 量尺寸用：暫時顯示日期 */
+.prop.measure span{max-height:2em;transition:none}
+.prop b{white-space:nowrap}
+
+/* 開場：追光燈像真的燈泡一樣閃兩下才亮，節目單接著淡入 */
+.stage.lamp-off .st-lit,.stage.lamp-off .st-beam,.stage.lamp-off .props{opacity:0}
+.stage.lamp-off .program > *{opacity:0;transform:translateY(10px)}
+.stage.lamp-on .st-lit,.stage.lamp-on .st-beam{animation:lamp 1.1s steps(1,end) both}
+@keyframes lamp{0%{opacity:0}12%{opacity:.8}20%{opacity:.1}34%{opacity:1}42%{opacity:.25}55%{opacity:1}100%{opacity:1}}
+.stage.lamp-on .props{animation:fadeIn .6s .9s both}
+.stage .program > *{transition:opacity .6s ease,transform .6s ease}
+.stage.lamp-on .program > *{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+.stage.lamp-on .program > :nth-child(1){animation-delay:.7s}.stage.lamp-on .program > :nth-child(2){animation-delay:.8s}
+.stage.lamp-on .program > :nth-child(3){animation-delay:.9s}.stage.lamp-on .program > :nth-child(4){animation-delay:1s}
+.stage.lamp-on .program > :nth-child(5){animation-delay:1.05s}.stage.lamp-on .program > :nth-child(6){animation-delay:1.1s}
+.stage.lamp-on .program > :nth-child(n+7){animation-delay:1.15s}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.stage.lamp-on .st-lit,.stage.lamp-on .st-beam,.stage.lamp-on .props,.stage.lamp-on .program > *{animation:none}}
