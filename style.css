@@ -503,3 +503,10 @@ time,.pg-label,.pg-en,.prop span,.sec-title span,.facts dt,.contact-list span,.c
 .prop i::after{transform:rotate(-47deg)}
 .prop.got i{background:none}
 .prop.got i::before,.prop.got i::after{opacity:1;box-shadow:0 0 10px currentColor}
+
+/* ---------- 經歷記號：手繪小圖形（取代叉叉） ---------- */
+.prop{transform:translate(-50%,-50%);box-sizing:border-box}
+.prop i{display:none}
+.prop .doodle{display:block;width:28px;height:28px;margin:0 auto 4px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transform:rotate(var(--rot,0deg))}
+.prop.got .doodle{fill:currentColor;fill-opacity:.35;filter:drop-shadow(0 0 6px currentColor)}
+.prop b{white-space:normal;line-height:1.3}

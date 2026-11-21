@@ -174,6 +174,17 @@ if (fine && !calm) {
   let saved = [];
   try { saved = JSON.parse(localStorage.getItem('cueFound') || '[]'); } catch (e) {}
 
+  // 手繪小圖形：每段經歷一個，線條故意不太規則
+  const DOODLES = [
+    'M12 2.6 L14.4 9.3 L21.4 9.1 L15.9 13.6 L18.3 20.6 L12.2 16.4 L6.1 20.8 L8.1 13.8 L2.6 9.7 L9.6 9.1 Z',
+    'M12 2.2 C12.6 8.1 13.2 10.9 21.2 12 C13.3 12.9 12.7 15.1 12.1 21.8 C11.4 15.3 10.7 12.8 2.8 12.2 C10.8 11.1 11.4 8.4 12 2.2 Z',
+    'M12.6 3.4 C6.2 3.1 2.9 8.6 4.3 13.7 C5.7 19 12.5 21.5 17.2 18.2 C21.2 15.3 20.9 8.3 16.3 5.1 C13.5 3.3 9.9 3.8 7.4 5.4',
+    'M8.6 18.6 C8.4 20.6 4.6 21.2 4.5 19 C4.4 17.1 7.8 16.2 8.6 17.4 L9 5.2 L18.8 3.4 L18.6 16.1 C18.4 18.1 14.7 18.7 14.5 16.6 C14.4 14.7 17.8 13.8 18.6 15 M9 8.6 L18.7 6.9',
+    'M12 12.2 C13.6 11.1 13.7 13.7 12 14.1 C9.8 14.6 9.2 11.2 11.4 10 C14.3 8.4 17 11.6 15.7 14.7 C14.1 18.2 8.6 18.1 7 14.4 C5.2 10.3 8.6 5.8 13.1 6.3 C17.7 6.8 20.4 11.5 19.1 15.7',
+    'M13.6 2.4 L6.4 13.3 L11.7 12.9 L9.7 21.6 L17.7 10.2 L12.3 10.7 L13.6 2.4 Z',
+    'M12 9.1 C10 4.1 14.6 3.4 13 8.9 C17.1 5.4 19.6 9.7 14.3 11.1 C19.1 13.1 16.4 17.3 13 13.7 C13.4 19.1 8.9 18.6 10.8 13.5 C6 15.7 4.8 11 9.8 10.7 C5.5 8 8.7 4.5 12 9.1 Z',
+    'M12 20.2 C5.1 15.1 2.7 11.3 4.5 7.6 C6.2 4.3 10.2 4.9 12 8.4 C13.9 4.7 18.1 4.2 19.7 7.7 C21.3 11.4 18.7 15.3 12 20.2 Z',
+  ];
   const items = lis.map((li, i) => {
     const title = li.querySelector('h3')?.textContent.trim() || '';
     const SHORT = { '越南':'TDTU 交流', '職涯探索':'職涯探索佳作', '火星':'火星車競賽', '全國智慧運算':'量子競賽', 'TRC':'TRC 競賽', 'WordMemo':'WordMemo', '中原機會雷達':'機會雷達', 'NUVA':'NUVA 大使', '學生會':'學生會公關部', '捲線器':'捲線器', '國防':'國防 AI 競賽', '桃園之星':'創天下競賽', '班代':'班代', 'ESP32':'ESP32 小車', 'Fusion':'3D 列印', 'AI 英文單字':'單字網站', '社會組跨考':'跨考自然組', '青年百億':'青年百億', '活動影片':'影片剪輯', '熱舞社':'熱舞社幹部', '丹麥':'丹麥交流主持', '班級英文簡報':'英文簡報' };
@@ -181,7 +192,7 @@ if (fine && !calm) {
     const short = key ? SHORT[key] : title.replace(/^2026\s*/, '').split(/[　、（]/)[0];
     const b = document.createElement('button');
     b.type = 'button'; b.className = 'prop';
-    b.innerHTML = `<i></i><span></span><b></b>`;
+    b.innerHTML = `<svg class="doodle" viewBox="0 0 24 24" aria-hidden="true"><path d="${DOODLES[i % DOODLES.length]}"/></svg><span></span><b></b>`;
     b.querySelector('span').textContent = li.querySelector('time')?.textContent.trim() || '';
     b.querySelector('b').textContent = short;
     b.setAttribute('aria-label', title);
@@ -198,17 +209,27 @@ if (fine && !calm) {
   // 把經歷散在舞台上：桌機放右半邊，手機放在照片那一塊
   let W = 0, H = 0, mobile = false;
   function layout() {
-    W = st.clientWidth; H = st.clientHeight; mobile = W < 900;
-    const x0 = mobile ? 0.06 : 0.47, x1 = mobile ? 0.94 : 0.97;
-    const y0 = mobile ? 0.04 : 0.1, y1 = mobile ? Math.min(0.5, (innerHeight * 0.58) / H) : 0.92;
+    W = st.clientWidth; mobile = W < 900;
+    const program = st.querySelector('.program');
     const cols = mobile ? 3 : 5, rows = Math.ceil(n / cols);
+    let x0, colW, y0, rowH;
+    if (mobile) {
+      // 手機：每格固定高度，照片區撐到放得下全部，絕對不重疊
+      rowH = 92; y0 = 28; x0 = 12; colW = (W - 24) / cols;
+      program.style.paddingTop = (y0 + rowH * (rows + 0.5) + 24) + 'px';
+    } else {
+      program.style.paddingTop = '';
+      H = st.clientHeight;
+      x0 = W * 0.47; colW = (W * 0.97 - x0) / cols;
+      y0 = H * 0.08; rowH = (H * 0.86) / (rows + 0.5);
+    }
+    H = st.clientHeight;
     items.forEach((it, i) => {
       const c = i % cols, r = Math.floor(i / cols);
-      const J = mobile ? 0.12 : 0.35, jx = ((i * 0.618) % 1 - 0.5) * J, jy = ((i * 0.381) % 1 - 0.5) * J;
-      it.x = (x0 + (x1 - x0) * ((c + 0.5 + jx) / cols)) * W;
-      it.y = (y0 + (y1 - y0) * ((r + 0.5 + jy) / rows)) * H;
-      it.x = Math.max(56, Math.min(W - 56, it.x));
+      it.x = x0 + colW * (c + 0.5);
+      it.y = y0 + rowH * (r + 0.5) + (c % 2 ? rowH / 2 : 0);   // 單數欄往下錯半格，看起來不呆板
       it.el.style.left = it.x + 'px'; it.el.style.top = it.y + 'px';
+      it.el.style.width = (colW - 6) + 'px';
     });
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   }
