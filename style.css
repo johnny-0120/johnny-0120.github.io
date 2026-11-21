@@ -1,3 +1,6 @@
+@font-face{font-family:"GenWanMin";src:url(fonts/wan-sb.woff2) format("woff2");font-weight:400 900;font-display:swap}
+@font-face{font-family:"GenSeki";src:url(fonts/seki-r.woff2) format("woff2");font-weight:300 449;font-display:swap}
+@font-face{font-family:"GenSeki";src:url(fonts/seki-m.woff2) format("woff2");font-weight:450 900;font-display:swap}
 :root{
   --bg:#EDF4FC;
   --paper:#F7FAFE;
@@ -11,9 +14,9 @@
   --panel:#1B2C45;
   --lav:#B7AED6;
   --warm:#B5654A;
-  --serif:"LXGW WenKai TC",serif;
-  --sans:"LXGW WenKai TC",system-ui,sans-serif;
-  --mono:"Cormorant Garamond","LXGW WenKai TC",serif;
+  --serif:"GenWanMin","Noto Serif TC",serif;
+  --sans:"GenSeki","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --mono:"GenSeki","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
   --w:1120px;
   --accent:#516D98;
   --on-ink:#FFFFFF;
@@ -529,3 +532,27 @@ time,.pg-label,.pg-en,.prop span,.sec-title span,.facts dt,.contact-list span,.c
 .stage.lamp-on .program > :nth-child(n+7){animation-delay:1.15s}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.stage.lamp-on .st-lit,.stage.lamp-on .st-beam,.stage.lamp-on .props,.stage.lamp-on .program > *{animation:none}}
+
+/* ---------- 字型重整：源雲明體（標題）＋ 源石黑體（內文），拿掉斜體和誇張字距 ---------- */
+body{letter-spacing:.01em}
+time,.pg-label,.pg-en,.prop span,.sec-title span,.facts dt,.contact-list span,.cue-line .k,.cue-hint b,.pg-item i,.pg-item em,.kicker,.foot{font-style:normal}
+.tl time,.prop span,.cue-line .k,.cue-hint b,.pg-item i{font-size:inherit;font-weight:500;font-variant-numeric:tabular-nums}
+.tl time{font-size:13px;letter-spacing:.02em}
+.sec-title span{font-size:13px;letter-spacing:.02em;transform:translateY(-14px)}
+.sec-title span::after{content:""}
+.pg-label{font-family:var(--serif);font-size:15px;letter-spacing:.3em;color:#C9A979;margin-bottom:28px}
+.pg-label::after{background:#3A3226}
+.pg-hi{font-family:var(--sans);font-size:17px;font-weight:400;color:#A9AFBA;letter-spacing:.08em;margin-bottom:4px}
+.stage h1 .name{font-size:clamp(76px,9.5vw,132px);letter-spacing:.04em;line-height:1.05}
+.pg-en{font-size:12px;letter-spacing:.08em}
+.pg-item .pg-t{font-size:20px;letter-spacing:.02em}
+.pg-item i{font-size:12px;color:#C9A979}
+.pg-item em{font-size:11px;letter-spacing:.06em;border:0;padding:0;color:#7E8592}
+.pg-item:hover em,.pg-item.on em{border:0}
+.prop b{font-family:var(--serif);font-size:16px;letter-spacing:.02em}
+.prop span{font-size:11px;letter-spacing:.04em}
+.sec-title{letter-spacing:.04em}
+h3{letter-spacing:.02em}
+.tl h3,.work h3,.miss-what{font-family:var(--serif)}
+.cue-hint b{font-size:12px;letter-spacing:.12em}
+@media (max-width:900px){.stage h1 .name{font-size:68px}}

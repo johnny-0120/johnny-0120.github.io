@@ -42,3 +42,4 @@ Python・JavaScript・TypeScript・React・Cloudflare・n8n・ESP32・Fusion 360
 - **換照片**：照片在 `img/`，用同一個檔名覆蓋就好（JPG、長邊 1600px 左右），並把 `index.html` 裡那張圖網址後面的 `?v=` 數字加 1，手機才不會讀到舊圖。
 - **作品截圖**：有深色版的作品截圖叫 `名稱-dark.jpg`，網站切到深色模式時會自動換。
 - **加新經歷**：在 `index.html` 的經歷時間軸加一項；封面雷達會自動多一個亮點。
+- **字型**：標題用源雲明體、內文用源石黑體（ButTaiwan，SIL OFL）。為了網頁輕量，只打包網站用到的字；改了文字之後要跑一次 `python build_fonts.py` 重新產生 `fonts/`（原始字型放在 `../_fonts_src`）。
