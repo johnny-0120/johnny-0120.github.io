@@ -11,9 +11,9 @@
   --panel:#1B2C45;
   --lav:#B7AED6;
   --warm:#B5654A;
-  --serif:"Noto Serif TC",serif;
-  --sans:"Noto Sans TC",system-ui,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --serif:"LXGW WenKai TC",serif;
+  --sans:"LXGW WenKai TC",system-ui,sans-serif;
+  --mono:"Cormorant Garamond","LXGW WenKai TC",serif;
   --w:1120px;
   --accent:#516D98;
   --on-ink:#FFFFFF;
@@ -55,7 +55,7 @@ p{margin:0}
 /* top bar */
 .bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:24px;
   padding:14px max(16px,calc((100% - var(--w))/2));background:var(--bar-bg);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-.bar-name{font-family:var(--serif);font-weight:900;font-size:20px;text-decoration:none;letter-spacing:.08em}
+.bar-name{font-family:var(--serif);font-weight:700;font-size:20px;text-decoration:none;letter-spacing:.08em}
 .bar-nav{display:flex;gap:22px;font-size:15px;margin-left:auto}
 .bar-nav a{text-decoration:none;color:var(--ink-2);padding:2px 0;border-bottom:1.5px solid transparent}
 .bar-nav a:hover,.bar-nav a.active{color:var(--ink);border-color:var(--ink)}
@@ -68,7 +68,7 @@ section{padding:96px max(16px,calc((100% - var(--w))/2))}
 .kicker{font-family:var(--mono);font-size:13px;letter-spacing:.06em;color:var(--ink-2);margin-bottom:28px}
 .kicker .k2::before{content:"·";margin:0 .6em}
 .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(40px,6vw,72px);line-height:1.2;letter-spacing:.02em}
-.hero h1 .name{font-weight:900;font-size:1.3em;letter-spacing:.06em}
+.hero h1 .name{font-weight:700;font-size:1.3em;letter-spacing:.06em}
 .lede{margin-top:32px;font-size:19px;max-width:30em}
 .lede.small{margin-top:14px;font-size:16px;color:var(--ink-2)}
 .hero-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
@@ -82,7 +82,7 @@ section{padding:96px max(16px,calc((100% - var(--w))/2))}
 .hero-photo figcaption{margin-top:34px;font-size:13px;color:var(--ink-2);font-family:var(--mono)}
 
 /* section titles */
-.sec-title{font-family:var(--serif);font-weight:900;font-size:clamp(30px,4vw,44px);display:flex;align-items:baseline;gap:18px;margin-bottom:14px}
+.sec-title{font-family:var(--serif);font-weight:700;font-size:clamp(30px,4vw,44px);display:flex;align-items:baseline;gap:18px;margin-bottom:14px}
 .sec-title span{font-family:var(--mono);font-weight:400;font-size:14px;color:var(--ink-2);padding:2px 8px;border:1px solid currentColor;border-radius:99px;transform:translateY(-6px)}
 .sec-title.light{color:#EDF4FC}.sec-title.light span{color:var(--blue-soft)}
 .sec-note{color:var(--ink-2);margin-bottom:40px}
@@ -110,7 +110,7 @@ section{padding:96px max(16px,calc((100% - var(--w))/2))}
 .filters button:hover{border-color:var(--ink)}
 .filters button.on{background:var(--ink);border-color:var(--ink);color:var(--on-ink)}
 .tl{list-style:none;margin:0;padding:0}
-.tl-year{font-family:var(--serif);font-weight:900;font-size:20px;padding:36px 0 12px;color:var(--accent);border-bottom:2px solid var(--ink)}
+.tl-year{font-family:var(--serif);font-weight:700;font-size:20px;padding:36px 0 12px;color:var(--accent);border-bottom:2px solid var(--ink)}
 .tl-year:first-child{padding-top:0}
 .tl li[data-c]{border-bottom:1px solid var(--line)}
 .tl summary,.tl .row{display:grid;grid-template-columns:110px 84px 1fr;gap:22px;align-items:center;padding:18px 0;list-style:none}
@@ -289,7 +289,7 @@ section{padding:96px max(16px,calc((100% - var(--w))/2))}
 .no-intro .intro{display:none}
 .intro-top,.intro-bottom{position:absolute;left:0;right:0;height:50.5%;background:var(--night);transition:transform .9s cubic-bezier(.7,0,.2,1)}
 .intro-top{top:0}.intro-bottom{bottom:0}
-.intro-name{position:relative;z-index:1;display:flex;gap:.08em;font-family:var(--serif);font-weight:900;font-size:clamp(56px,11vw,140px);color:#EDF4FC;letter-spacing:.1em;transition:opacity .4s,transform .9s cubic-bezier(.7,0,.2,1)}
+.intro-name{position:relative;z-index:1;display:flex;gap:.08em;font-family:var(--serif);font-weight:700;font-size:clamp(56px,11vw,140px);color:#EDF4FC;letter-spacing:.1em;transition:opacity .4s,transform .9s cubic-bezier(.7,0,.2,1)}
 .intro-name span{display:inline-block;opacity:0;transform:translateY(40%);filter:blur(8px);animation:charIn .7s cubic-bezier(.2,.8,.2,1) forwards}
 .intro-name span:nth-child(2){animation-delay:.15s}.intro-name span:nth-child(3){animation-delay:.3s}
 @keyframes charIn{to{opacity:1;transform:none;filter:none}}
@@ -363,7 +363,7 @@ summary:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var
 .miss-list{grid-template-columns:1fr;gap:0;border-top:2px solid var(--ink)}
 .miss{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:28px 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:8px 48px;box-shadow:none!important;transform:none!important}
 .miss::before{display:none}
-.miss-what{grid-row:span 3;font-size:32px;line-height:1.4;font-weight:900}
+.miss-what{grid-row:span 3;font-size:32px;line-height:1.4;font-weight:700}
 .miss-what em{display:block;font-size:.72em;font-weight:600;margin-top:6px}
 .miss-learn{border-top:0;padding-top:0;margin-top:6px}
 
@@ -413,7 +413,7 @@ summary:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var
 .pg-label::after{content:"";flex:1;height:1px;background:#3A3226}
 .stage h1{font-family:var(--serif);line-height:1.1;margin-bottom:18px}
 .pg-hi{display:block;font-size:22px;font-weight:600;color:#B8C1CF;margin-bottom:10px;letter-spacing:.06em}
-.stage h1 .name{display:block;font-size:clamp(64px,8vw,104px);font-weight:900;letter-spacing:.08em;color:#FFF6E8}
+.stage h1 .name{display:block;font-size:clamp(64px,8vw,104px);font-weight:700;letter-spacing:.08em;color:#FFF6E8}
 .pg-en{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:#8F97A6;margin-bottom:34px}
 .pg-list{list-style:none;padding:0;margin:0 0 28px;border-top:1px solid #2A2620}
 .pg-list li{border-bottom:1px solid #2A2620}
@@ -432,7 +432,7 @@ summary:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var
 
 /* 開場：5、6、7、8 */
 .intro{background:#05070B;display:grid;place-items:center;align-content:center;gap:18px}
-.intro .count{display:flex;gap:.5em;font-family:var(--serif);font-weight:900;font-size:clamp(64px,12vw,150px);color:#FFF6E8;line-height:1}
+.intro .count{display:flex;gap:.5em;font-family:var(--serif);font-weight:700;font-size:clamp(64px,12vw,150px);color:#FFF6E8;line-height:1}
 .intro .count span{opacity:0;transform:translateY(.15em);animation:beat .32s cubic-bezier(.2,.8,.2,1) forwards}
 .intro .count span:nth-child(1){animation-delay:.15s}.intro .count span:nth-child(2){animation-delay:.5s}
 .intro .count span:nth-child(3){animation-delay:.85s}.intro .count span:nth-child(4){animation-delay:1.2s;color:#F2B880}
@@ -486,3 +486,20 @@ img[src*="mars-rover"],img[src*="mars-field"]{object-position:50% 55%!important}
 /* 簡報、網站截圖是 16:9，不要裁；工程圖整張顯示 */
 .more-photos img[src*="defense-"],.more-photos img[src*="yb-"],.more-photos img[src*="wordmemo"],.more-photos img[src*="radar"],.more-photos img[src*="line-elf"],.more-photos img[src*="chess"]{aspect-ratio:16/9;object-position:50% 0}
 .more-photos img[src*="trc-xy"]{object-fit:contain;background:#fff;padding:6px}
+
+/* ---------- 字型：霞鶩文楷＋Cormorant 斜體 ---------- */
+body{font-weight:400;letter-spacing:.02em}
+time,.pg-label,.pg-en,.prop span,.sec-title span,.facts dt,.contact-list span,.cue-line .k,.cue-hint b,.pg-item i,.pg-item em,.intro .count-sub,.kicker,.foot{font-style:italic}
+.tl time,.prop span,.cue-line .k,.cue-hint b,.pg-item i{font-size:1.12em;font-weight:600}
+.pg-label{font-size:15px;letter-spacing:.28em}
+.sec-title span{font-size:16px}
+.intro .count{font-family:"Cormorant Garamond",serif;font-weight:600;font-style:italic}
+.stage h1 .name{letter-spacing:.12em}
+
+/* ---------- 經歷記號：舞台上的定位膠帶 ---------- */
+.prop i{position:relative;width:20px;height:20px;margin:0 auto 4px;border:0;transform:none;background:none}
+.prop i::before,.prop i::after{content:"";position:absolute;left:0;top:8px;width:20px;height:4px;background:currentColor;border-radius:1px;opacity:.8}
+.prop i::before{transform:rotate(41deg)}
+.prop i::after{transform:rotate(-47deg)}
+.prop.got i{background:none}
+.prop.got i::before,.prop.got i::after{opacity:1;box-shadow:0 0 10px currentColor}

@@ -204,7 +204,7 @@ if (fine && !calm) {
     const cols = mobile ? 3 : 5, rows = Math.ceil(n / cols);
     items.forEach((it, i) => {
       const c = i % cols, r = Math.floor(i / cols);
-      const jx = ((i * 0.618) % 1 - 0.5) * 0.35, jy = ((i * 0.381) % 1 - 0.5) * 0.35;
+      const J = mobile ? 0.12 : 0.35, jx = ((i * 0.618) % 1 - 0.5) * J, jy = ((i * 0.381) % 1 - 0.5) * J;
       it.x = (x0 + (x1 - x0) * ((c + 0.5 + jx) / cols)) * W;
       it.y = (y0 + (y1 - y0) * ((r + 0.5 + jy) / rows)) * H;
       it.x = Math.max(56, Math.min(W - 56, it.x));
