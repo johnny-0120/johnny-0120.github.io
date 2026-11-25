@@ -574,3 +574,31 @@ a,a:hover{text-decoration:none}
 .cue-line .go,.scan-card .go{border-bottom:0!important;padding:0;font-weight:600;color:#FFF6E8}
 .cue-line .go:hover{color:#F2B880}
 .pg-item:hover .pg-t,.pg-item.on .pg-t{color:#FFF6E8}
+
+/* 中／英切換 */
+.lang-btn{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;border:1.5px solid var(--line);border-radius:99px;padding:3px 12px;margin-left:18px;letter-spacing:.04em}
+.lang-btn:hover{border-color:var(--ink)}
+.lang-btn + .theme-btn{margin-left:8px}
+@media (max-width:640px){.lang-btn{margin-left:0;margin-right:8px}.lang-btn + .theme-btn{margin-left:0}}
+/* 英文版：名字是拉丁字，字級和字距另外調 */
+html[lang="en"] .stage h1 .name{font-size:clamp(54px,6.6vw,92px);letter-spacing:.01em;line-height:1.02}
+html[lang="en"] .pg-hi{letter-spacing:.02em}
+html[lang="en"] .bar-name{letter-spacing:.02em}
+html[lang="en"] body{letter-spacing:0}
+@media (max-width:900px){html[lang="en"] .stage h1 .name{font-size:52px}}
+/* 英文版細節 */
+html[lang="en"] .program{max-width:520px}
+html[lang="en"] .stage h1 .name{font-size:clamp(50px,5.6vw,82px);white-space:nowrap}
+html[lang="en"] .pg-item small{max-height:3.4em}
+@media (max-width:900px){html[lang="en"] .stage h1 .name{font-size:clamp(40px,11.5vw,56px)}}
+@media (max-width:640px){
+  .theme-btn{padding:5px 8px}
+  .theme-btn .lbl{display:none}
+  .bar{flex-wrap:nowrap}
+  .bar.open{flex-wrap:wrap}
+  .bar-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .bar-right{flex-shrink:0}
+}
+html[lang="en"] .pg-label{letter-spacing:.06em}
+@media (max-width:640px){.bar-name{font-size:17px}.bar-right{gap:0}.lang-btn{padding:3px 10px}}
+@media (max-width:340px){.bar-name{font-size:15px}.lang-btn{padding:3px 8px;margin-right:6px}.menu-btn{padding:4px 10px}}

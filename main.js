@@ -1,3 +1,17 @@
+// 介面文字：中文版、英文版共用同一支程式
+const EN = (document.documentElement.lang || '').startsWith('en');
+const T = EN
+  ? { menu: 'Menu', close: 'Close', dark: 'Dark', light: 'Light', go: 'See this one ↓', all: 'You found them all. If you want to talk, the contact details are at the bottom.', more: 'Keep moving the light, there is more on stage.' }
+  : { menu: '選單', close: '關閉', dark: '深色', light: '淺色', go: '看這段經歷 ↓', all: '全部找到了。想聊聊的話，到最下面的聯絡區找我', more: '繼續移動燈光，台上還有別的' };
+
+// 中／英切換：保留現在看到的段落
+document.querySelectorAll('.lang-btn').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  const sec = [...document.querySelectorAll('main section[id]')].reverse().find(s => s.getBoundingClientRect().top < innerHeight * 0.4);
+  try { localStorage.setItem('lang', EN ? 'zh' : 'en'); } catch (err) {}
+  location.href = a.getAttribute('href') + (sec ? '#' + sec.id : '');
+}));
+
 // 經歷篩選
 const btns = document.querySelectorAll('.filters button');
 const items = document.querySelectorAll('.tl li[data-c]');
@@ -37,9 +51,9 @@ const bar = document.querySelector('.bar');
 const mb = document.querySelector('.menu-btn');
 mb.addEventListener('click', () => {
   const o = bar.classList.toggle('open');
-  mb.setAttribute('aria-expanded', o); mb.textContent = o ? '關閉' : '選單';
+  mb.setAttribute('aria-expanded', o); mb.textContent = o ? T.close : T.menu;
 });
-links.forEach(a => a.addEventListener('click', () => { bar.classList.remove('open'); mb.setAttribute('aria-expanded', false); mb.textContent = '選單'; }));
+links.forEach(a => a.addEventListener('click', () => { bar.classList.remove('open'); mb.setAttribute('aria-expanded', false); mb.textContent = T.menu; }));
 
 // ---------- 深色／淺色 ----------
 const theme = { ink: '23,36,58', acc: '81,109,152', dot: '145,174,210' };
@@ -57,7 +71,7 @@ function applyTheme() {
     if (img.getAttribute('src') !== want) img.setAttribute('src', want);
   });
   const lbl = document.querySelector('.theme-btn .lbl');
-  if (lbl) lbl.textContent = d ? '淺色' : '深色';
+  if (lbl) lbl.textContent = d ? T.light : T.dark;
 }
 document.querySelector('.theme-btn')?.addEventListener('click', () => {
   const next = isDark() ? 'light' : 'dark';
@@ -166,6 +180,7 @@ if (fine && !calm) {
   const n = lis.length;
   let saved = [];
   try { saved = JSON.parse(localStorage.getItem('cueFound') || '[]'); } catch (e) {}
+  const idOf = li => li.id || li.querySelector('h3')?.textContent.trim();
 
   // 手繪小圖形：依經歷內容配，線條故意不太規則
   const D = {
@@ -189,20 +204,20 @@ if (fine && !calm) {
   const PICK = [['越南','plane'],['職涯','star'],['火星','planet'],['量子','atom'],['TRC','gear'],['WordMemo','book'],['機會雷達','radar'],['NUVA','bulb'],
     ['學生會','flag'],['捲線器','gear'],['國防','eye'],['創天下','bulb'],['班代','flag'],['ESP32','gear'],['Fusion','gear'],['單字網站','book'],
     ['跨考','pencil'],['青年百億','plane'],['影片','play'],['熱舞社','note'],['丹麥','bubble'],['英文簡報','bubble']];
-  const shapeFor = t => D[(PICK.find(([k]) => t.includes(k)) || [0, 'sparkle'])[1]];
+  const shapeFor = (li, t) => D[li.dataset.shape] || D[(PICK.find(([k]) => t.includes(k)) || [0, 'sparkle'])[1]];
   const items = lis.map((li, i) => {
     const title = li.querySelector('h3')?.textContent.trim() || '';
     const SHORT = { '越南':'TDTU 交流', '職涯探索':'職涯探索佳作', '火星':'火星車競賽', '全國智慧運算':'量子競賽', 'TRC':'TRC 競賽', 'WordMemo':'WordMemo', '中原機會雷達':'機會雷達', 'NUVA':'NUVA 大使', '學生會':'學生會公關部', '捲線器':'捲線器', '國防':'國防 AI 競賽', '桃園之星':'創天下競賽', '班代':'班代', 'ESP32':'ESP32 小車', 'Fusion':'3D 列印', 'AI 英文單字':'單字網站', '社會組跨考':'跨考自然組', '青年百億':'青年百億', '活動影片':'影片剪輯', '熱舞社':'熱舞社幹部', '丹麥':'丹麥交流主持', '班級英文簡報':'英文簡報' };
     const key = Object.keys(SHORT).find(k => title.includes(k));
-    const short = key ? SHORT[key] : title.replace(/^2026\s*/, '').split(/[　、（]/)[0];
+    const short = li.dataset.short || (key ? SHORT[key] : title.replace(/^2026\s*/, '').split(/[　、（]/)[0]);
     const b = document.createElement('button');
     b.type = 'button'; b.className = 'prop';
-    b.innerHTML = `<svg class="doodle" viewBox="0 0 24 24" aria-hidden="true"><path d="${shapeFor(li.querySelector('h3')?.textContent || '')}"/></svg><span></span><b></b>`;
+    b.innerHTML = `<svg class="doodle" viewBox="0 0 24 24" aria-hidden="true"><path d="${shapeFor(li, title)}"/></svg><span></span><b></b>`;
     b.querySelector('span').textContent = li.querySelector('time')?.textContent.trim() || '';
     b.querySelector('b').textContent = short;
     b.setAttribute('aria-label', title);
     propsBox.appendChild(b);
-    const it = { li, el: b, title, time: b.querySelector('span').textContent, desc: li.querySelector('h3 + p')?.textContent.trim() || '', st: li.querySelector('.st')?.outerHTML || '', got: saved.includes(title), x: 0, y: 0, lit: 0 };
+    const it = { li, el: b, title, time: b.querySelector('span').textContent, desc: li.querySelector('h3 + p')?.textContent.trim() || '', st: li.querySelector('.st')?.outerHTML || '', got: saved.includes(idOf(li)) || saved.includes(title), x: 0, y: 0, lit: 0 };
     if (it.got) b.classList.add('got');
     b.addEventListener('click', e => { e.stopPropagation(); if (it.lit > 0.5 || it.got) call(it); else aim(it.x, it.y); });
     return it;
@@ -300,11 +315,11 @@ if (fine && !calm) {
 
   function call(it) {
     it.got = true; it.el.classList.add('got');
-    try { localStorage.setItem('cueFound', JSON.stringify(items.filter(i => i.got).map(i => i.title))); } catch (e) {}
+    try { localStorage.setItem('cueFound', JSON.stringify(items.filter(i => i.got).map(i => idOf(i.li)))); } catch (e) {}
     const got = items.filter(i => i.got).length;
     line.classList.remove('pop'); void line.offsetWidth; line.classList.add('pop');
-    line.innerHTML = `<p class="k">CUE ${String(got).padStart(2, '0')} / ${String(n).padStart(2, '0')}　${it.time}</p><h3></h3><p class="d"></p><button class="go" type="button">看這段經歷 ↓</button>
-      <p class="again">${got === n ? '全部找到了。想聊聊的話，到最下面的聯絡區找我' : '繼續移動燈光，台上還有別的'}</p>`;
+    line.innerHTML = `<p class="k">CUE ${String(got).padStart(2, '0')} / ${String(n).padStart(2, '0')}　${it.time}</p><h3></h3><p class="d"></p><button class="go" type="button">${T.go}</button>
+      <p class="again">${got === n ? T.all : T.more}</p>`;
     line.querySelector('h3').textContent = it.title;
     line.querySelector('.d').textContent = it.desc;
     line.querySelector('.go').addEventListener('click', () => {
@@ -339,7 +354,7 @@ if (fine && !calm) {
     });
     btn.addEventListener('focus', () => showPhoto(btn.dataset.img, '50% 45%'));
     btn.addEventListener('click', () => {
-      const li = lis.find(l => (l.querySelector('h3')?.textContent || '').includes(btn.dataset.find));
+      const li = document.querySelector(btn.dataset.target);
       if (!li) return;
       const d = li.querySelector('details'); if (d) d.open = true;
       li.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'center' });
@@ -352,5 +367,8 @@ if (fine && !calm) {
   });
   addEventListener('resize', layout);
   layout(); sx = tx = W * (mobile ? 0.55 : 0.62); sy = ty = H * (mobile ? 0.25 : 0.45);
+  // 舞台排完之後高度可能變了，網址有 #段落 的話再對準一次（中英切換時用得到）
+  const reHash = () => { const t = location.hash && document.querySelector(location.hash); if (t) t.scrollIntoView({ behavior: 'auto' }); };
+  reHash(); addEventListener('load', reHash, { once: true });
   requestAnimationFrame(frame);
 })();

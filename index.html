@@ -11,7 +11,9 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2317243A'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23EDF4FC' font-family='serif'>洧</text></svg>">
 <link rel="preload" href="fonts/wan-sb.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="style.css?v=36">
+<link rel="alternate" hreflang="zh-Hant" href="https://johnny-0120.github.io/">
+<link rel="alternate" hreflang="en" href="https://johnny-0120.github.io/en/">
+<link rel="stylesheet" href="style.css?v=40">
 </head>
 <body>
 
@@ -28,6 +30,7 @@
     <a href="#contact">聯絡</a>
   </nav>
   <div class="bar-right">
+    <a class="lang-btn" href="en/" hreflang="en" lang="en" aria-label="English version">EN</a>
     <button class="theme-btn" type="button" aria-label="切換深色／淺色模式"><span class="ico"></span><span class="lbl">深色</span></button>
     <button class="menu-btn" aria-expanded="false" aria-controls="nav">選單</button>
   </div>
@@ -48,12 +51,12 @@
     <p class="pg-en">HSU JUAN WEI　·　中原大學 智慧運算與大數據學士班</p>
     <p class="pg-sub">今晚的節目　滑過去看看，點了看細節</p>
     <ol class="pg-list">
-      <li><button type="button" class="pg-item" data-img="img/mars-rover.jpg" data-find="火星任務"><img class="pg-thumb" src="img/mars-rover.jpg" alt="" loading="lazy"><i>01</i><span class="pg-t">火星車降落機<small>ESP32 自寫飛控＋相機找降落點</small></span><em>硬體</em></button></li>
-      <li><button type="button" class="pg-item" data-img="img/wordmemo-dark.jpg?v=3" data-find="WordMemo"><img class="pg-thumb" src="img/wordmemo-dark.jpg?v=3" alt="" loading="lazy"><i>02</i><span class="pg-t">WordMemo 單字記憶<small>上線中，老師可以開班出題</small></span><em>軟體</em></button></li>
-      <li><button type="button" class="pg-item" data-img="img/radar-dark.jpg?v=3" data-find="中原機會雷達"><img class="pg-thumb" src="img/radar-dark.jpg?v=3" alt="" loading="lazy"><i>03</i><span class="pg-t">中原機會雷達<small>每天整理 16 個公告來源</small></span><em>軟體</em></button></li>
-      <li><button type="button" class="pg-item" data-img="img/reel-ratchet.jpg" data-find="捲線器"><img class="pg-thumb" src="img/reel-ratchet.jpg" alt="" loading="lazy"><i>04</i><span class="pg-t">捲線器<small>自己設計棘輪和齒輪</small></span><em>硬體</em></button></li>
-      <li><button type="button" class="pg-item" data-img="img/esp32-car.jpg" data-find="ESP32 智慧陪伴小車"><img class="pg-thumb" src="img/esp32-car.jpg" alt="" loading="lazy"><i>05</i><span class="pg-t">ESP32 避障小車<small>無線遙控、超音波避障</small></span><em>硬體</em></button></li>
-      <li><button type="button" class="pg-item" data-img="img/dance-group.jpg" data-find="熱舞社"><img class="pg-thumb" src="img/dance-group.jpg" alt="" loading="lazy"><i>06</i><span class="pg-t">熱舞社成果發表會<small>場地跳票後另找場地辦完</small></span><em>舞台</em></button></li>
+      <li><button type="button" class="pg-item" data-img="img/mars-rover.jpg" data-target="#x-mars"><img class="pg-thumb" src="img/mars-rover.jpg" alt="" loading="lazy"><i>01</i><span class="pg-t">火星車降落機<small>ESP32 自寫飛控＋相機找降落點</small></span><em>硬體</em></button></li>
+      <li><button type="button" class="pg-item" data-img="img/wordmemo-dark.jpg?v=3" data-target="#x-wordmemo"><img class="pg-thumb" src="img/wordmemo-dark.jpg?v=3" alt="" loading="lazy"><i>02</i><span class="pg-t">WordMemo 單字記憶<small>上線中，老師可以開班出題</small></span><em>軟體</em></button></li>
+      <li><button type="button" class="pg-item" data-img="img/radar-dark.jpg?v=3" data-target="#x-radar"><img class="pg-thumb" src="img/radar-dark.jpg?v=3" alt="" loading="lazy"><i>03</i><span class="pg-t">中原機會雷達<small>每天整理 16 個公告來源</small></span><em>軟體</em></button></li>
+      <li><button type="button" class="pg-item" data-img="img/reel-ratchet.jpg" data-target="#x-winch"><img class="pg-thumb" src="img/reel-ratchet.jpg" alt="" loading="lazy"><i>04</i><span class="pg-t">捲線器<small>自己設計棘輪和齒輪</small></span><em>硬體</em></button></li>
+      <li><button type="button" class="pg-item" data-img="img/esp32-car.jpg" data-target="#x-esp32"><img class="pg-thumb" src="img/esp32-car.jpg" alt="" loading="lazy"><i>05</i><span class="pg-t">ESP32 避障小車<small>無線遙控、超音波避障</small></span><em>硬體</em></button></li>
+      <li><button type="button" class="pg-item" data-img="img/dance-group.jpg" data-target="#x-dance"><img class="pg-thumb" src="img/dance-group.jpg" alt="" loading="lazy"><i>06</i><span class="pg-t">熱舞社成果發表會<small>場地跳票後另找場地辦完</small></span><em>舞台</em></button></li>
     </ol>
     <p class="pg-lede">習慣從自己卡住的問題出發，把想法做成看得見的東西</p>
     <div class="cue-line" aria-live="polite">
@@ -106,7 +109,7 @@
   <ol class="tl">
     <li class="tl-year">2026 秋　中原大學</li>
 
-    <li data-c="stage"><details><summary>
+    <li id="x-tdtu" data-shape="plane" data-short="TDTU 交流" data-c="stage"><details><summary>
       <div class="meta"><time>2026.11</time><span class="st st-now">進行中</span></div>
       <span class="thumb none"></span>
       <div><h3>越南孫德勝大學（TDTU）國際交流</h3><p>錄取電資學士班的海外參訪，到胡志明市交流。</p></div></summary>
@@ -116,7 +119,7 @@
       </div>
     </details></li>
 
-    <li data-c="contest"><details><summary>
+    <li id="x-career" data-shape="star" data-short="職涯探索佳作" data-c="contest"><details><summary>
       <div class="meta"><time>2026.11</time><span class="st st-done">完成</span></div>
       <img class="thumb" src="img/cert-career.jpg" alt="" loading="lazy">
       <div><h3>2026 職涯探索競賽　佳作</h3><p>中原大學職涯發展處主辦。</p></div></summary>
@@ -125,7 +128,7 @@
       </div>
     </details></li>
 
-    <li data-c="contest build"><details><summary>
+    <li id="x-mars" data-shape="planet" data-short="火星車競賽" data-c="contest build"><details><summary>
       <div class="meta"><time>2026.11</time><span class="st st-done">完成</span></div>
       <img class="thumb" src="img/mars-rover.jpg" alt="" loading="lazy">
       <div><h3>2026 火星任務　火星車降落競賽</h3><p>東海大學和科博館主辦。從零做出一台能降落的機體，最後完賽。</p></div></summary>
@@ -143,7 +146,7 @@
       </div>
     </details></li>
 
-    <li data-c="contest build"><details><summary>
+    <li id="x-quantum" data-shape="atom" data-short="量子競賽" data-c="contest build"><details><summary>
       <div class="meta"><time>2026.11</time><span class="st st-now">進行中</span></div>
       <span class="thumb none"></span>
       <div><h3>全國智慧運算與量子資訊創新應用競賽</h3><p>比較量子演算法 RQAOA 和傳統方法，跑了 116 個題目，研究公開在 GitHub。</p></div></summary>
@@ -155,7 +158,7 @@
       </div>
     </details></li>
 
-    <li data-c="contest build"><details><summary>
+    <li id="x-trc" data-shape="gear" data-short="TRC 競賽" data-c="contest build"><details><summary>
       <div class="meta"><time>2026.11</time><span class="st st-now">進行中</span></div>
       <img class="thumb" src="img/trc-xy.jpg" alt="" loading="lazy">
       <div><h3>TRC 競賽　XY 平衡模塊</h3><p>隊伍「蠑螈」，我負責機械構想和製作。</p></div></summary>
@@ -171,7 +174,7 @@
       </div>
     </details></li>
 
-    <li data-c="build"><details><summary>
+    <li id="x-wordmemo" data-shape="book" data-short="WordMemo" data-c="build"><details><summary>
       <div class="meta"><time>2026.11</time><span class="st st-done">完成</span></div>
       <img class="thumb" src="img/wordmemo.jpg?v=3" data-dark="img/wordmemo-dark.jpg?v=3" alt="" loading="lazy">
       <div><h3>WordMemo 單字記憶上線</h3><p>高中那版單字網站整個重寫，加了程度測驗和老師端。</p></div></summary>
@@ -182,7 +185,7 @@
       </div>
     </details></li>
 
-    <li data-c="build"><details><summary>
+    <li id="x-radar" data-shape="radar" data-short="機會雷達" data-c="build"><details><summary>
       <div class="meta"><time>2026.10</time><span class="st st-now">進行中</span></div>
       <img class="thumb" src="img/radar.jpg?v=3" data-dark="img/radar-dark.jpg?v=3" alt="" loading="lazy">
       <div><h3>中原機會雷達</h3><p>每天自動抓學校 16 個公開來源的公告，整理成可以搜尋的網站。</p></div></summary>
@@ -194,7 +197,7 @@
       </div>
     </details></li>
 
-    <li data-c="build stage"><details><summary>
+    <li id="x-nuva" data-shape="bulb" data-short="NUVA 大使" data-c="build stage"><details><summary>
       <div class="meta"><time>2026.10</time><span class="st st-now">進行中</span></div>
       <img class="thumb" src="img/nuva-stage.jpg" alt="" loading="lazy">
       <div><h3>NUVA 校園大使</h3><p>第一個任務做了 LINE 公事小精靈，用 n8n 把 LINE 和 AI 接起來。</p></div></summary>
@@ -208,7 +211,7 @@
       </div>
     </details></li>
 
-    <li data-c="stage"><details><summary>
+    <li id="x-council" data-shape="flag" data-short="學生會公關部" data-c="stage"><details><summary>
       <div class="meta"><time>2026.10</time><span class="st st-now">進行中</span></div>
       <span class="thumb none"></span>
       <div><h3>中原學生會　公關部</h3><p>公關部部員，正在擔任校外交流活動的副協。</p></div></summary>
@@ -217,7 +220,7 @@
       </div>
     </details></li>
 
-    <li data-c="build"><details><summary>
+    <li id="x-winch" data-shape="gear" data-short="捲線器" data-c="build"><details><summary>
       <div class="meta"><time>2026.10</time><span class="st st-done">完成</span></div>
       <img class="thumb" src="img/reel-mk4.jpg" alt="" loading="lazy">
       <div><h3>捲線器</h3><p>我負責機構，用 Fusion 360 改了好幾版，最後自己設計棘輪和齒輪。</p></div></summary>
@@ -231,7 +234,7 @@
       </div>
     </details></li>
 
-    <li data-c="contest"><details><summary>
+    <li id="x-defense" data-shape="eye" data-short="國防 AI 競賽" data-c="contest"><details><summary>
       <div class="meta"><time>2026.10</time><span class="st st-now">進行中</span></div>
       <img class="thumb" src="img/defense-ai.jpg?v=2" alt="" loading="lazy">
       <div><h3>國防 AI 影像辨識競賽</h3><p>「破土重圓：從影像辨識到快速評估」，擔任隊長，和學長的團隊一起送件。</p></div></summary>
@@ -246,7 +249,7 @@
       </div>
     </details></li>
 
-    <li data-c="contest"><details><summary>
+    <li id="x-ctx" data-shape="bulb" data-short="創天下競賽" data-c="contest"><details><summary>
       <div class="meta"><time>2026.10</time><span class="st st-done">完成</span></div>
       <img class="thumb" src="img/cert-chuangtianxia.jpg" alt="" loading="lazy">
       <div><h3>桃園之星 × 創天下競賽「破土重圓」</h3><p>隊名「泥好」，永續淨零與綠色創新組。</p></div></summary>
@@ -256,7 +259,7 @@
       </div>
     </details></li>
 
-    <li data-c="stage" class="plain">
+    <li id="x-classrep" data-shape="flag" data-short="班代" data-c="stage" class="plain">
       <div class="row">
         <div class="meta"><time>2026.09</time><span class="st st-now">進行中</span></div>
       <span class="thumb none"></span>
@@ -266,7 +269,7 @@
 
     <li class="tl-year">2026 以前　內壢高中</li>
 
-    <li data-c="build"><details><summary>
+    <li id="x-esp32" data-shape="gear" data-short="ESP32 小車" data-c="build"><details><summary>
       <div class="meta"><time>2026.03</time><span class="st st-done">完成</span></div>
       <img class="thumb" src="img/esp32-car.jpg" alt="" loading="lazy">
       <div><h3>ESP32 智慧陪伴小車</h3><p>可以無線遙控，也會自己閃開障礙物。</p></div></summary>
@@ -277,7 +280,7 @@
       </div>
     </details></li>
 
-    <li data-c="build"><details><summary>
+    <li id="x-print3d" data-shape="gear" data-short="3D 列印" data-c="build"><details><summary>
       <div class="meta"><time>2026.03</time><span class="st st-done">完成</span></div>
       <img class="thumb" src="img/fusion.jpg" alt="" loading="lazy">
       <div><h3>Fusion 360 建模和 3D 列印</h3><p>卡片收納盒、文具收納盒。</p></div></summary>
@@ -291,7 +294,7 @@
       </div>
     </details></li>
 
-    <li data-c="build"><details><summary>
+    <li id="x-vocab" data-shape="book" data-short="單字網站" data-c="build"><details><summary>
       <div class="meta"><time>2026.03</time><span class="st st-done">完成</span></div>
       <img class="thumb" src="img/chess.jpg?v=3" data-dark="img/chess-dark.jpg?v=3" alt="" loading="lazy">
       <div><h3>AI 英文單字網站、西洋棋復盤工具</h3><p>單字網站是 WordMemo 的第一版。</p></div></summary>
@@ -302,7 +305,7 @@
       </div>
     </details></li>
 
-    <li data-c="contest"><details><summary>
+    <li id="x-switch" data-shape="pencil" data-short="跨考自然組" data-c="contest"><details><summary>
       <div class="meta"><time>2026.01</time><span class="st st-done">完成</span></div>
       <img class="thumb" src="img/essay.jpg" alt="" loading="lazy">
       <div><h3>社會組跨考自然組、學測英文 13 級分</h3><p>高二選了社會組，後來決定跨考自然科，自學物理和化學。</p></div></summary>
@@ -313,7 +316,7 @@
       </div>
     </details></li>
 
-    <li data-c="contest"><details><summary>
+    <li id="x-youth" data-shape="plane" data-short="青年百億" data-c="contest"><details><summary>
       <div class="meta"><time>2026</time><span class="st st-fail">沒成功</span></div>
       <img class="thumb" src="img/yb-who.jpg" alt="" loading="lazy">
       <div><h3>青年百億海外圓夢計畫</h3><p>海外翱翔組，進了面試，備取第 2。</p></div></summary>
@@ -327,7 +330,7 @@
       </div>
     </details></li>
 
-    <li data-c="build"><details><summary>
+    <li id="x-video" data-shape="play" data-short="影片剪輯" data-c="build"><details><summary>
       <div class="meta"><time>高中起</time><span class="st st-done">完成</span></div>
       <img class="thumb" src="img/yt-w2h5t9zdEAc.jpg" alt="" loading="lazy">
       <div><h3>影片製作與剪輯</h3><p>畢業典禮、旅行、訪談短影音，作品集有 7 支。</p></div></summary>
@@ -346,7 +349,7 @@
       </div>
     </details></li>
 
-    <li data-c="stage"><details><summary>
+    <li id="x-dance" data-shape="note" data-short="熱舞社幹部" data-c="stage"><details><summary>
       <div class="meta"><time>高中</time><span class="st st-done">完成</span></div>
       <img class="thumb" src="img/dance-solo.jpg" alt="" loading="lazy">
       <div><h3>熱舞社　活動兼教學幹部</h3><p>教舞、辦成果發表會、借場地。</p></div></summary>
@@ -361,7 +364,7 @@
       </div>
     </details></li>
 
-    <li data-c="stage"><details><summary>
+    <li id="x-denmark" data-shape="bubble" data-short="丹麥交流主持" data-c="stage"><details><summary>
       <div class="meta"><time>高中</time><span class="st st-done">完成</span></div>
       <img class="thumb" src="img/host-denmark.jpg" alt="" loading="lazy">
       <div><h3>丹麥訪問團交流活動　英文主持</h3><p>破冰遊戲和整場流程都由我用英文帶。</p></div></summary>
@@ -372,7 +375,7 @@
       </div>
     </details></li>
 
-    <li data-c="stage"><details><summary>
+    <li id="x-engpres" data-shape="bubble" data-short="英文簡報" data-c="stage"><details><summary>
       <div class="meta"><time>高中</time><span class="st st-done">完成</span></div>
       <img class="thumb" src="img/cert-english.jpg" alt="" loading="lazy">
       <div><h3>班級英文簡報代表</h3><p>代表班上參加英文簡報成果發表。</p></div></summary>
@@ -549,6 +552,6 @@
   <img alt="">
 </div>
 
-<script src="main.js?v=28"></script>
+<script src="main.js?v=30"></script>
 </body>
 </html>

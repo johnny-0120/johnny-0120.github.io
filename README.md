@@ -43,3 +43,7 @@ Python・JavaScript・TypeScript・React・Cloudflare・n8n・ESP32・Fusion 360
 - **作品截圖**：有深色版的作品截圖叫 `名稱-dark.jpg`，網站切到深色模式時會自動換。
 - **加新經歷**：在 `index.html` 的經歷時間軸加一項；封面雷達會自動多一個亮點。
 - **字型**：標題用源雲明體、內文用源石黑體（ButTaiwan，SIL OFL）。為了網頁輕量，只打包網站用到的字；改了文字之後要跑一次 `python build_fonts.py` 重新產生 `fonts/`（原始字型放在 `../_fonts_src`）。
+- **英文版**：`en/index.html` 是用程式從中文版產生的，不要直接改它。中文版改完之後：
+  1. 新的中文句子加進 `en/strings.json`（中文 → 英文）；新經歷的英文短名加進 `en/short.json`
+  2. 跑 `python build_en.py`，它會列出還沒翻的句子
+  3. 再跑 `python build_fonts.py`
