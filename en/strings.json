@@ -389,5 +389,8 @@
 "隊伍「蠑螈」，我負責機械構想和製作。已經確認入圍。": "Team Salamander. I lead the mechanical concept and build. We're confirmed as finalists.",
 "飛控、相機、機構設計（降落傘由同學製作）": "Flight controller, camera and mechanism design (a classmate made the parachute)",
 "飛控、相機和機構都是我設計的，同學負責做降落傘。從零做到在比賽場上完賽。": "I designed the flight controller, the camera system and the mechanism; a classmate made the parachute. We took it from nothing to finishing on the competition floor.",
-"高中那版單字網站整個重寫，加了程度測驗和老師端。還在製作中，做好之後要給我的家教學生用。": "A full rewrite of my high school vocabulary site, adding a placement test and a teacher side. Still in progress — it's for my tutoring students."
+"高中那版單字網站整個重寫，加了程度測驗和老師端。還在製作中，做好之後要給我的家教學生用。": "A full rewrite of my high school vocabulary site, adding a placement test and a teacher side. Still in progress — it's for my tutoring students.",
+"每一版都換過配置和零件尺寸，也用 ESP32-C3 做了手機控制。買來的絞盤不會自己停，我就自己設計棘輪和齒輪換掉它：捲筒旁邊加一片棘輪，設計成棘爪卡住就能停在定點。零件已經印出來，只剩最後的接線。": "Every version changed the layout and part sizes, and an ESP32-C3 adds phone control. The store-bought winch wouldn't stop by itself, so I designed a ratchet and gears to replace it: a ratchet wheel beside the drum and a pawl that locks it in place. The parts are printed; only the final wiring is left.",
+"我負責機構，用 Fusion 360 改了好幾版，最後自己設計棘輪和齒輪。已經印出來，只剩最後的接線。": "I led the mechanism, iterating in Fusion 360 and finally designing my own ratchet and gears. It's printed; only the final wiring is left.",
+"零件已印出，只剩最後的接線": "Parts printed, final wiring left"
 }
