@@ -1,39 +1,48 @@
-"""用中文版 index.html ＋ en/strings.json（中→英對照）產生英文版 en/index.html。
+"""用中文版頁面 ＋ en/strings.json（中→英對照）產生英文版。
+處理：index.html → en/index.html，projects/*.html → en/projects/*.html
 中文版改完之後跑：  python build_en.py
 有沒翻到的中文會列出來，把它加進 en/strings.json 再跑一次。"""
 import json, re, pathlib, sys
 here = pathlib.Path(__file__).parent
-zh = (here / 'index.html').read_text(encoding='utf-8')
 S = json.loads((here / 'en' / 'strings.json').read_text(encoding='utf-8'))
 SHORT = json.loads((here / 'en' / 'short.json').read_text(encoding='utf-8'))
 CJK = re.compile(r'[一-鿿]')
-ALLOW = ['徐專洧 · Johnny', '(陳永祥)']           # 英文版裡故意保留的中文
-missing = []
+ALLOW = ['徐專洧 · Johnny', '(陳永祥)', '中文版', '中文']
+missing = set()
 
 def tr(t):
     k = t.strip()
-    if not k or not CJK.search(k) or k == '洧': return t   # 洧：分頁小圖示上的字，保留
+    if not k or not CJK.search(k) or k == '洧': return t
     if k in S: return t.replace(k, S[k])
-    missing.append(k); return t
+    missing.add(k); return t
 
-out = zh
-# 文字節點（不動 script / style）
-parts = re.split(r'(<script\b.*?</script>|<style\b.*?</style>)', out, flags=re.S)
-for i in range(0, len(parts), 2):
-    parts[i] = re.sub(r'>([^<]+)<', lambda m: '>' + tr(m.group(1)) + '<', parts[i])
-    parts[i] = re.sub(r'\b(alt|aria-label|content|title)="([^"]*)"', lambda m: f'{m.group(1)}="{tr(m.group(2))}"', parts[i])
-out = ''.join(parts)
-# 舞台上的短名
-out = re.sub(r'<li id="x-([\w-]+)"([^>]*?)data-short="[^"]*"', lambda m: f'<li id="x-{m.group(1)}"{m.group(2)}data-short="{SHORT.get(m.group(1), m.group(1))}"', out)
-# 語言、路徑、切換按鈕
-out = out.replace('<html lang="zh-Hant">', '<html lang="en">')
-out = re.sub(r'(href|src|data-img|data-dark)="(?!https?:|#|mailto:|tel:|data:|\.\./)([^"]+)"', r'\1="../\2"', out)
-out = out.replace('href="../en/" hreflang="en" lang="en" aria-label="English version">EN</a>', 'href="../" hreflang="zh-Hant" lang="zh-Hant" aria-label="中文版">中文</a>')
-(here / 'en' / 'index.html').write_text(out, encoding='utf-8')
+def convert(src, depth):
+    out = src
+    parts = re.split(r'(<script\b.*?</script>|<style\b.*?</style>)', out, flags=re.S)
+    for i in range(0, len(parts), 2):
+        parts[i] = re.sub(r'>([^<]+)<', lambda m: '>' + tr(m.group(1)) + '<', parts[i])
+        parts[i] = re.sub(r'\b(alt|aria-label|content|title)="([^"]*)"', lambda m: f'{m.group(1)}="{tr(m.group(2))}"', parts[i])
+    out = ''.join(parts)
+    out = re.sub(r'<li id="x-([\w-]+)"([^>]*?)data-short="[^"]*"', lambda m: f'<li id="x-{m.group(1)}"{m.group(2)}data-short="{SHORT.get(m.group(1), m.group(1))}"', out)
+    out = out.replace('<html lang="zh-Hant">', '<html lang="en">')
+    out = out.replace('hsu-juan-wei-resume-zh.pdf', 'hsu-juan-wei-resume-en.pdf').replace('img/share-zh.jpg', 'img/share-en.jpg')
+    out = out.replace('content="https://johnny-0120.github.io/"', 'content="https://johnny-0120.github.io/en/"')
+    # 檔案（圖片、字型、樣式、程式、履歷）多加一層 ../；頁面之間的連結不動，才會連到英文版的頁面
+    out = re.sub(r'(href|src|data-img|data-dark)="((?:\.\./)*)(img/|fonts/|resume/|style\.css|main\.js)', r'\1="../\2\3', out)
+    # 中英切換鈕：英文版指回中文版同一頁
+    back = '../' if depth == 1 else f'../../projects/{CUR}'
+    out = re.sub(r'<a class="lang-btn" href="[^"]*" hreflang="en" lang="en" aria-label="English version">EN</a>',
+                 f'<a class="lang-btn" href="{back}" hreflang="zh-Hant" lang="zh-Hant" aria-label="中文版">中文</a>', out)
+    return out
 
-left = [t for t in re.findall(r'>([^<]*[一-鿿][^<]*)<', re.sub(r'<script\b.*?</script>', '', out, flags=re.S))
-        if not any(a in t for a in ALLOW) and t.strip() not in ('中文', '洧')]
-if missing or left:
-    print('還沒翻譯：'); [print(' -', t) for t in sorted(set(missing))]
+pages = [('index.html', 'en/index.html', 1)] + [(f'projects/{p.name}', f'en/projects/{p.name}', 2) for p in sorted((here / 'projects').glob('*.html'))]
+(here / 'en' / 'projects').mkdir(parents=True, exist_ok=True)
+for src, dst, depth in pages:
+    CUR = pathlib.Path(src).name
+    html = convert((here / src).read_text(encoding='utf-8'), depth)
+    (here / dst).write_text(html, encoding='utf-8')
+
+if missing:
+    print('還沒翻譯：'); [print(' -', t) for t in sorted(missing)]
     sys.exit(1)
-print('en/index.html 已產生，全部都有翻譯')
+print('英文版已產生：', ', '.join(d for _, d, _ in pages))

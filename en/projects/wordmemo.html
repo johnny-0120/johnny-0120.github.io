@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WordMemo | Hsu Juan Wei</title>
+<meta name="description" content="An English vocabulary site for high school students. Find your level, learn words with memory techniques and spaced repetition, get AI feedback on sentences and essays — and teachers can run classes and set quizzes.">
+<meta property="og:title" content="WordMemo | Hsu Juan Wei">
+<meta property="og:description" content="An English vocabulary site for high school students. Find your level, learn words with memory techniques and spaced repetition, get AI feedback on sentences and essays — and teachers can run classes and set quizzes.">
+<meta property="og:image" content="https://johnny-0120.github.io/img/share-en.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2317243A'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23EDF4FC' font-family='serif'>洧</text></svg>">
+<script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preload" href="../../fonts/wan-sb.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../style.css?v=41">
+</head>
+<body class="pj">
+<header class="bar">
+  <a class="bar-name" href="../">Hsu Juan Wei</a>
+  <nav class="bar-nav" id="nav" aria-label="Main menu">
+    <a href="../#works">Projects</a>
+    <a href="../#timeline">Experience</a>
+    <a href="../#contact">Contact</a>
+  </nav>
+  <div class="bar-right">
+    <a class="lang-btn" href="../../projects/wordmemo.html" hreflang="zh-Hant" lang="zh-Hant" aria-label="中文版">中文</a>
+    <button class="theme-btn" type="button" aria-label="Switch dark / light mode"><span class="ico"></span><span class="lbl">Dark</span></button>
+  </div>
+</header>
+<main class="pj-main">
+  <a class="pj-back" href="../#works">← Back to projects</a>
+  <p class="pj-kind">Software</p>
+  <h1 class="pj-title">WordMemo</h1>
+  <p class="pj-lede">An English vocabulary site for high school students. Find your level, learn words with memory techniques and spaced repetition, get AI feedback on sentences and essays — and teachers can run classes and set quizzes.</p>
+  <figure class="pj-cover"><img src="../../img/wordmemo.jpg?v=3" data-dark="../../img/wordmemo-dark.jpg?v=3" alt="WordMemo"></figure>
+  <dl class="pj-meta"><div><dt>When</dt><dd>First version 2026.03　Rewritten and launched 2026.11</dd></div><div><dt>Role</dt><dd>Solo developer (AI-assisted)</dd></div><div><dt>Tech</dt><dd>Cloudflare Workers, D1, OpenRouter, Google sign-in, PWA</dd></div><div><dt>Cost</dt><dd>Runs entirely on free tiers</dd></div></dl>
+  <p class="work-links pj-links"><a href="https://wordmemo.johnny970120.workers.dev/about" target="_blank" rel="noopener">About ↗</a><a href="https://wordmemo.johnny970120.workers.dev" target="_blank" rel="noopener">Try it ↗</a></p>
+  <section class="pj-sec"><h2>Why I built it</h2><p>When I studied English, words I'd learned slipped away fast. Most apps just drill the Chinese meaning, so I wanted a tool that actually makes words stick.</p></section>
+<section class="pj-sec"><h2>What I built</h2><ul><li>Placement test: starts at your grade and moves up or down a level every 4 questions, up to 28 questions, to find the right starting point.</li><li>Memory techniques: each word comes with roots, sound-alikes, a memory story, example sentences or collocations — pick whichever works for you.</li><li>Spaced repetition: words you miss come back soon, words you know come back later. Difficulty follows your last 60 answers, and after each round it asks whether that was too easy, just right or too hard.</li><li>AI feedback on sentences and essays that points out grammar problems and suggests rewrites.</li><li>Teacher side: run classes and set four kinds of tasks (word range, custom words, quiz, essay), each with a results page, plus each student's logins, practice times and most-missed words.</li><li>Word lists cover the official 6,000-word high school list plus GEPT, TOEIC, IELTS and TOEFL. It works on any phone, and you can try it without signing in.</li></ul></section>
+<section class="pj-sec"><h2>What got in the way</h2><ul><li>The first version was a Flask app that needed a server running all the time. I rewrote it on Cloudflare Workers with a D1 database, so there's no server to babysit and it fits in the free tier.</li><li>The AI runs on a free quota, so guest users can't use AI features or classes — otherwise the quota would run out fast.</li><li>Testing showed that any teacher could pull another teacher's students into their own class. That permissions bug is fixed.</li></ul></section>
+
+  <section class="pj-sec"><h2>Photos</h2><div class="masonry"><button class="ph"><img src="../../img/wordmemo.jpg?v=3" alt="WordMemo home page" loading="lazy"></button><button class="ph"><img src="../../img/ai-report.jpg" alt="AI sentence feedback" loading="lazy"></button></div></section>
+  <nav class="pj-more"><p>More projects</p><a href="radar.html">CYCU Opportunity Radar</a><a href="mars.html">Mars landing rover</a><a href="winch.html">Cable winch</a><a href="trc.html">TRC XY balance module</a></nav>
+</main>
+<footer class="foot"><p>© 2026 Hsu Juan Wei. Please don't reuse the photos on this site.</p><a href="../">Back to home ↑</a></footer>
+<div class="lightbox" hidden><button class="lb-close" aria-label="Close">Close ✕</button><img alt=""></div>
+<script src="../../main.js?v=31"></script>
+</body>
+</html>

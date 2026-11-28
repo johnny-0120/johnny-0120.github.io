@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CYCU Opportunity Radar | Hsu Juan Wei</title>
+<meta name="description" content="Every day it gathers competition, internship, scholarship, exchange and talk notices from a dozen public CYCU sources into one site you can search, sort by deadline, and ask AI for recommendations.">
+<meta property="og:title" content="CYCU Opportunity Radar | Hsu Juan Wei">
+<meta property="og:description" content="Every day it gathers competition, internship, scholarship, exchange and talk notices from a dozen public CYCU sources into one site you can search, sort by deadline, and ask AI for recommendations.">
+<meta property="og:image" content="https://johnny-0120.github.io/img/share-en.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2317243A'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23EDF4FC' font-family='serif'>洧</text></svg>">
+<script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preload" href="../../fonts/wan-sb.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../style.css?v=41">
+</head>
+<body class="pj">
+<header class="bar">
+  <a class="bar-name" href="../">Hsu Juan Wei</a>
+  <nav class="bar-nav" id="nav" aria-label="Main menu">
+    <a href="../#works">Projects</a>
+    <a href="../#timeline">Experience</a>
+    <a href="../#contact">Contact</a>
+  </nav>
+  <div class="bar-right">
+    <a class="lang-btn" href="../../projects/radar.html" hreflang="zh-Hant" lang="zh-Hant" aria-label="中文版">中文</a>
+    <button class="theme-btn" type="button" aria-label="Switch dark / light mode"><span class="ico"></span><span class="lbl">Dark</span></button>
+  </div>
+</header>
+<main class="pj-main">
+  <a class="pj-back" href="../#works">← Back to projects</a>
+  <p class="pj-kind">Software</p>
+  <h1 class="pj-title">CYCU Opportunity Radar</h1>
+  <p class="pj-lede">Every day it gathers competition, internship, scholarship, exchange and talk notices from a dozen public CYCU sources into one site you can search, sort by deadline, and ask AI for recommendations.</p>
+  <figure class="pj-cover"><img src="../../img/radar.jpg?v=3" data-dark="../../img/radar-dark.jpg?v=3" alt="CYCU Opportunity Radar"></figure>
+  <dl class="pj-meta"><div><dt>When</dt><dd>Since 2026.10, still growing</dd></div><div><dt>Role</dt><dd>Idea, development and operations (AI-assisted)</dd></div><div><dt>Tech</dt><dd>TypeScript, React, Cloudflare Workers / D1 / Vectorize, Google sign-in, PWA push</dd></div><div><dt>Data</dt><dd>5,228 notices migrated in late October</dd></div></dl>
+  <p class="work-links pj-links"><a href="https://cycu-radar-app.johnny970120.workers.dev" target="_blank" rel="noopener">Open the site ↗</a><a href="https://github.com/johnny-0120/johnny-0120/blob/main/projects/cycu-opportunity-radar/README.md" target="_blank" rel="noopener">Project overview ↗</a></p>
+  <section class="pj-sec"><h2>Why I built it</h2><p>Competition, internship and scholarship notices are spread across a dozen school sites, and by the time you see one it's often already closed.</p></section>
+<section class="pj-sec"><h2>What I built</h2><ul><li>Every day it collects notices from public school sources, fills in the full text, and uses AI to classify them and pull out deadlines.</li><li>The home page has picks, a deadline calendar, bookmarks and alerts, and it installs as a phone app with push notifications.</li><li>Ask AI: describe your interests and experience and it recommends notices that fit. Search combines BM25 with semantic search, so results show up even when the wording doesn't match exactly.</li><li>The home page and category art feature a hand-drawn mascot, Lei, and there's a dark mode.</li></ul></section>
+<section class="pj-sec"><h2>What got in the way</h2><ul><li>With so many school sources, one of them is often slow or returns a 503. I made each source independent, so one failure doesn't stop the others, and gave every source a time limit.</li><li>AI classification has a daily limit, so notices are processed in batches and each result is saved and checked, never paid for twice.</li><li>In late October I moved the whole site to Cloudflare. After moving 5,228 records I checked the counts and hashes on both sides.</li></ul></section>
+
+  <section class="pj-sec"><h2>Photos</h2><div class="masonry"><button class="ph"><img src="../../img/radar.jpg?v=3" alt="CYCU Opportunity Radar home page" loading="lazy"></button></div></section>
+  <nav class="pj-more"><p>More projects</p><a href="wordmemo.html">WordMemo</a><a href="mars.html">Mars landing rover</a><a href="winch.html">Cable winch</a><a href="trc.html">TRC XY balance module</a></nav>
+</main>
+<footer class="foot"><p>© 2026 Hsu Juan Wei. Please don't reuse the photos on this site.</p><a href="../">Back to home ↑</a></footer>
+<div class="lightbox" hidden><button class="lb-close" aria-label="Close">Close ✕</button><img alt=""></div>
+<script src="../../main.js?v=31"></script>
+</body>
+</html>

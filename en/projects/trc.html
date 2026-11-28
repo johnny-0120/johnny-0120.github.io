@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TRC XY balance module | Hsu Juan Wei</title>
+<meta name="description" content="Our Taiwan Robot Competition entry: a counterweight module for warehouse robots that makes tall loads less likely to tip when the robot turns or brakes.">
+<meta property="og:title" content="TRC XY balance module | Hsu Juan Wei">
+<meta property="og:description" content="Our Taiwan Robot Competition entry: a counterweight module for warehouse robots that makes tall loads less likely to tip when the robot turns or brakes.">
+<meta property="og:image" content="https://johnny-0120.github.io/img/share-en.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2317243A'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23EDF4FC' font-family='serif'>洧</text></svg>">
+<script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preload" href="../../fonts/wan-sb.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../style.css?v=41">
+</head>
+<body class="pj">
+<header class="bar">
+  <a class="bar-name" href="../">Hsu Juan Wei</a>
+  <nav class="bar-nav" id="nav" aria-label="Main menu">
+    <a href="../#works">Projects</a>
+    <a href="../#timeline">Experience</a>
+    <a href="../#contact">Contact</a>
+  </nav>
+  <div class="bar-right">
+    <a class="lang-btn" href="../../projects/trc.html" hreflang="zh-Hant" lang="zh-Hant" aria-label="中文版">中文</a>
+    <button class="theme-btn" type="button" aria-label="Switch dark / light mode"><span class="ico"></span><span class="lbl">Dark</span></button>
+  </div>
+</header>
+<main class="pj-main">
+  <a class="pj-back" href="../#works">← Back to projects</a>
+  <p class="pj-kind">Hardware</p>
+  <h1 class="pj-title">TRC XY balance module</h1>
+  <p class="pj-lede">Our Taiwan Robot Competition entry: a counterweight module for warehouse robots that makes tall loads less likely to tip when the robot turns or brakes.</p>
+  <figure class="pj-cover"><img src="../../img/trc-xy.jpg" alt="TRC XY balance module"></figure>
+  <dl class="pj-meta"><div><dt>Competition</dt><dd>Taiwan Robot Competition　Transportation & Logistics</dd></div><div><dt>Team</dt><dd>Salamander</dd></div><div><dt>Role</dt><dd>Mechanical concept and build</dd></div><div><dt>When</dt><dd>2026.10 – 2026.11</dd></div></dl>
+  
+  <section class="pj-sec"><h2>The problem</h2><p>Factories stack loads high, so warehouse robots risk tipping over when they turn, brake or get bumped. Most sites just slow them down.</p></section>
+<section class="pj-sec"><h2>How it works</h2><ul><li>Load cells at the four corners of the platform measure force to work out which way the load is about to tip and how much margin is left.</li><li>Timing belts and linear rails on two axes move a counterweight: the Y axis carries the whole X mechanism, and the X axis carries the weight, so it can reach any point on the plane.</li><li>Each axis runs four 775 DC motors in sync on both sides — eight in total — so the slides are loaded evenly and don't jam.</li><li>The counterweight moves under PID plus S-curve control, with limits on speed and acceleration so the motion itself doesn't rock the robot.</li></ul></section>
+<section class="pj-sec"><h2>Result</h2><p>Initial simulation in our 8-page technical report: with the module installed, the static tipping threshold rises by about 11–12%.</p></section>
+
+  <section class="pj-sec"><h2>Photos</h2><div class="masonry"><button class="ph"><img src="../../img/trc-xy.jpg" alt="3D view" loading="lazy"></button><button class="ph"><img src="../../img/trc-xy-top.jpg" alt="Top view" loading="lazy"></button><button class="ph"><img src="../../img/trc-xy-side.jpg" alt="Side view" loading="lazy"></button></div></section>
+  <nav class="pj-more"><p>More projects</p><a href="wordmemo.html">WordMemo</a><a href="radar.html">CYCU Opportunity Radar</a><a href="mars.html">Mars landing rover</a><a href="winch.html">Cable winch</a></nav>
+</main>
+<footer class="foot"><p>© 2026 Hsu Juan Wei. Please don't reuse the photos on this site.</p><a href="../">Back to home ↑</a></footer>
+<div class="lightbox" hidden><button class="lb-close" aria-label="Close">Close ✕</button><img alt=""></div>
+<script src="../../main.js?v=31"></script>
+</body>
+</html>

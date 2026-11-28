@@ -602,3 +602,35 @@ html[lang="en"] .pg-item small{max-height:3.4em}
 html[lang="en"] .pg-label{letter-spacing:.06em}
 @media (max-width:640px){.bar-name{font-size:17px}.bar-right{gap:0}.lang-btn{padding:3px 10px}}
 @media (max-width:340px){.bar-name{font-size:15px}.lang-btn{padding:3px 8px;margin-right:6px}.menu-btn{padding:4px 10px}}
+
+/* ---------- 作品深入介紹頁 ---------- */
+.pj-main{max-width:860px;margin:0 auto;padding:48px 16px 80px}
+.pj-back{display:inline-block;font-size:14px;color:var(--ink-2);margin-bottom:36px}
+.pj-back:hover{color:var(--ink)}
+.pj-kind{font-size:13px;letter-spacing:.1em;color:var(--accent);margin-bottom:8px}
+.pj-title{font-family:var(--serif);font-size:clamp(40px,6vw,68px);line-height:1.15;margin-bottom:18px}
+.pj-lede{font-size:19px;line-height:1.75;color:var(--ink);max-width:36em;margin-bottom:36px}
+.pj-cover{margin:0 0 32px}
+.pj-cover img{width:100%;max-height:560px;object-fit:cover;object-position:50% 40%;border-radius:4px;background:var(--img-bg)}
+.pj-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px 28px;margin:0 0 26px;padding:22px 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+.pj-meta dt{font-size:12px;color:var(--ink-2);letter-spacing:.06em}
+.pj-meta dd{margin:4px 0 0;font-size:15px}
+.pj-links{margin-bottom:12px}
+.pj-sec{margin-top:52px}
+.pj-sec h2{font-family:var(--serif);font-size:26px;margin-bottom:16px}
+.pj-sec p,.pj-sec li{font-size:16.5px;line-height:1.9;color:var(--ink)}
+.pj-sec ul{padding-left:1.2em;margin:0}
+.pj-sec li{margin-bottom:10px}
+.pj-sec li::marker{color:var(--accent)}
+.pj-sec .masonry{grid-template-columns:repeat(3,minmax(0,1fr))}
+.pj-more{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline}
+.pj-more p{width:100%;font-size:13px;color:var(--ink-2)}
+.pj-more a{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink)}
+.pj-more a:hover{color:var(--accent)}
+.deep-link{font-weight:700!important}
+@media (max-width:640px){.pj-main{padding-top:28px}.pj-lede{font-size:17px}.pj-sec .masonry{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.prop:focus-visible{outline:2px solid #F2B880;outline-offset:4px;border-radius:4px}
+
+.pg-cv{margin:-14px 0 26px;font-size:14px}
+.pg-cv a{color:#F2B880;font-weight:600;pointer-events:auto}
+.pg-cv a:hover{color:#FFF6E8}

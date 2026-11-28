@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>捲線器｜徐專洧</title>
+<meta name="description" content="可以自動把物體放到指定高度的捲線器。我負責機構，用 Fusion 360 改了好幾版，最後自己設計棘輪和齒輪，解決買來的絞盤停不住的問題。">
+<meta property="og:title" content="捲線器｜徐專洧">
+<meta property="og:description" content="可以自動把物體放到指定高度的捲線器。我負責機構，用 Fusion 360 改了好幾版，最後自己設計棘輪和齒輪，解決買來的絞盤停不住的問題。">
+<meta property="og:image" content="https://johnny-0120.github.io/img/share-zh.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2317243A'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23EDF4FC' font-family='serif'>洧</text></svg>">
+<script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preload" href="../fonts/wan-sb.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css?v=41">
+</head>
+<body class="pj">
+<header class="bar">
+  <a class="bar-name" href="../">徐專洧</a>
+  <nav class="bar-nav" id="nav" aria-label="主選單">
+    <a href="../#works">作品</a>
+    <a href="../#timeline">經歷</a>
+    <a href="../#contact">聯絡</a>
+  </nav>
+  <div class="bar-right">
+    <a class="lang-btn" href="../en/projects/winch.html" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <button class="theme-btn" type="button" aria-label="切換深色／淺色模式"><span class="ico"></span><span class="lbl">深色</span></button>
+  </div>
+</header>
+<main class="pj-main">
+  <a class="pj-back" href="../#works">← 回到作品</a>
+  <p class="pj-kind">硬體</p>
+  <h1 class="pj-title">捲線器</h1>
+  <p class="pj-lede">可以自動把物體放到指定高度的捲線器。我負責機構，用 Fusion 360 改了好幾版，最後自己設計棘輪和齒輪，解決買來的絞盤停不住的問題。</p>
+  <figure class="pj-cover"><img src="../img/reel-mk4.jpg" alt="捲線器"></figure>
+  <dl class="pj-meta"><div><dt>時間</dt><dd>2026.10 – 2026.11</dd></div><div><dt>角色</dt><dd>機構設計（Fusion 360）</dd></div><div><dt>控制</dt><dd>ESP32-C3、相機看 AprilTag 標籤定位</dd></div><div><dt>狀態</dt><dd>機構完成</dd></div></dl>
+  
+  <section class="pj-sec"><h2>目標</h2><p>相機看著吊掛物上的 AprilTag 標籤，算出現在的高度，ESP32-C3 透過 Wi-Fi 控制馬達收放線，把物體放到指定位置；也可以用手機手動操作。</p></section>
+<section class="pj-sec"><h2>我做了什麼</h2><ul><li>負責整個機構設計，用 Fusion 360 從第一版一路改到 Mk4，每一版都調整配置、零件尺寸和走線。</li><li>買來的絞盤捲到定點停不下來，沒辦法用。我自己設計了一組棘輪和齒輪：捲筒旁邊加一片棘輪，棘爪卡住就能停在定點。</li></ul></section>
+<section class="pj-sec"><h2>團隊的控制程式</h2><p>控制程式用 S 曲線規劃速度、PID 追位置，快到目標時提前減速，到位後單向鎖住，不會來回晃。</p></section>
+
+  <section class="pj-sec"><h2>照片</h2><div class="masonry"><button class="ph"><img src="../img/reel-mk4.jpg" alt="Mk4 整體機構" loading="lazy"></button><button class="ph"><img src="../img/reel-ratchet.jpg" alt="自己設計的棘輪和捲筒" loading="lazy"></button><button class="ph"><img src="../img/reel-drum-mk4.jpg" alt="捲筒和出線位置" loading="lazy"></button></div></section>
+  <nav class="pj-more"><p>其他作品</p><a href="wordmemo.html">WordMemo 單字記憶</a><a href="radar.html">中原機會雷達</a><a href="mars.html">火星車降落機</a><a href="trc.html">TRC XY 平衡模塊</a></nav>
+</main>
+<footer class="foot"><p>© 2026 徐專洧。網站上的照片請勿轉用。</p><a href="../">回到首頁 ↑</a></footer>
+<div class="lightbox" hidden><button class="lb-close" aria-label="關閉">關閉 ✕</button><img alt=""></div>
+<script src="../main.js?v=31"></script>
+</body>
+</html>

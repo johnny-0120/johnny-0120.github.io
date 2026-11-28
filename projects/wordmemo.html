@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WordMemo 單字記憶｜徐專洧</title>
+<meta name="description" content="給高中生的英文單字網站。先測程度，再用記憶法和間隔複習把字背起來，造句和作文交給 AI 改，老師可以開班出題。">
+<meta property="og:title" content="WordMemo 單字記憶｜徐專洧">
+<meta property="og:description" content="給高中生的英文單字網站。先測程度，再用記憶法和間隔複習把字背起來，造句和作文交給 AI 改，老師可以開班出題。">
+<meta property="og:image" content="https://johnny-0120.github.io/img/share-zh.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2317243A'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23EDF4FC' font-family='serif'>洧</text></svg>">
+<script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preload" href="../fonts/wan-sb.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css?v=41">
+</head>
+<body class="pj">
+<header class="bar">
+  <a class="bar-name" href="../">徐專洧</a>
+  <nav class="bar-nav" id="nav" aria-label="主選單">
+    <a href="../#works">作品</a>
+    <a href="../#timeline">經歷</a>
+    <a href="../#contact">聯絡</a>
+  </nav>
+  <div class="bar-right">
+    <a class="lang-btn" href="../en/projects/wordmemo.html" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <button class="theme-btn" type="button" aria-label="切換深色／淺色模式"><span class="ico"></span><span class="lbl">深色</span></button>
+  </div>
+</header>
+<main class="pj-main">
+  <a class="pj-back" href="../#works">← 回到作品</a>
+  <p class="pj-kind">軟體</p>
+  <h1 class="pj-title">WordMemo 單字記憶</h1>
+  <p class="pj-lede">給高中生的英文單字網站。先測程度，再用記憶法和間隔複習把字背起來，造句和作文交給 AI 改，老師可以開班出題。</p>
+  <figure class="pj-cover"><img src="../img/wordmemo.jpg?v=3" data-dark="../img/wordmemo-dark.jpg?v=3" alt="WordMemo 單字記憶"></figure>
+  <dl class="pj-meta"><div><dt>時間</dt><dd>2026.03 第一版　2026.11 重寫上線</dd></div><div><dt>角色</dt><dd>獨立開發（AI 輔助）</dd></div><div><dt>技術</dt><dd>Cloudflare Workers、D1、OpenRouter、Google 登入、PWA</dd></div><div><dt>費用</dt><dd>全部用免費方案</dd></div></dl>
+  <p class="work-links pj-links"><a href="https://wordmemo.johnny970120.workers.dev/about" target="_blank" rel="noopener">看介紹 ↗</a><a href="https://wordmemo.johnny970120.workers.dev" target="_blank" rel="noopener">直接試用 ↗</a></p>
+  <section class="pj-sec"><h2>為什麼做</h2><p>我自己準備英文時，背過的單字很快就忘。市面上的 App 大多只是把中文意思背起來，所以我想做一個真的記得住的工具。</p></section>
+<section class="pj-sec"><h2>做了什麼</h2><ul><li>程度測驗：從選的年級開始，每 4 題決定升一級或降一級，最多 28 題，找到適合的起點。</li><li>記憶法：每個字配字根、諧音、聯想故事、例句或搭配詞，挑一個最適合自己的記。</li><li>間隔複習：答錯的字很快會再出現，答對的隔久一點。難度看最近 60 題的答對率，每輪結束也會問「太簡單、剛好、太難」來微調。</li><li>AI 造句和作文批改，指出文法問題並給改寫建議。</li><li>老師端：可以開班、出四種任務（單字範圍、自訂單字、測驗、作文），每個任務有結果頁，也看得到學生的上線次數、練習時段和最常錯的字。</li><li>單字庫是大考中心高中 6000 字，另外有英檢、多益、雅思、托福。手機打開就能用，不登入也能先試。</li></ul></section>
+<section class="pj-sec"><h2>遇到的難題</h2><ul><li>第一版是用 Flask 寫的，要一直開著主機。後來整個改寫成 Cloudflare Workers 加 D1 資料庫，不用自己顧伺服器，也能用免費方案撐住。</li><li>AI 模型用的是免費額度，所以免登入試用的人不能用 AI 功能和班級，避免額度一下就被用光。</li><li>測試時發現一般老師可以把別人的學生拉進自己的班級，這是權限漏洞，修掉了。</li></ul></section>
+
+  <section class="pj-sec"><h2>照片</h2><div class="masonry"><button class="ph"><img src="../img/wordmemo.jpg?v=3" alt="WordMemo 首頁" loading="lazy"></button><button class="ph"><img src="../img/ai-report.jpg" alt="AI 造句批改" loading="lazy"></button></div></section>
+  <nav class="pj-more"><p>其他作品</p><a href="radar.html">中原機會雷達</a><a href="mars.html">火星車降落機</a><a href="winch.html">捲線器</a><a href="trc.html">TRC XY 平衡模塊</a></nav>
+</main>
+<footer class="foot"><p>© 2026 徐專洧。網站上的照片請勿轉用。</p><a href="../">回到首頁 ↑</a></footer>
+<div class="lightbox" hidden><button class="lb-close" aria-label="關閉">關閉 ✕</button><img alt=""></div>
+<script src="../main.js?v=31"></script>
+</body>
+</html>

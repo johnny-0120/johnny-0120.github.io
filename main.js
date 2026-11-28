@@ -40,7 +40,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden
 
 // 捲動時標示目前在哪一段
 const links = [...document.querySelectorAll('.bar-nav a')];
-const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+const secs = links.map(a => { const h = a.getAttribute('href'); return h.startsWith('#') ? document.querySelector(h) : null; });
 const spy = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
 }), { rootMargin: '-40% 0px -55% 0px' });
@@ -49,11 +49,11 @@ secs.forEach(s => s && spy.observe(s));
 // 手機選單
 const bar = document.querySelector('.bar');
 const mb = document.querySelector('.menu-btn');
-mb.addEventListener('click', () => {
+if (mb) mb.addEventListener('click', () => {
   const o = bar.classList.toggle('open');
   mb.setAttribute('aria-expanded', o); mb.textContent = o ? T.close : T.menu;
 });
-links.forEach(a => a.addEventListener('click', () => { bar.classList.remove('open'); mb.setAttribute('aria-expanded', false); mb.textContent = T.menu; }));
+if (mb) links.forEach(a => a.addEventListener('click', () => { bar.classList.remove('open'); mb.setAttribute('aria-expanded', false); mb.textContent = T.menu; }));
 
 // ---------- 深色／淺色 ----------
 const theme = { ink: '23,36,58', acc: '81,109,152', dot: '145,174,210' };
@@ -219,7 +219,9 @@ if (fine && !calm) {
     propsBox.appendChild(b);
     const it = { li, el: b, title, time: b.querySelector('span').textContent, desc: li.querySelector('h3 + p')?.textContent.trim() || '', st: li.querySelector('.st')?.outerHTML || '', got: saved.includes(idOf(li)) || saved.includes(title), x: 0, y: 0, lit: 0 };
     if (it.got) b.classList.add('got');
-    b.addEventListener('click', e => { e.stopPropagation(); if (it.lit > 0.5 || it.got) call(it); else aim(it.x, it.y); });
+    b.addEventListener('click', e => { e.stopPropagation(); if (it.lit > 0.5 || it.got || e.detail === 0) call(it); else aim(it.x, it.y); });
+    b.addEventListener('focus', () => { aim(it.x, it.y); lastMove = performance.now() + 60000; });
+    b.addEventListener('blur', () => { lastMove = performance.now(); });
     return it;
   });
   st.querySelectorAll('.total').forEach(e => e.textContent = String(n).padStart(2, '0'));
@@ -306,7 +308,7 @@ if (fine && !calm) {
     for (const it of items) {
       const d = Math.hypot(it.x - sx, it.y - sy);
       it.lit = Math.max(0, Math.min(1, (R * 0.95 - d) / (R * 0.35)));
-      it.el.style.opacity = Math.max(it.lit, it.got ? 0.55 : 0);
+      it.el.style.opacity = it.el === document.activeElement ? 1 : Math.max(it.lit, it.got ? 0.55 : 0);
       if (it.lit > 0.6 && (!hot || d < Math.hypot(hot.x - sx, hot.y - sy))) hot = it;
       it.el.classList.toggle('hot', it === hot);
     }
@@ -354,6 +356,7 @@ if (fine && !calm) {
     });
     btn.addEventListener('focus', () => showPhoto(btn.dataset.img, '50% 45%'));
     btn.addEventListener('click', () => {
+      if (btn.dataset.page) { location.href = btn.dataset.page; return; }
       const li = document.querySelector(btn.dataset.target);
       if (!li) return;
       const d = li.querySelector('details'); if (d) d.open = true;

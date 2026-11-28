@@ -1,0 +1,23 @@
+<!doctype html><meta charset="utf-8">
+<style>
+@font-face{font-family:Wan;src:url(../fonts/wan-sb.woff2)}
+@font-face{font-family:Seki;src:url(../fonts/seki-r.woff2)}
+html,body{margin:0;width:1200px;height:630px;background:#05070B;overflow:hidden}
+.bg{position:absolute;inset:0;background:url(../img/stage-solo.jpg) 70% 38%/cover;filter:brightness(.55) saturate(.85)}
+.sp{position:absolute;inset:0;background:radial-gradient(circle 300px at 74% 42%,rgba(255,226,180,.32),transparent 70%)}
+.sh{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,7,11,.95) 0%,rgba(5,7,11,.8) 38%,rgba(5,7,11,0) 70%)}
+.t{position:absolute;left:72px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;color:#FFF6E8;font-family:Seki}
+.l{font-family:Wan;color:#C9A979;font-size:22px;letter-spacing:.3em;margin-bottom:26px}
+.n{font-family:Wan;font-size:120px;line-height:1.05;letter-spacing:.06em}
+.s{margin-top:22px;font-size:24px;color:#C9CED8;line-height:1.6}
+.u{margin-top:30px;font-size:18px;color:#8F97A6;letter-spacing:.04em}
+</style>
+<div class="bg"></div><div class="sp"></div><div class="sh"></div>
+<div class="t"><div class="l" id="l"></div><div class="n" id="n"></div><div class="s" id="s"></div><div class="u" id="u"></div></div>
+<script>
+const q=new URLSearchParams(location.search), en=q.get('lang')==='en';
+l.textContent=en?'Program':'節目單'; n.textContent=en?'Hsu Juan Wei':'徐專洧';
+n.style.fontSize=en?'92px':'';
+s.innerHTML=en?'Software, hardware, dance and hosting.<br>Intelligent Computing & Big Data · minor in EE':'寫程式、做硬體，也跳舞、上台主持<br>中原大學 智慧運算與大數據學士班・輔系電機系';
+u.textContent=en?'johnny-0120.github.io/en':'johnny-0120.github.io';
+</script>

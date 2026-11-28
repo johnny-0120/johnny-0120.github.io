@@ -1,0 +1,98 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Resume</title>
+<style>
+@font-face{font-family:Wan;src:url(../fonts/wan-sb.woff2)}
+@font-face{font-family:Seki;src:url(../fonts/seki-r.woff2);font-weight:400}
+@font-face{font-family:Seki;src:url(../fonts/seki-m.woff2);font-weight:600}
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+body{margin:0;font-family:Seki;color:#17243A;font-size:9.5pt;line-height:1.5}
+.pg{width:210mm;height:296mm;overflow:hidden;padding:13mm 15mm 10mm}
+header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #17243A;padding-bottom:5mm;margin-bottom:5mm}
+h1{font-family:Wan;font-size:30pt;margin:0;line-height:1.1;letter-spacing:.04em}
+.sub{margin-top:2mm;font-size:9pt;color:#4A5A73}
+.contact{text-align:right;font-size:8.6pt;color:#4A5A73;line-height:1.7;white-space:nowrap;flex-shrink:0;margin-left:8mm}
+.contact b{color:#17243A;font-weight:600}
+h2{font-family:Wan;font-size:12pt;margin:4.2mm 0 1.8mm;color:#17243A;letter-spacing:.04em}
+.row{display:grid;grid-template-columns:20mm 1fr;gap:3mm;margin-bottom:1.8mm}
+.row .t{font-size:8.8pt;color:#4A5A73;padding-top:.6mm}
+.row b{font-weight:600}
+.row p{margin:.4mm 0 0;color:#2b3a52}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 8mm}
+.k{display:grid;grid-template-columns:18mm 1fr;gap:3mm;margin-bottom:1.2mm}
+.k span{color:#4A5A73;font-size:9pt}
+</style>
+<div class="pg" id="root"></div>
+<script>
+const EN = new URLSearchParams(location.search).get('lang') === 'en';
+const D = EN ? {
+  name: 'Hsu Juan Wei', sub: 'Johnny · Intelligent Computing and Big Data, Chung Yuan Christian University (first year) · Minor in Electrical Engineering',
+  contact: [['Email','johnny970120@gmail.com'],['Web','johnny-0120.github.io/en'],['GitHub','github.com/johnny-0120']],
+  h: ['Selected projects','Competitions & awards','Leadership & activities','Skills','Languages'],
+  projects: [
+    ['2026', 'WordMemo — vocabulary learning site', 'Placement test, memory techniques, spaced repetition, AI feedback on sentences and essays, and a teacher dashboard. Cloudflare Workers + D1, live and free to use.'],
+    ['2026', 'CYCU Opportunity Radar', 'Collects competition, internship and scholarship notices from campus sources daily into a searchable site with deadlines and AI recommendations. TypeScript, React, Cloudflare.'],
+    ['2026', 'Mars landing rover', 'Mission Mars 2026. Our own ESP32 quadcopter flight controller (200 Hz attitude control, PID) plus an ESP32 camera reading AprilTags to find the landing spot. Finished the competition.'],
+    ['2026', 'Cable winch', 'Led the mechanical design in Fusion 360 through four versions; designed a ratchet and gear set so the winch can hold position.'],
+    ['2026', 'TRC XY balance module', 'Counterweight module for warehouse robots: load cells plus belt-driven X/Y counterweight. Mechanical concept and build; simulation shows ~11–12% higher tipping threshold.'],
+    ['2026', 'LINE Work Elf', 'n8n workflow connecting LINE and AI to turn group chats into key points and next steps.'],
+  ],
+  awards: [
+    ['2026.11','Honorable Mention, Career Exploration Competition (CYCU)'],
+    ['2026.11','Mission Mars 2026 Rover Landing Competition — finished'],
+    ['2026.10','Defense AI Image Recognition Competition — team captain, submitted'],
+    ['2026.10','Taoyuan Star × Chuang Tian Xia Competition — participant'],
+    ['2026','Youth Overseas Dream Program — interviewed, 2nd on waitlist'],
+  ],
+  lead: [
+    ['2026','NUVA Campus Ambassador'],
+    ['2026','CYCU Student Association, PR team; deputy coordinator of an inter-school exchange'],
+    ['2026','Class representative'],
+    ['2026','Selected for international exchange, Ton Duc Thang University (Vietnam)'],
+    ['High school','Dance club events and teaching officer; ran the annual showcase'],
+    ['High school','English host for a Danish delegation exchange'],
+  ],
+  skills: [['Software','Python, JavaScript, TypeScript, React, APIs, n8n, Cloudflare'],['Hardware','ESP32, sensors, Fusion 360, 3D printing'],['Video','Premiere, CapCut']],
+  lang: [['Chinese','Native'],['English','Duolingo English Test 105; 13/15 in national exam English']],
+} : {
+  name: '徐專洧', sub: 'Johnny（HSU JUAN WEI）・中原大學 電機資訊學院 智慧運算與大數據學士班 大一・輔系電機系',
+  contact: [['Email','johnny970120@gmail.com'],['網站','johnny-0120.github.io'],['GitHub','github.com/johnny-0120']],
+  h: ['精選作品','競賽與獲獎','活動與領導','技能','語言'],
+  projects: [
+    ['2026', 'WordMemo 單字記憶網站', '程度測驗、記憶法、間隔複習、AI 造句與作文批改，老師可開班出題。Cloudflare Workers ＋ D1，已上線、免費使用。'],
+    ['2026', '中原機會雷達', '每天自動整理校內公告來源的競賽、實習、獎學金，做成可搜尋、看截止日、AI 推薦的網站。TypeScript、React、Cloudflare。'],
+    ['2026', '火星車降落機', '2026 火星任務。用 ESP32 自寫四軸飛控（200 Hz 姿態控制、PID），加 ESP32 相機辨識 AprilTag 找降落點，完賽。'],
+    ['2026', '捲線器', '負責機構設計，Fusion 360 改到第四版；自己設計棘輪和齒輪，讓捲線器能停在定點。'],
+    ['2026', 'TRC XY 平衡模塊', '物流無人車的配重補償模組：荷重元量受力，X／Y 皮帶帶動配重。負責機械構想與製作，模擬傾倒臨界力提升約 11–12%。'],
+    ['2026', 'LINE 公事小精靈', '用 n8n 串 LINE 和 AI，把群組工作對話整理成重點和下一步。'],
+  ],
+  awards: [
+    ['2026.11','中原大學 2026 職涯探索競賽 佳作'],
+    ['2026.11','2026 火星任務 火星車降落競賽 完賽'],
+    ['2026.10','國防 AI 影像辨識競賽 隊長、已送件'],
+    ['2026.10','桃園之星 × 創天下競賽 參賽'],
+    ['2026','青年百億海外圓夢計畫 進入面試、備取第 2'],
+  ],
+  lead: [
+    ['2026','NUVA 校園大使'],
+    ['2026','中原學生會 公關部；校外交流活動副協'],
+    ['2026','班代'],
+    ['2026','錄取越南孫德勝大學（TDTU）國際交流'],
+    ['高中','熱舞社 活動兼教學幹部，統籌成果發表會'],
+    ['高中','丹麥訪問團交流活動 英文主持'],
+  ],
+  skills: [['軟體','Python、JavaScript、TypeScript、React、API、n8n、Cloudflare'],['硬體','ESP32、感測器、Fusion 360、3D 列印'],['影音','Premiere、CapCut']],
+  lang: [['中文','母語'],['英文','Duolingo English Test 105；學測英文 13 級分']],
+};
+const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+root.innerHTML = `
+<header><div><h1>${esc(D.name)}</h1><div class="sub">${esc(D.sub)}</div></div>
+<div class="contact">${D.contact.map(([k,v]) => `${esc(k)}　<b>${esc(v)}</b>`).join('<br>')}</div></header>
+<h2>${D.h[0]}</h2>${D.projects.map(([t,a,b]) => `<div class="row"><div class="t">${t}</div><div><b>${esc(a)}</b><p>${esc(b)}</p></div></div>`).join('')}
+<div class="grid2"><div><h2>${D.h[1]}</h2>${D.awards.map(([t,a]) => `<div class="k"><span>${t}</span><div>${esc(a)}</div></div>`).join('')}</div>
+<div><h2>${D.h[2]}</h2>${D.lead.map(([t,a]) => `<div class="k"><span>${t}</span><div>${esc(a)}</div></div>`).join('')}</div></div>
+<div class="grid2"><div><h2>${D.h[3]}</h2>${D.skills.map(([t,a]) => `<div class="k"><span>${t}</span><div>${esc(a)}</div></div>`).join('')}</div>
+<div><h2>${D.h[4]}</h2>${D.lang.map(([t,a]) => `<div class="k"><span>${t}</span><div>${esc(a)}</div></div>`).join('')}</div></div>`;
+document.title = EN ? 'Hsu Juan Wei — Resume' : '徐專洧 履歷';
+</script>

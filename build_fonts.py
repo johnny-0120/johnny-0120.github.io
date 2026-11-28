@@ -6,7 +6,7 @@ from fontTools import subset
 from fontTools.ttLib import TTFont
 here = pathlib.Path(__file__).parent
 src = here.parent / '_fonts_src'
-text = ''.join(p.read_text(encoding='utf-8') for p in [here / 'index.html', here / 'main.js', here / 'en' / 'index.html', here / 'en' / 'strings.json'])
+text = ''.join(p.read_text(encoding='utf-8') for p in [here / 'index.html', here / 'main.js', here / 'en' / 'index.html', here / 'en' / 'strings.json', here / 'tools' / 'resume.html', here / 'tools' / 'share_card.html'] + sorted(here.glob('projects/*.html')) + sorted(here.glob('en/projects/*.html')))
 text += string.printable + '，。、；：？！「」『』（）《》〈〉——…・·／＋－×→↓↗←↑0123456789'
 chars = ''.join(sorted(set(text)))
 fonts = {'GenWanMin2TW-SB.otf': 'wan-sb.woff2',
