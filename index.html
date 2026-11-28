@@ -53,7 +53,7 @@
     <p class="pg-sub">今晚的節目　滑過去看看，點了看細節</p>
     <ol class="pg-list">
       <li><button type="button" class="pg-item" data-img="img/mars-rover.jpg" data-target="#x-mars" data-page="projects/mars.html"><img class="pg-thumb" src="img/mars-rover.jpg" alt="" loading="lazy"><i>01</i><span class="pg-t">火星車降落機<small>ESP32 自寫飛控＋相機找降落點</small></span><em>硬體</em></button></li>
-      <li><button type="button" class="pg-item" data-img="img/wordmemo-dark.jpg?v=3" data-target="#x-wordmemo" data-page="projects/wordmemo.html"><img class="pg-thumb" src="img/wordmemo-dark.jpg?v=3" alt="" loading="lazy"><i>02</i><span class="pg-t">WordMemo 單字記憶<small>上線中，老師可以開班出題</small></span><em>軟體</em></button></li>
+      <li><button type="button" class="pg-item" data-img="img/wordmemo-dark.jpg?v=3" data-target="#x-wordmemo" data-page="projects/wordmemo.html"><img class="pg-thumb" src="img/wordmemo-dark.jpg?v=3" alt="" loading="lazy"><i>02</i><span class="pg-t">WordMemo 單字記憶<small>製作中，之後給家教學生用</small></span><em>軟體</em></button></li>
       <li><button type="button" class="pg-item" data-img="img/radar-dark.jpg?v=3" data-target="#x-radar" data-page="projects/radar.html"><img class="pg-thumb" src="img/radar-dark.jpg?v=3" alt="" loading="lazy"><i>03</i><span class="pg-t">中原機會雷達<small>每天整理 16 個公告來源</small></span><em>軟體</em></button></li>
       <li><button type="button" class="pg-item" data-img="img/reel-ratchet.jpg" data-target="#x-winch" data-page="projects/winch.html"><img class="pg-thumb" src="img/reel-ratchet.jpg" alt="" loading="lazy"><i>04</i><span class="pg-t">捲線器<small>自己設計棘輪和齒輪</small></span><em>硬體</em></button></li>
       <li><button type="button" class="pg-item" data-img="img/esp32-car.jpg" data-target="#x-esp32"><img class="pg-thumb" src="img/esp32-car.jpg" alt="" loading="lazy"><i>05</i><span class="pg-t">ESP32 避障小車<small>無線遙控、超音波避障</small></span><em>硬體</em></button></li>
@@ -137,8 +137,8 @@
       <div><h3>2026 火星任務　火星車降落競賽</h3><p>東海大學和科博館主辦。從零做出一台能降落的機體，最後完賽。</p></div></summary>
       <div class="more">
         <p class="work-links"><a class="deep-link" href="projects/mars.html">深入介紹 →</a></p>
-        <p>機體是 3D 列印的藍色框架。飛控是我們用 ESP32 自己寫的四軸飛控，再加一顆 ESP32 相機辨識地上的 AprilTag，讓機體自己找降落點。</p>
-        <p>降落方式是和隊友一起設計的，從零做到在比賽場上完賽。</p>
+        <p>機體是 3D 列印的藍色框架。飛控是用 ESP32 自己寫的四軸飛控，再加一顆 ESP32 相機辨識地上的 AprilTag，讓機體自己找降落點。</p>
+        <p>飛控、相機和機構都是我設計的，同學負責做降落傘。從零做到在比賽場上完賽。</p>
         <div class="more-photos">
           <img src="img/mars-rover.jpg" alt="完成的火星車機體" loading="lazy">
           <img src="img/mars-field.jpg" alt="機體在體育館比賽場地上" loading="lazy">
@@ -165,12 +165,12 @@
     <li id="x-trc" data-shape="gear" data-short="TRC 競賽" data-c="contest build"><details><summary>
       <div class="meta"><time>2026.11</time><span class="st st-now">進行中</span></div>
       <img class="thumb" src="img/trc-xy.jpg" alt="" loading="lazy">
-      <div><h3>TRC 競賽　XY 平衡模塊</h3><p>隊伍「蠑螈」，我負責機械構想和製作。</p></div></summary>
+      <div><h3>TRC 競賽　XY 平衡模塊</h3><p>隊伍「蠑螈」，我負責機械構想和製作。已經確認入圍。</p></div></summary>
       <div class="more">
         <p class="work-links"><a class="deep-link" href="projects/trc.html">深入介紹 →</a></p>
         <p>這是裝在物流無人車上的配重補償模組。工廠常把貨物疊得很高，無人車轉彎、煞車或被撞時容易翻倒，現場多半只能放慢速度。</p>
         <p>我們在載台四個角裝荷重元量受力，算出往哪個方向快要倒，再用 X、Y 兩軸的皮帶帶動一塊配重去補償。每一軸 4 顆 775 馬達左右同步驅動，配重用 PID 加 S curve 控制，移動時不會晃到車體。</p>
-        <p>8 頁技術說明書裡的初步模擬：加裝後靜態傾倒臨界力提升約 11–12%。接下來要做配重、同步反應和載貨的實測。</p>
+        <p>8 頁技術說明書裡的初步模擬：加裝後靜態傾倒臨界力提升約 11–12%。已經確認入圍，現在準備動工做實體。</p>
         <div class="more-photos">
           <img src="img/trc-xy.jpg" alt="XY 平衡模塊整體 3D 圖" loading="lazy">
           <img src="img/trc-xy-top.jpg" alt="XY 平衡模塊俯視圖" loading="lazy">
@@ -180,9 +180,9 @@
     </details></li>
 
     <li id="x-wordmemo" data-shape="book" data-short="WordMemo" data-c="build"><details><summary>
-      <div class="meta"><time>2026.11</time><span class="st st-done">完成</span></div>
+      <div class="meta"><time>2026.11</time><span class="st st-now">製作中</span></div>
       <img class="thumb" src="img/wordmemo.jpg?v=3" data-dark="img/wordmemo-dark.jpg?v=3" alt="" loading="lazy">
-      <div><h3>WordMemo 單字記憶上線</h3><p>高中那版單字網站整個重寫，加了程度測驗和老師端。</p></div></summary>
+      <div><h3>WordMemo 單字記憶</h3><p>高中那版單字網站整個重寫，加了程度測驗和老師端。還在製作中，做好之後要給我的家教學生用。</p></div></summary>
       <div class="more">
         <p class="work-links"><a class="deep-link" href="projects/wordmemo.html">深入介紹 →</a></p>
         <p>單字庫是大考中心高中 6000 字。學生端能學習、複習、拼字、AI 造句和作文批改；老師端可以開班、出題、看結果。不登入也能先試。</p>
@@ -194,13 +194,13 @@
     <li id="x-radar" data-shape="radar" data-short="機會雷達" data-c="build"><details><summary>
       <div class="meta"><time>2026.10</time><span class="st st-now">進行中</span></div>
       <img class="thumb" src="img/radar.jpg?v=3" data-dark="img/radar-dark.jpg?v=3" alt="" loading="lazy">
-      <div><h3>中原機會雷達</h3><p>每天自動抓學校 16 個公開來源的公告，整理成可以搜尋的網站。</p></div></summary>
+      <div><h3>中原機會雷達</h3><p>每天自動抓學校 16 個公開來源的公告，整理成可以搜尋的網站。還在製作中，還沒開始推廣。</p></div></summary>
       <div class="more">
         <p class="work-links"><a class="deep-link" href="projects/radar.html">深入介紹 →</a></p>
         <p>競賽、實習、獎學金、出國、講座都收。有截止時間表、收藏和重要提醒，也能跟 AI 說自己的興趣，讓它從公告裡挑。</p>
         <p>技術上用 TypeScript、React、Cloudflare D1、Google 登入，可以裝成手機 App（PWA）收推播。10 月底整個搬到 Cloudflare，五千多筆資料一起搬過去。</p>
         <p class="work-links"><a href="https://cycu-radar-app.johnny970120.workers.dev" target="_blank" rel="noopener">打開網站 ↗</a></p>
-        <div class="more-photos"><img src="img/radar.jpg?v=3" data-dark="img/radar-dark.jpg?v=3" alt="中原機會雷達首頁" loading="lazy"></div>
+        <div class="more-photos"><img src="img/radar.jpg?v=3" data-dark="img/radar-dark.jpg?v=3" alt="中原機會雷達首頁" loading="lazy"><img src="img/radar-calendar.jpg" alt="截止時間表" loading="lazy"><img src="img/radar-ai.jpg" alt="問問 AI" loading="lazy"><img src="img/radar-mobile.jpg" alt="手機版首頁" loading="lazy"></div>
       </div>
     </details></li>
 
@@ -228,12 +228,12 @@
     </details></li>
 
     <li id="x-winch" data-shape="gear" data-short="捲線器" data-c="build"><details><summary>
-      <div class="meta"><time>2026.10</time><span class="st st-done">完成</span></div>
+      <div class="meta"><time>2026.10</time><span class="st st-now">進行中</span></div>
       <img class="thumb" src="img/reel-mk4.jpg" alt="" loading="lazy">
       <div><h3>捲線器</h3><p>我負責機構，用 Fusion 360 改了好幾版，最後自己設計棘輪和齒輪。</p></div></summary>
       <div class="more">
         <p class="work-links"><a class="deep-link" href="projects/winch.html">深入介紹 →</a></p>
-        <p>每一版都換過配置和零件尺寸，也用 ESP32-C3 做了手機控制。買來的絞盤不會自己停，我就自己設計棘輪和齒輪換掉它：捲筒旁邊加一片棘輪，棘爪卡住就能停在定點。現在的機構已經完成。</p>
+        <p>每一版都換過配置和零件尺寸，也用 ESP32-C3 做了手機控制。買來的絞盤不會自己停，我就自己設計棘輪和齒輪換掉它：捲筒旁邊加一片棘輪，設計成棘爪卡住就能停在定點。機構設計好了，還沒做實際測試。</p>
         <div class="more-photos">
           <img src="img/reel-mk4.jpg" alt="捲線器 Mk4 整體機構" loading="lazy">
           <img src="img/reel-ratchet.jpg" alt="自己設計的棘輪和捲筒" loading="lazy">
@@ -391,7 +391,7 @@
         <h3>WordMemo 單字記憶</h3>
         <p><b>為什麼：</b>我自己背單字一直忘。</p>
         <p><b>做了什麼：</b>先用 3 分鐘程度測驗找起點。每個字配字根、諧音或聯想故事，答錯的字很快會再出現，答對的隔久一點。造句和作文丟給 AI 改。老師可以開班出題，看學生練到哪。</p>
-        <p><b>現在：</b>上線了，手機打開、不登入也能試。</p>
+        <p><b>現在：</b>還在製作中，之後會給我的家教學生用。網站已經可以先試。</p>
         <p class="work-links"><a class="deep-link" href="projects/wordmemo.html">深入介紹 →</a><a href="https://wordmemo.johnny970120.workers.dev/about" target="_blank" rel="noopener">看介紹 ↗</a><a href="https://wordmemo.johnny970120.workers.dev" target="_blank" rel="noopener">直接試用 ↗</a></p>
       </div>
     </article>
@@ -401,7 +401,7 @@
         <h3>中原機會雷達</h3>
         <p><b>為什麼：</b>競賽、實習、獎學金的公告分散在學校十幾個網站。</p>
         <p><b>做了什麼：</b>每天自動抓這些公開來源，整理成能搜尋的列表和截止時間表，可以收藏。跟 AI 講自己的興趣和經驗，它會從公告裡挑適合的推薦。架在 Cloudflare。</p>
-        <p><b>現在：</b>上線中，持續更新。</p>
+        <p><b>現在：</b>還在製作中，還沒開始推廣。網站已經可以打開看。</p>
         <p class="work-links"><a class="deep-link" href="projects/radar.html">深入介紹 →</a><a href="https://cycu-radar-app.johnny970120.workers.dev" target="_blank" rel="noopener">打開網站 ↗</a></p>
       </div>
     </article>
@@ -488,7 +488,7 @@
     <article class="miss">
       <p class="miss-what">捲線器<em>買來的絞盤不會自己停</em></p>
       <p>11 月初實測蝦皮買的絞盤，捲到定點停不下來，不符合我們要的用法。</p>
-      <p class="miss-learn"><b>後來：</b>我自己設計了棘輪和齒輪，捲線器已經完成。</p>
+      <p class="miss-learn"><b>後來：</b>我自己設計了棘輪和齒輪來取代它，接下來要實際測試。</p>
     </article>
   </div>
 </section>

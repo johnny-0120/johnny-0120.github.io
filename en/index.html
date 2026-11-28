@@ -53,7 +53,7 @@
     <p class="pg-sub">Tonight's program　hover to light it up, click for details</p>
     <ol class="pg-list">
       <li><button type="button" class="pg-item" data-img="../img/mars-rover.jpg" data-target="#x-mars" data-page="projects/mars.html"><img class="pg-thumb" src="../img/mars-rover.jpg" alt="" loading="lazy"><i>01</i><span class="pg-t">Mars landing rover<small>Our own ESP32 flight controller + camera landing</small></span><em>Hardware</em></button></li>
-      <li><button type="button" class="pg-item" data-img="../img/wordmemo-dark.jpg?v=3" data-target="#x-wordmemo" data-page="projects/wordmemo.html"><img class="pg-thumb" src="../img/wordmemo-dark.jpg?v=3" alt="" loading="lazy"><i>02</i><span class="pg-t">WordMemo<small>Live, with a teacher dashboard</small></span><em>Software</em></button></li>
+      <li><button type="button" class="pg-item" data-img="../img/wordmemo-dark.jpg?v=3" data-target="#x-wordmemo" data-page="projects/wordmemo.html"><img class="pg-thumb" src="../img/wordmemo-dark.jpg?v=3" alt="" loading="lazy"><i>02</i><span class="pg-t">WordMemo<small>In progress, for my tutoring students</small></span><em>Software</em></button></li>
       <li><button type="button" class="pg-item" data-img="../img/radar-dark.jpg?v=3" data-target="#x-radar" data-page="projects/radar.html"><img class="pg-thumb" src="../img/radar-dark.jpg?v=3" alt="" loading="lazy"><i>03</i><span class="pg-t">CYCU Opportunity Radar<small>Sorts 16 campus sources every day</small></span><em>Software</em></button></li>
       <li><button type="button" class="pg-item" data-img="../img/reel-ratchet.jpg" data-target="#x-winch" data-page="projects/winch.html"><img class="pg-thumb" src="../img/reel-ratchet.jpg" alt="" loading="lazy"><i>04</i><span class="pg-t">Cable winch<small>My own ratchet and gears</small></span><em>Hardware</em></button></li>
       <li><button type="button" class="pg-item" data-img="../img/esp32-car.jpg" data-target="#x-esp32"><img class="pg-thumb" src="../img/esp32-car.jpg" alt="" loading="lazy"><i>05</i><span class="pg-t">ESP32 obstacle-avoiding car<small>Wireless control, ultrasonic avoidance</small></span><em>Hardware</em></button></li>
@@ -137,8 +137,8 @@
       <div><h3>Mission Mars 2026　Rover Landing Competition</h3><p>Hosted by Tunghai University and the National Museum of Natural Science. We built a lander from scratch and finished the competition.</p></div></summary>
       <div class="more">
         <p class="work-links"><a class="deep-link" href="projects/mars.html">Full story →</a></p>
-        <p>The frame is 3D printed. We wrote our own quadcopter flight controller on an ESP32, and added an ESP32 camera that reads AprilTags on the ground so the craft can find its landing spot on its own.</p>
-        <p>My teammates and I designed the landing approach together, and took it from nothing to a finished run on competition day.</p>
+        <p>A 3D-printed blue frame. The flight controller is our own quadcopter firmware on an ESP32, plus an ESP32 camera that reads an AprilTag on the ground so the craft finds its landing spot by itself.</p>
+        <p>I designed the flight controller, the camera system and the mechanism; a classmate made the parachute. We took it from nothing to finishing on the competition floor.</p>
         <div class="more-photos">
           <img src="../img/mars-rover.jpg" alt="The finished lander" loading="lazy">
           <img src="../img/mars-field.jpg" alt="The lander on the competition floor" loading="lazy">
@@ -165,12 +165,12 @@
     <li id="x-trc" data-shape="gear" data-short="TRC robot" data-c="contest build"><details><summary>
       <div class="meta"><time>2026.11</time><span class="st st-now">Ongoing</span></div>
       <img class="thumb" src="../img/trc-xy.jpg" alt="" loading="lazy">
-      <div><h3>Taiwan Robot Competition　XY balance module</h3><p>Team Salamander. I led the mechanical concept and build.</p></div></summary>
+      <div><h3>Taiwan Robot Competition　XY balance module</h3><p>Team Salamander. I lead the mechanical concept and build. We're confirmed as finalists.</p></div></summary>
       <div class="more">
         <p class="work-links"><a class="deep-link" href="projects/trc.html">Full story →</a></p>
         <p>A counterweight module for warehouse robots. Factories stack loads high, so robots can tip over when they turn, brake or get bumped — most sites just slow them down.</p>
         <p>Load cells at the four corners measure force and work out which way the load is about to tip. Belts on the X and Y axes then move a counterweight to compensate. Each axis runs four 775 motors in sync, and the weight moves on PID plus S-curve control so it doesn't shake the robot.</p>
-        <p>Initial simulation in our 8-page technical report: the module raises the static tipping threshold by about 11–12%. Next up are real tests of the counterweight, response and loaded driving.</p>
+        <p>Initial simulation in our 8-page technical report: with the module installed, the static tipping threshold rises by about 11–12%. We're confirmed as finalists and are about to start building it.</p>
         <div class="more-photos">
           <img src="../img/trc-xy.jpg" alt="XY balance module, 3D view" loading="lazy">
           <img src="../img/trc-xy-top.jpg" alt="XY balance module, top view" loading="lazy">
@@ -180,9 +180,9 @@
     </details></li>
 
     <li id="x-wordmemo" data-shape="book" data-short="WordMemo" data-c="build"><details><summary>
-      <div class="meta"><time>2026.11</time><span class="st st-done">Done</span></div>
+      <div class="meta"><time>2026.11</time><span class="st st-now">In progress</span></div>
       <img class="thumb" src="../img/wordmemo.jpg?v=3" data-dark="../img/wordmemo-dark.jpg?v=3" alt="" loading="lazy">
-      <div><h3>WordMemo launched</h3><p>A full rewrite of my high school vocabulary site, adding a placement test and a teacher side.</p></div></summary>
+      <div><h3>WordMemo</h3><p>A full rewrite of my high school vocabulary site, adding a placement test and a teacher side. Still in progress — it's for my tutoring students.</p></div></summary>
       <div class="more">
         <p class="work-links"><a class="deep-link" href="projects/wordmemo.html">Full story →</a></p>
         <p>It covers the official 6,000-word high school list. Students can learn, review, spell, and get AI feedback on sentences and essays; teachers can set up classes, assign quizzes and see results. You can try it without signing in.</p>
@@ -194,13 +194,13 @@
     <li id="x-radar" data-shape="radar" data-short="Opportunity Radar" data-c="build"><details><summary>
       <div class="meta"><time>2026.10</time><span class="st st-now">Ongoing</span></div>
       <img class="thumb" src="../img/radar.jpg?v=3" data-dark="../img/radar-dark.jpg?v=3" alt="" loading="lazy">
-      <div><h3>CYCU Opportunity Radar</h3><p>Pulls notices from 16 public campus sources every day into one searchable site.</p></div></summary>
+      <div><h3>CYCU Opportunity Radar</h3><p>Collects notices from 16 public school sources every day into a searchable site. Still in progress and not promoted yet.</p></div></summary>
       <div class="more">
         <p class="work-links"><a class="deep-link" href="projects/radar.html">Full story →</a></p>
         <p>Competitions, internships, scholarships, exchanges and talks. There's a deadline calendar, bookmarks and alerts, and you can tell an AI what you're into and let it pick from the notices.</p>
         <p>Built with TypeScript, React, Cloudflare D1 and Google sign-in, and installable as a phone app (PWA) with push notifications. In late October I moved the whole thing to Cloudflare, along with 5,000+ records.</p>
         <p class="work-links"><a href="https://cycu-radar-app.johnny970120.workers.dev" target="_blank" rel="noopener">Open the site ↗</a></p>
-        <div class="more-photos"><img src="../img/radar.jpg?v=3" data-dark="../img/radar-dark.jpg?v=3" alt="CYCU Opportunity Radar home page" loading="lazy"></div>
+        <div class="more-photos"><img src="../img/radar.jpg?v=3" data-dark="../img/radar-dark.jpg?v=3" alt="CYCU Opportunity Radar home page" loading="lazy"><img src="../img/radar-calendar.jpg" alt="Deadline calendar" loading="lazy"><img src="../img/radar-ai.jpg" alt="Ask AI" loading="lazy"><img src="../img/radar-mobile.jpg" alt="Home page on a phone" loading="lazy"></div>
       </div>
     </details></li>
 
@@ -228,12 +228,12 @@
     </details></li>
 
     <li id="x-winch" data-shape="gear" data-short="Cable winch" data-c="build"><details><summary>
-      <div class="meta"><time>2026.10</time><span class="st st-done">Done</span></div>
+      <div class="meta"><time>2026.10</time><span class="st st-now">Ongoing</span></div>
       <img class="thumb" src="../img/reel-mk4.jpg" alt="" loading="lazy">
       <div><h3>Cable winch</h3><p>I designed the mechanism in Fusion 360 over several versions, ending with my own ratchet and gears.</p></div></summary>
       <div class="more">
         <p class="work-links"><a class="deep-link" href="projects/winch.html">Full story →</a></p>
-        <p>Each version changed the layout and part sizes, and I added phone control with an ESP32-C3. The store-bought winch wouldn't stop on its own, so I replaced it with my own ratchet and gears: a ratchet wheel beside the drum and a pawl that locks it in place. The mechanism is finished.</p>
+        <p>Every version changed the layout and part sizes, and an ESP32-C3 adds phone control. The store-bought winch wouldn't stop by itself, so I designed a ratchet and gears to replace it: a ratchet wheel beside the drum and a pawl meant to lock it in place. The mechanism is designed but not yet tested.</p>
         <div class="more-photos">
           <img src="../img/reel-mk4.jpg" alt="Winch, full mechanism" loading="lazy">
           <img src="../img/reel-ratchet.jpg" alt="My ratchet and drum design" loading="lazy">
@@ -391,7 +391,7 @@
         <h3>WordMemo</h3>
         <p><b>Why: </b>I kept forgetting the words I studied.</p>
         <p><b>What: </b>A 3-minute placement test finds your level. Each word comes with roots, sound-alikes or a memory story; words you miss come back soon, words you know come back later. AI marks your sentences and essays. Teachers can run classes, set quizzes and track progress.</p>
-        <p><b>Now: </b>Live. Works on your phone, no sign-in needed to try it.</p>
+        <p><b>Now: </b>Still in progress — it's for my tutoring students. You can already try it.</p>
         <p class="work-links"><a class="deep-link" href="projects/wordmemo.html">Full story →</a><a href="https://wordmemo.johnny970120.workers.dev/about" target="_blank" rel="noopener">About ↗</a><a href="https://wordmemo.johnny970120.workers.dev" target="_blank" rel="noopener">Try it ↗</a></p>
       </div>
     </article>
@@ -401,7 +401,7 @@
         <h3>CYCU Opportunity Radar</h3>
         <p><b>Why: </b>Competition, internship and scholarship notices were spread across a dozen school websites.</p>
         <p><b>What: </b>It collects them every day into a searchable list and deadline calendar with bookmarks. Tell the AI your interests and experience and it recommends notices that fit. Runs on Cloudflare.</p>
-        <p><b>Now: </b>Live and still growing.</p>
+        <p><b>Now: </b>Still in progress and not promoted yet, but the site is already open.</p>
         <p class="work-links"><a class="deep-link" href="projects/radar.html">Full story →</a><a href="https://cycu-radar-app.johnny970120.workers.dev" target="_blank" rel="noopener">Open the site ↗</a></p>
       </div>
     </article>
@@ -488,7 +488,7 @@
     <article class="miss">
       <p class="miss-what">Cable winch<em>The store-bought winch wouldn't stop</em></p>
       <p>In early November I tested an off-the-shelf winch. It couldn't stop at a set point, which made it useless for what we needed.</p>
-      <p class="miss-learn"><b>What I did: </b>I designed my own ratchet and gears, and the winch is finished.</p>
+      <p class="miss-learn"><b>What I did: </b>I designed my own ratchet and gears to replace it. Real-world testing is next.</p>
     </article>
   </div>
 </section>

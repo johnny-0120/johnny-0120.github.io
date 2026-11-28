@@ -32,10 +32,10 @@
   <h1 class="pj-title">火星車降落機</h1>
   <p class="pj-lede">2026 火星任務火星車降落競賽的作品。自己用 ESP32 寫四軸飛控，再加一顆會看地面標記的相機，讓機體自己找降落點。</p>
   <figure class="pj-cover"><img src="../img/mars-rover.jpg" alt="火星車降落機"></figure>
-  <dl class="pj-meta"><div><dt>比賽</dt><dd>2026 火星任務　火星車降落競賽（東海大學、國立自然科學博物館）</dd></div><div><dt>時間</dt><dd>2026.10 – 2026.11</dd></div><div><dt>結果</dt><dd>完賽</dd></div><div><dt>技術</dt><dd>ESP32、XIAO ESP32S3 相機、MPU 姿態感測、BMP280 氣壓計、PID、3D 列印</dd></div></dl>
+  <dl class="pj-meta"><div><dt>比賽</dt><dd>2026 火星任務　火星車降落競賽（東海大學、國立自然科學博物館）</dd></div><div><dt>時間</dt><dd>2026.10 – 2026.11</dd></div><div><dt>結果</dt><dd>完賽</dd></div><div><dt>角色</dt><dd>飛控、相機、機構設計（降落傘由同學製作）</dd></div><div><dt>技術</dt><dd>ESP32、XIAO ESP32S3 相機、MPU 姿態感測、BMP280 氣壓計、PID、3D 列印</dd></div></dl>
   
   <section class="pj-sec"><h2>目標</h2><p>讓機體從空中自己找到地上的標記，穩穩降落。</p></section>
-<section class="pj-sec"><h2>做了什麼</h2><ul><li>主飛控：用 ESP32 自己寫四軸飛控，200 Hz 的控制迴圈裡做姿態估測和 PID，再用 BMP280 氣壓計算高度。</li><li>相機板：XIAO ESP32S3 相機負責看地面，辨識結果透過 UART 傳給主飛控；定位用 AprilTag 標記。</li><li>降落傘分離和脫離各用一顆伺服馬達控制，另外有保險開關，避免馬達意外啟動。</li><li>機體是 3D 列印的藍色框架，降落方式是和隊友在機器人社課後一起討論設計的。</li></ul></section>
+<section class="pj-sec"><h2>做了什麼</h2><ul><li>主飛控：用 ESP32 自己寫四軸飛控，200 Hz 的控制迴圈裡做姿態估測和 PID，再用 BMP280 氣壓計算高度。</li><li>相機板：XIAO ESP32S3 相機負責看地面，辨識結果透過 UART 傳給主飛控；定位用 AprilTag 標記。</li><li>降落傘分離和脫離各用一顆伺服馬達控制，另外有保險開關，避免馬達意外啟動。</li><li>機體是 3D 列印的藍色框架。飛控、相機和機構都是我設計的，同學負責做降落傘。</li></ul></section>
 <section class="pj-sec"><h2>遇到的難題</h2><ul><li>ESP32 的開發工具不支援中文路徑，專案一放在中文資料夾就編譯失敗，最後把實體檔案放在英文路徑，再用資料夾連結對回來。</li><li>沒有接感測器時程式不能當機，所以加了故障偵測，感測器讀不到會自動重試並回報狀態。</li></ul></section>
 
   <section class="pj-sec"><h2>照片</h2><div class="masonry"><button class="ph"><img src="../img/mars-rover.jpg" alt="完成的機體" loading="lazy"></button><button class="ph"><img src="../img/mars-field.jpg" alt="比賽場地上的機體" loading="lazy"></button><button class="ph"><img src="../img/mars-build.jpg" alt="組裝" loading="lazy"></button><button class="ph"><img src="../img/mars-day.jpg" alt="比賽當天在場邊調整" loading="lazy"></button><button class="ph"><img src="../img/cert-mars.jpg" alt="參賽證明" loading="lazy"></button></div></section>
